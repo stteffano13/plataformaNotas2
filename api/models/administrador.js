@@ -1,20 +1,30 @@
-// los modelos son representacions de las entiades de la base de datos
-'use strict'
+const Sequelize = require('sequelize');
+var db = require("../database/db.js");
 
-var mongoose = require('mongoose');
-// a traves del paquete que se trabaja la base
-var Schema = mongoose.Schema;
-// definir un modelo de l abase de datos   crear un objeto de tipo es quema al  guardar un objeto de tipo esquema //ya se puede agregar una //nueva colleccion en la bas dde datos 
 
-// estos esquemas son las clases comunes 
 
-var AdministradorSchema = Schema({
-    correo: String,
- 
-    contrasena: String,
-   
-});
+const Administrador = db.sequelize.define('ADMINISTRADOR', {
 
-module.exports = mongoose.model('Administrador', AdministradorSchema); //de esta forma al exportar se podra utilizar el 
-//objeto donde se lo llame con el use strict cuando se necesite este objeto d=tendremos un objeto de tipo
-//'User' que tendra un UserSchema al cual se le llamara y se le llenara de datos
+    ID_ADMINISTRADOR: {
+        primaryKey: true,
+        type: Sequelize.BIGINT,
+        allowNull: false,
+        autoIncrement: true
+    },
+    CORREO_ADMINISTRADOR:
+    {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    CONTRASENA_ADMINISTRADOR:
+    {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+}, {
+    timestamps: false,
+    id: false
+
+})
+
+module.exports = Administrador;

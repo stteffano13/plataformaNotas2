@@ -3,7 +3,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-const path = require('path');
+
 
 //Notificaciones
 
@@ -11,7 +11,15 @@ const path = require('path');
 
 var ruta_prueba = require('./routes/prueba');
 
-
+var administrador_rutes = require('./routes/administrador');
+/*var docente_rutes = require('./routes/docente');
+var estudiante_rutes = require('./routes/estudiante');
+var curso_rutes = require('./routes/curso');
+var matricula_rutes = require('./routes/matricula');
+var materia_rutes = require('./routes/materia');
+var nota_rutes = require('./routes/nota');
+var insumo_rutes = require('./routes/insumo');
+*/
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); //convertir a json als peticiones
@@ -30,7 +38,14 @@ app.use((req, res, next) => {
 
 app.use('/api', ruta_prueba);
 
-
-
+app.use('/api', administrador_rutes);
+/*app.use('/api', docente_rutes);
+app.use('/api', estudiante_rutes);
+app.use('/api', curso_rutes);
+app.use('/api', matricula_rutes);
+app.use('/api', materia_rutes);
+app.use('/api', nota_rutes);
+app.use('/api', insumo_rutes);
+*/
 module.exports = app; // hace referencia a la variable de express
 
