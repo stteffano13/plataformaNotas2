@@ -1141,7 +1141,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
     this.subscribe8=this._administradorService.getPeriodoActual().subscribe(response => {
       console.log("este es el periodo que vino", response.periodo)
       if (response.periodo != undefined) {
-        this.periodoLectivoActual = response.periodo[0].periodo;
+        this.periodoLectivoActual = response.periodo;
 
       }
     }, (err) => { console.log("Existen Complicaciones Intente mas tarde", err) }

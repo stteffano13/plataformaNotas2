@@ -335,10 +335,10 @@
             <tbody>
               <tr *ngFor=" let listado of  listadoDocentes">
                 <th scope="row">1</th>
-                <td style="font-size: 130%">{{listado.nombre}} {{ listado.apellido}}</td>
-                <td style="font-size: 130%">{{listado.cedula}}</td>
-                <td style="font-size: 130%">{{ listado.correo}}</td>
-                <td style="font-size: 130%">{{listado.tel_celular }}</td>
+                <td style="font-size: 130%">{{listado.NOMBRE_DOCENTE}} {{ listado.APELLIDO_DOCENTE}}</td>
+                <td style="font-size: 130%">{{listado.CEDULA_DOCENTE}}</td>
+                <td style="font-size: 130%">{{ listado.CORREO_DOCENTE}}</td>
+                <td style="font-size: 130%">{{listado.CELULAR_DOCENTE }}</td>
                 <td>
                   <input class="btn btn-primary " type="button" value="ver" (click)="aparecerUpdateDatosDocentes(listado)">
                 </td>
@@ -483,7 +483,7 @@
             <datalist id="busquedaDocentesAsignacion">
               <option id="oneDoor._id" *ngFor="let oneDoor of vectorListadoDocentes">
 
-                {{oneDoor.codigo}}.&nbsp;&nbsp;&nbsp;&nbsp; {{oneDoor.nombre}} {{oneDoor.apellido}} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;{{oneDoor.cedula}}
+                {{oneDoor.CODIGO_DOCENTE}}.&nbsp;&nbsp;&nbsp;&nbsp; {{oneDoor.NOMBRE_DOCENTE}} {{oneDoor.APELLIDO_DOCENTE}} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;{{oneDoor.CEDULA_DOCENTE}}
               </option>
 
 
@@ -495,7 +495,7 @@
             <label>Periodo académico </label>
             <select (change)="buscarAsignacionPeriodo($event.target.value)" class=" custom-select " required>
               <option value="no asignado" selected>no asignado</option>
-              <option *ngFor="let oneDoor of vectorListadoPeriodos">{{oneDoor.periodo}}</option>
+              <option *ngFor="let oneDoor of vectorListadoPeriodos">{{oneDoor.PERIODO}}</option>
             </select>
           </div>
           <div class=" col-md-4">
@@ -504,7 +504,7 @@
               required type="text" class="form-control">
             <datalist id="buscarCursoAsignacion">
               <option *ngFor="let oneDoor of vectorListadoCursos">
-                {{oneDoor.dataValues.CODIGO_CURSO}},&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{{oneDoor.CURSO}},{{oneDoor.PARALELO}}
+                {{oneDoor.CODIGO_CURSO}},&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{{oneDoor.CURSO}},{{oneDoor.PARALELO}}
               </option>
             </datalist>
 
@@ -583,8 +583,8 @@
             <datalist id="listadoDocentesAsignacion">
               <option id="oneDoor._id" *ngFor="let oneDoor of vectorListadoDocentes">
 
-                {{oneDoor.codigo}}.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {{oneDoor.nombre}} {{oneDoor.apellido}} &nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;{{oneDoor.cedula}}
+                {{oneDoor.CODIGO_DOCENTE}}.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {{oneDoor.NOMBRE_DOCENTE}} {{oneDoor.APELLIDO_DOCENTE}} &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;{{oneDoor.CEDULA_DOCENTE}}
               </option>
 
 
@@ -819,7 +819,7 @@
             <div class="col-lg-6">
               <div class="form-group">
                 <label> Nombre del Docente</label>
-                <input type="text" class="form-control" #NombreM="ngModel" [(ngModel)]="datosDocentes.nombre" name="nombreM" [disabled]='textBox'
+                <input type="text" class="form-control" #NombreM="ngModel" [(ngModel)]="datosDocentes.NOMBRE_DOCENTE" name="nombreM" [disabled]='textBox'
                   pattern="[ A-Za-zñÑ]*" required>
                 <div *ngIf="txtvalidacionModificarDocente" [hidden]="NombreM.valid || NombreM.pristine" class="alert alert-warning">
                   Ingrese solo letras
@@ -827,7 +827,7 @@
               </div>
               <div class="form-group">
                 <label>Celular del Docente</label>
-                <input type="text" class="form-control" #CelularM="ngModel" [(ngModel)]="datosDocentes.tel_celular" name="celularM" pattern="[0-9]*"
+                <input type="text" class="form-control" #CelularM="ngModel" [(ngModel)]="datosDocentes.CELULAR_DOCENTE" name="celularM" pattern="[0-9]*"
                   id="celular" pattern=".{10,10}" [disabled]='textBox' required>
                 <div *ngIf="txtvalidacionModificarDocente" [hidden]="CelularM.valid || CelularM.pristine" class="alert alert-warning">
                   Ingrese solo 10 digitos numéricos
@@ -836,7 +836,7 @@
               <div class="form-group">
                 <label>Cédula del docente</label>
                 <label style="font-size: 80%">&nbsp;&nbsp;La cédula no se puede modificar, tiene que eliminar el usuario</label>
-                <input type="text" class="form-control" #TelefonoM="ngModel" [(ngModel)]="datosDocentes.cedula" name="telefonoM" disabled
+                <input type="text" class="form-control" #TelefonoM="ngModel" [(ngModel)]="datosDocentes.CEDULA_DOCENTE" name="telefonoM" disabled
                   id="celular" pattern=".{10,10}" [disabled]='textBox' required>
 
                 <div *ngIf="txtvalidacionModificarDocente" [hidden]="TelefonoM.valid || TelefonoM.pristine" class="alert alert-warning">
@@ -849,7 +849,7 @@
             <div class="col-lg-6">
               <div class="form-group">
                 <label>Apellido del Docente</label>
-                <input type="text" class="form-control" #ApellidoM="ngModel" [(ngModel)]="datosDocentes.apellido" name="apellidoM" [disabled]='textBox'
+                <input type="text" class="form-control" #ApellidoM="ngModel" [(ngModel)]="datosDocentes.APELLIDO_DOCENTE" name="apellidoM" [disabled]='textBox'
                   pattern="[ A-Za-zñÑ]*" required>
                 <div *ngIf="txtvalidacionModificarDocente" [hidden]="ApellidoM.valid || ApellidoM.pristine" class="alert alert-warning">
                   Ingrese solo letras
@@ -857,7 +857,7 @@
               </div>
               <div class="form-group">
                 <label>Correo del Docente</label>
-                <input type="email" class="form-control" #CorreoM="ngModel" [(ngModel)]="datosDocentes.correo" name="correorM" [disabled]='textBox'
+                <input type="email" class="form-control" #CorreoM="ngModel" [(ngModel)]="datosDocentes.CORREO_DOCENTE" name="correorM" [disabled]='textBox'
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                 <div *ngIf="txtvalidacionModificarDocente" [hidden]="CorreoM.valid || CorreoM.pristine" class="alert alert-warning">
                   Ingrese un correo electrónico válido

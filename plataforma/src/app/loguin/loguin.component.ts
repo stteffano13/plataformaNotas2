@@ -144,10 +144,10 @@ export class LoguinComponent {
             this.subscribe3= this._docenteServices.singupDocente(this.obj, "").subscribe(
               response => {
                 this.loading = false;
-                let identity = response.user;
+                let identity = response.docente;
                 this.identity = identity;
                 console.log(identity);
-                if (!this.identity._id) {
+                if (!this.identity.ID_DOCENTE) {
                   this.mensajeerrormodals = "Clave incorrecta el usuario no se pudo autenticar";
                   document.getElementById("openModalError").click();
                 } else {

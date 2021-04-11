@@ -408,7 +408,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
       this.imagen = false;
       this.banderReporteExcel = false;
       this.busquedaDocente();
-      this.busquedaEstudiantes();
+      this.busquedaEstudiantes();      
 
     } else {
       this.loading = false;
@@ -1176,7 +1176,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
   onUpdateDocentes(estado) {
 
     console.log('mi contra con ******>>>>', this.contrasenaUpdateDocente);
-    this.datosDocentes.estado = estado;
+    this.datosDocentes.ESTADO_DOCENTE = estado;
     this.loading = true;
 
     if (this.contrasenaUpdateDocente != null || this.contrasenaUpdateDocente != '') {

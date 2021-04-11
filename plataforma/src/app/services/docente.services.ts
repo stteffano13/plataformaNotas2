@@ -52,7 +52,7 @@ public cont =0;
     console.log(params);
     let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getToken() });
     return this._http
-      .put(this.url + "update-docente/" + docente_to_update._id, params, { headers: headers })
+      .put(this.url + "update-docente/" + docente_to_update.ID_DOCENTE, params, { headers: headers })
       .map(res => res.json());
   }
 

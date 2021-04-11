@@ -52,6 +52,10 @@ const Docente = db.sequelize.define('DOCENTE', {
         allowNull: false
     }
 
+}, {
+    timestamps: false,
+    id: false
+
 })
 
 module.exports = Docente;
