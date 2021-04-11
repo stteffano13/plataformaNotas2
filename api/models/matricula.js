@@ -34,6 +34,10 @@ const Matricula = db.sequelize.define('MATRICULA', {
         allowNull: false
     },
 
+}, {
+    timestamps: false,
+    id: false
+
 })
 
-module.exports = Materia;
+module.exports = Matricula;

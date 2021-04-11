@@ -12,9 +12,10 @@ var app = express();
 var ruta_prueba = require('./routes/prueba');
 
 var administrador_rutes = require('./routes/administrador');
+var curso_rutes = require('./routes/curso');
 /*var docente_rutes = require('./routes/docente');
 var estudiante_rutes = require('./routes/estudiante');
-var curso_rutes = require('./routes/curso');
+
 var matricula_rutes = require('./routes/matricula');
 var materia_rutes = require('./routes/materia');
 var nota_rutes = require('./routes/nota');
@@ -39,9 +40,10 @@ app.use((req, res, next) => {
 app.use('/api', ruta_prueba);
 
 app.use('/api', administrador_rutes);
+app.use('/api', curso_rutes);
 /*app.use('/api', docente_rutes);
 app.use('/api', estudiante_rutes);
-app.use('/api', curso_rutes);
+
 app.use('/api', matricula_rutes);
 app.use('/api', materia_rutes);
 app.use('/api', nota_rutes);

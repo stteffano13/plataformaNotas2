@@ -2,7 +2,6 @@ const Sequelize = require('sequelize');
 var db = require("../database/db.js");
 
 
-
 const Materia = db.sequelize.define('MATERIA', {
 
     ID_MATERIA: {
@@ -31,7 +30,11 @@ const Materia = db.sequelize.define('MATERIA', {
     {
         type: Sequelize.STRING,
         allowNull: false
-    },
+    }
+
+}, {
+    timestamps: false,
+    id: false
 
 })
 

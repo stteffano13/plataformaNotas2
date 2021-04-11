@@ -37,6 +37,10 @@ const Curso = db.sequelize.define('CURSO', {
         allowNull: false
     },
 
+}, {
+    timestamps: false,
+    id: false
+
 })
 
 module.exports = Curso;

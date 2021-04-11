@@ -1472,7 +1472,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
     this.vectorListadoCursos = [];
     this.subscribe19= this._cursoServices.getListadoCursos().subscribe(response => {
 
-      console.log("esto iene de la peticion Cursos" + JSON.stringify(response));
+      console.log("esto iene de la peticion Cursos" + JSON.stringify(response.listadoCursos[0].CODIGO_CURSO));
       if (response.listadoCursos[0] != undefined) {
         this.vectorListadoCursos = response.listadoCursos;
       }
