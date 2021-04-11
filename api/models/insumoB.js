@@ -3,7 +3,7 @@ var db = require("../database/db.js");
 
 
 
-const Insumo = db.sequelize.define('INSUMO', {
+const InsumoB = db.sequelize.define('INSUMOB', {
    
     ID_INSUMO: {
         primaryKey: true,
@@ -208,4 +208,4 @@ const Insumo = db.sequelize.define('INSUMO', {
    
 });
 
-module.exports = Insumo
+module.exports = InsumoB

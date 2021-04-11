@@ -1,7 +1,7 @@
 'use strict'
 
 
-const PRUEBA = require('../models/Prueba'); //importar el modelo del usuario  o lo que son las clases comunesvar DPA = require('../models/dpa'); //importar el modelo del usuario  o lo que son las clases comunes
+const PRUEBA = require('../models/prueba'); //importar el modelo del usuario  o lo que son las clases comunesvar DPA = require('../models/dpa'); //importar el modelo del usuario  o lo que son las clases comunes
 
 
 

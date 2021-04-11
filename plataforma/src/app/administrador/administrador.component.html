@@ -394,7 +394,7 @@
             <label>Seleccione el periodo académico </label>
             <select (change)="buscarMatriculas($event.target.value)" class=" custom-select " required>
               <option value="no asignado" selected>no asignado</option>
-              <option *ngFor="let oneDoor of vectorListadoPeriodos">{{oneDoor.periodo}}</option>
+              <option *ngFor="let oneDoor of vectorListadoPeriodos">{{oneDoor.PERIODO}}</option>
             </select>
           </div>
           <div class=" col-md-6">

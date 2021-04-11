@@ -287,7 +287,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
     this.buscarMatriculaPeriodo = "no asignado";
     this.getListadoEstudiantes();
     this.getListadoCursos();
-    this.getListadoDocentes();
+   this.getListadoDocentes();
     this.getPeriodos();
     this.txtHide = false;
 
@@ -1412,8 +1412,8 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
 
     this.subscribe16= this._administradorService.getPeriodoActual().subscribe(response => {
 
-      if (response.periodo[0] != undefined) {
-        this.opcionPeriodoLectivo = response.periodo[0].periodo;
+      if (response.periodo != undefined) {
+        this.opcionPeriodoLectivo = response.periodo;
         var opcionPeriodoLectivoPartido = this.opcionPeriodoLectivo.split("/");
         var opcionPeriodoLectivoPartido2 = opcionPeriodoLectivoPartido[1].split("-");
         this.opcionMesInicio = opcionPeriodoLectivoPartido[0];

@@ -61,9 +61,9 @@ export class LoguinComponent {
            this.subscribe1= this._adminServices.singupAdministrador(this.obj, "").subscribe(
               response => {
                 this.loading = false;
-                let identity = response.user;
+                let identity = response.administrador;
                 this.identity = identity;
-                if (!this.identity._id) {
+                if (!this.identity.ID_ADMINISTRADOR) {
                   this.loading = false;
                   this.mensajeerrormodals = "Clave incorrecta el usuario no se pudo autenticar";
                   document.getElementById("openModalError").click();

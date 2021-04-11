@@ -17,6 +17,9 @@ const Periodo = db.sequelize.define('PERIODO', {
         allowNull: false
     },
     
+},{
+    timestamps: false,
+    id: false
 
 })
 
