@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 var db = require("../database/db.js");
 
-
+const Nota = require('../models/nota');
+const NotaB = require('../models/notaB');
+const Matricula = require('../models/matricula');
 
 const Estudiante = db.sequelize.define('ESTUDIANTE', {
 
@@ -57,5 +59,14 @@ const Estudiante = db.sequelize.define('ESTUDIANTE', {
     id: false
 
 })
+
+Estudiante.hasMany(Nota,{foreignKey: 'ID_ESTUDIANTE', sourceKey: 'ID_ESTUDIANTE'});
+Nota.belongsTo(Estudiante,{foreignKey: 'ID_ESTUDIANTE', sourceKey: 'ID_ESTUDIANTE'});
+
+Estudiante.hasMany(NotaB,{foreignKey: 'ID_ESTUDIANTE', sourceKey: 'ID_ESTUDIANTE'});
+NotaB.belongsTo(Estudiante,{foreignKey: 'ID_ESTUDIANTE', sourceKey: 'ID_ESTUDIANTE'});
+
+Estudiante.hasMany(Matricula,{foreignKey: 'ID_ESTUDIANTE', sourceKey: 'ID_ESTUDIANTE'});
+Matricula.belongsTo(Estudiante,{foreignKey: 'ID_ESTUDIANTE', sourceKey: 'ID_ESTUDIANTE'});
 
 module.exports = Estudiante;

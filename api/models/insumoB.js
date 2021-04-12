@@ -203,6 +203,12 @@ const InsumoB = db.sequelize.define('INSUMOB', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    ID_MATERIA:
+    {
+        type: Sequelize.NUMBER,
+        allowNull: false
+    },
+    
  
    
    

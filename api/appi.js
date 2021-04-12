@@ -15,10 +15,11 @@ var administrador_rutes = require('./routes/administrador');
 var curso_rutes = require('./routes/curso');
 var docente_rutes = require('./routes/docente');
 var estudiante_rutes = require('./routes/estudiante');
+var matricula_rutes = require('./routes/matricula');
 /*
 
 
-var matricula_rutes = require('./routes/matricula');
+
 var materia_rutes = require('./routes/materia');
 var nota_rutes = require('./routes/nota');
 var insumo_rutes = require('./routes/insumo');
@@ -45,10 +46,11 @@ app.use('/api', administrador_rutes);
 app.use('/api', curso_rutes);
 app.use('/api', docente_rutes);
 app.use('/api', estudiante_rutes);
+app.use('/api', matricula_rutes);
 /*
 
 
-app.use('/api', matricula_rutes);
+
 app.use('/api', materia_rutes);
 app.use('/api', nota_rutes);
 app.use('/api', insumo_rutes);

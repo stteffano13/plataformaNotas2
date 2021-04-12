@@ -234,10 +234,23 @@ const InsumoB = db.sequelize.define('INSUMOB', {
     {
         type: Sequelize.STRING,
         allowNull: false
+    }, ID_ESTUDIANTE:
+    {
+        type: Sequelize.NUMBER,
+        allowNull: false
+    },
+    ID_MATERIA:
+    {
+        type: Sequelize.NUMBER,
+        allowNull: false
     },
 
 
+}, {
+    timestamps: false,
+    id: false
 
 });
+
 
 module.exports = InsumoB

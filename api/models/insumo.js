@@ -96,6 +96,12 @@ const Insumo = db.sequelize.define('INSUMO', {
         type: Sequelize.STRING,
         allowNull: true
     },
+    ID_MATERIA:
+    {
+        type: Sequelize.NUMBER,
+        allowNull: false
+    },
+    
  
    
    

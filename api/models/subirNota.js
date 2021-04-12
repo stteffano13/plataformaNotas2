@@ -16,7 +16,7 @@ const SubirNota = db.sequelize.define('SUBIRNOTA', {
         type: Sequelize.NUMBER,
         allowNull: false
     },
-    
+
 
 })
 
