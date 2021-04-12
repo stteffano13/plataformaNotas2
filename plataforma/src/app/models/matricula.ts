@@ -4,6 +4,6 @@ export class Matricula {
         public codigoE: String,
         public codigoC: String,
         public periodo:String,
-        public estado: String
+        public estado: number
     ) { }
 }

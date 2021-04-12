@@ -438,7 +438,7 @@
               <hr style="background-color: #e9ecef; width: 50%;">
             </div>
           </div>
-          <table class="table  text-center">
+          <table class="table  text-center txt-small">
             <thead>
               <tr style="background-color: #343a40; align-content: center">
                 <th style="color: white" scope="col">#</th>
@@ -454,11 +454,11 @@
               <tr *ngFor=" let listado of  listadoMatriculasNueva;let i = index">
                 <th scope="row">{{i+1}}</th>
 
-                <td style="font-size: 130%">{{listado.estudiante.nombre}}</td>
-                <td style="font-size: 130%"> {{ listado.estudiante.apellido}}</td>
-                <td style="font-size: 130%">{{listado.estudiante.cedula}}</td>
-                <td style="font-size: 130%">{{listado.curso.curso }} "{{listado.curso.paralelo }}"</td>
-                <td style="font-size: 130%">{{listado.periodo }}</td>
+                <td style="font-size: 130%">{{listado.ESTUDIANTE.NOMBRE_ESTUDIANTE}}</td>
+                <td style="font-size: 130%"> {{ listado.ESTUDIANTE.APELLIDO_ESTUDIANTE}}</td>
+                <td style="font-size: 130%">{{listado.ESTUDIANTE.CEDULA_ESTUDIANTE}}</td>
+                <td style="font-size: 130%">{{listado.CURSO.CURSO }} "{{listado.CURSO.PARALELO }}"</td>
+                <td style="font-size: 130%">{{listado.PERIODO }}</td>
                 <td>
                   <input class="btn btn-primary " type="button" value="Eliminar" (click)="updateDatosMatricula(listado)">
                 </td>
@@ -504,7 +504,7 @@
               required type="text" class="form-control">
             <datalist id="buscarCursoAsignacion">
               <option *ngFor="let oneDoor of vectorListadoCursos">
-                {{oneDoor.CODIGO_CURSO}},&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{{oneDoor.CURSO}},{{oneDoor.PARALELO}}
+                {{oneDoor.CODIGO_CURSO}}.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{{oneDoor.CURSO}}. {{oneDoor.PARALELO}}
               </option>
             </datalist>
 
@@ -547,10 +547,10 @@
               <tr *ngFor=" let listado of  listadoAsignacionNueva; let i = index">
                 <th scope="row">{{i+1}}</th>
 
-                <td style="font-size: 130%">{{listado.curso.curso}} "{{listado.curso.paralelo}}"</td>
-                <td style="font-size: 130%"> {{ listado.docente.nombre}} {{ listado.docente.apellido}}</td>
-                <td style="font-size: 130%">{{listado.periodo}}</td>
-                <td style="font-size: 130%">{{listado.nombre}}</td>
+                <td style="font-size: 130%">{{listado.CURSO.CURSO}} "{{listado.CURSO.PARALELO}}"</td>
+                <td style="font-size: 130%"> {{ listado.DOCENTE.NOMBRE_DOCENTE}} {{ listado.DOCENTE.APELLIDO_DOCENTE}}</td>
+                <td style="font-size: 130%">{{listado.PERIODO}}</td>
+                <td style="font-size: 130%">{{listado.NOMBRE_MATERIA}}</td>
 
                 <td>
                   <input class="btn btn-primary " type="button" value="Eliminar" (click)="updateDatosAsignacion(listado)">
@@ -1133,8 +1133,8 @@
         <h5 style="color: blue">Reporte Consolidado de Notas</h5>
         <br>
         <select (change)="asignarMateriaCurso($event.target.value)" class=" custom-select " required>
-          <option [value]="" selected>Selecciona materia y curso</option>
-          <option *ngFor="let oneDoor of this.vectorListadoCursos" value="{{oneDoor.ID_CURSO}},{{oneDoor.CURSO}} ">{{oneDoor.CURSO}}: {{oneDoor.PARALELO}} {{oneDoor.curso.PARALELO}}</option>
+          <option [value]="" selected>Selecciona el curso</option>
+          <option *ngFor="let oneDoor of this.vectorListadoCursos" value="{{oneDoor.ID_CURSO}},{{oneDoor.CURSO}} ">{{oneDoor.CURSO}}: {{oneDoor.PARALELO}} </option>
         </select>
       </div>
 
@@ -1150,7 +1150,7 @@
           <tr style="background-color: #343a40; align-content: center;">
             <th style="color: white; padding-top: 2%" scope="col">#</th>
             <th style="color: white;   align-content: center;   text-align: center" scope="col">Apellidos y Nombres</th>
-            <th *ngFor=" let listado of  listadoMateriasCurso;" style="color: white" scope="col" class="verticalText2">{{listado.nombre}} </th>
+            <th *ngFor=" let listado of  listadoMateriasCurso;" style="color: white" scope="col" class="verticalText2">{{listado?.nombre}} </th>
 
           </tr>
         </thead>

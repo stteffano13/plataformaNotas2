@@ -10,6 +10,8 @@ var Periodo = require('../models/periodo'); //importar el modelo del usuario  o 
 var jwt = require('../services/jwt');
 var path = require('path');
 var fs = require('fs');
+const { Console } = require('console');
+
 
 // Create a new moment object
 var now = moment();
@@ -21,143 +23,131 @@ var m = moment("April 1st, 2005", "MMM-DD-YYYY");
 var m = moment([2005, 3, 1]);
 
 
-function saveMatricula(req, res) {
+async function saveMatricula(req, res) {
 
-    var params = req.body;
-    console.log("esto viene para amtricular", params);
-    Estudiante.findOne({ codigo: params.codigoE }, (err, users) => {
-        if (err) {
-            res.status(500).send({
-                message: "Error al buscar Estudiante"
-            });
+    try {
+        var params = req.body;
+        console.log("esto viene para amtricular", params);
+
+        let estudiante = await Estudiante.findOne({ where: { CODIGO_ESTUDIANTE: params.codigoE } });
+
+        if (estudiante) {
+
+            guardarPrimero(estudiante, params, res);
+
+
         } else {
-            if (users) {
 
-                guardarPrimero(users, params, res);
+            return res.status(500).send({
+                message: "El estudiante no Existe"
+            });
 
-
-            } else {
-
-                return res.status(500).send({
-                    message: "El estudiante no Existe"
-                });
-
-            }
         }
 
-    });
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
+        });
+    }
+
 
 }
 
-function guardarPrimero(estudiante, params, res) {
-    Curso.findOne({ codigo: params.codigoC }, (err, users) => {
-        if (err) {
-            res.status(500).send({
-                message: "Error al encontrar Curso"
-            });
+async function guardarPrimero(estudiante, params, res) {
+
+    try {
+        let curso = await Curso.findOne({ where: { CODIGO_CURSO: params.codigoC } });
+
+        if (curso) {
+
+            guardarSegundo(estudiante, curso, params, res);
+
+
         } else {
-            if (users) {
 
-                guardarSegundo(estudiante, users, params, res);
+            return res.status(500).send({
+                message: "El Curso no Existe"
+            });
 
-
-            } else {
-
-                return res.status(500).send({
-                    message: "El Curso no Existe"
-                });
-
-            }
         }
 
-    });
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
+        });
+    }
+
 
 }
 
 
-function guardarSegundo(idE, idC, params, res) {
-    var count = 0;
-    var fecha = now.format('MM-DD-YYYY');
-    console.log(idE._id, idC._id);
+async function guardarSegundo(idE, idC, params, res) {
 
-    matricula = new Matricula();
-    //
-    Matricula.findOne({
-        '$and': [{ estado: "0" }, { estudiante: idE._id }, { periodo: params.periodo }]
-    }, (err, users) => {
-        if (err) {
-            res.status(500).send({
-                message: "Error al generar matricula"
+    try {
+        var count = 0;
+        var fecha = now.format('YYYY-MM-DD');
+        console.log(idE.ID_ESTUDIANTE, idC.ID_CURSO);
+
+        let matricula = Matricula.build();
+        //
+        let matriculaEncontrada = await Matricula.findOne({
+            where: { ESTADO_MATRICULA: 0, ID_ESTUDIANTE: idE.ID_ESTUDIANTE, PERIODO: params.periodo }
+        })
+
+        if (matriculaEncontrada) {
+            return res.status(500).send({
+                message: "El Estudiante ya fue matriculado"
             });
         } else {
-            if (users) {
-                return res.status(500).send({
-                    message: "El Estudiante ya fue matriculado"
-                });
-            } else {
 
-                var array = Matricula.find((err, users) => {
-                    if (err) {
-                        res.status(500).send({
-                            message: "Error al  buscar matricula de estudainte"
+            let array = await Matricula.findAll();
+
+            if (array) {
+
+                array.forEach(element => {
+
+                    count++
+                });
+                count++;
+                console.log("fecha", fecha);
+                matricula.CODIGO_MATRICULA = "CODMT" + count;
+                matricula.ID_ESTUDIANTE = idE.ID_ESTUDIANTE;
+                matricula.ID_CURSO = idC.ID_CURSO;
+                matricula.PERIODO = params.periodo;
+                matricula.FECHA_MATRICULA = fecha;
+                matricula.ESTADO_MATRICULA = params.estado;
+                console.log("Matricula", matricula);
+
+                if (idC.ID_CURSO && idE.ID_ESTUDIANTE) {
+
+                    let matriculaGuardada = await matricula.save();
+
+                    if (!matriculaGuardada) {
+                        res.status(404).send({
+                            message: 'No se ha generado la matricula'
                         });
                     } else {
-                        if (users) {
-
-
-
-                            users.forEach(element => {
-                                
-                                count++
-                            });
-                            count++;
-                            //
-                            matricula.codigo = "CODMT" + count;
-                            matricula.estudiante = idE._id;
-                            matricula.curso = idC._id;
-                            matricula.periodo = params.periodo;
-                            matricula.fecha = fecha;
-                            matricula.estado = params.estado;
-
-
-                            if (idC._id && idE._id) {
-
-                                matricula.save((err, userStored) => {
-                                    if (err) {
-                                        res.status(500).send({
-                                            message: 'Errro al Generar matricula'
-                                        });
-                                    } else {
-                                        if (!userStored) {
-                                            res.status(404).send({
-                                                message: 'No se ha generado la matricula'
-                                            });
-                                        } else {
-                                            res.status(200).send({
-                                                message: 'La matricula se ha generado correctamente'
-                                            });
-
-                                        }
-                                    }
-
-                                }); //  save es un metodo de mongoose
-
-
-                            } else {
-                                res.status(500).send({
-                                    message: 'No han llegado todos los datos'
-                                });
-                            }
-                            //
-                        }
+                        res.status(200).send({
+                            message: 'La matricula se ha generado correctamente'
+                        });
                     }
-                });
 
-
-
+                } else {
+                    res.status(500).send({
+                        message: 'No han llegado todos los datos'
+                    });
+                }
+                //
             }
+
+
         }
-    });
+
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
+        });
+    }
     //
 
 
@@ -165,28 +155,23 @@ function guardarSegundo(idE, idC, params, res) {
 }
 
 
-function busquedaMatriculas(req, res) {
-    var busqueda = req.params.busqueda;
-    console.log(busqueda);
-    if (!busqueda) {
-        res.status(404).send({
-            message: 'Ingrese un parametro de busqueda'
-        });
-    } else {
+async function busquedaMatriculas(req, res) {
 
+    try {
+        var busqueda = req.params.busqueda;
+        console.log("parametros busqueda", busqueda);
+        if (busqueda == undefined) {
+            res.status(404).send({
+                message: 'Ingrese un parametro de busqueda'
+            });
+        } else {
 
-        var matriculas = Matricula.find({
-            estado: '0'
-        }).populate({
-            path: 'estudiante'
-        }).populate({
-            path: 'curso'
-        }).exec((err, matriculas) => {
-            if (err) {
-                return res.status(500).send({
-                    message: 'No se han podido obtener su matricula'
-                });
-            }
+            let busqueda2 = busqueda.split('.');
+            let bsuquedaEstudiante = await Estudiante.findOne({ where: { CODIGO_ESTUDIANTE: busqueda2[0] } });
+
+            let matriculas = await Matricula.findAll({ where: { ESTADO_MATRICULA: 0, ID_ESTUDIANTE: bsuquedaEstudiante.dataValues.ID_ESTUDIANTE }, include: [{ model: Estudiante }, { model: Curso }] })  /// AUNMENTAR EL PERIODO
+
+            console.log("matriculas", matriculas)
 
             if (!matriculas) {
                 return res.status(200).send({
@@ -197,6 +182,11 @@ function busquedaMatriculas(req, res) {
             return res.status(200).send({
                 matriculas
             });
+
+        }
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
         });
     }
 }
@@ -204,89 +194,84 @@ function busquedaMatriculas(req, res) {
 
 
 
-function updateMatricula(req, res) {
-    var update = req.body;
-    var messageId = req.params.id;  // en este caso e sparametro de ruta es decir el id para todo lo demas req.body
+async function updateMatricula(req, res) {
 
-    console.log("antes de eliminar matricula", messageId);
+    try {
+        var update = req.body;
+        var messageId = req.params.id;  // en este caso e sparametro de ruta es decir el id para todo lo demas req.body
 
-    var update = req.body;
+        console.log("antes de eliminar matricula", messageId);
 
+        var update = req.body;
 
-    Matricula.findByIdAndUpdate(messageId, update, (err, matriculaUpdate) => {
+        let matriculaEncontrada = await Matricula.findOne({ where: { ID_MATRICULA: messageId } });
+        let matriculaUpdate = await matriculaEncontrada.update({ ESTADO_MATRICULA: update.estado });
 
-        if (err) {
-            res.status(500).send({ message: "Error al eliminar la matricula", err });
-
+        if (!matriculaUpdate) {
+            res.status(404).send({ message: "La matricula no se ha actualizado" });
         } else {
-            if (!matriculaUpdate) {
-                res.status(404).send({ message: "La matricula no se ha actualizado" });
-            } else {
-                res.status(200).send({ message: "La matricula se ha actualizado correctamente" });
-            }
+            res.status(200).send({ message: "La matricula se ha actualizado correctamente" });
         }
 
-    });
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
+        });
+    }
+
 }
 
 
 
 
-function getEstudiantesMatriculas(req, res) {
-    var busqueda = req.params.busqueda;
-    console.log(busqueda);
-    if (!busqueda) {
-        res.status(404).send({
-            message: 'Ingrese un parametro de busqueda'
-        });
-    } else {
+//PENDIENTEs
+
+async function getEstudiantesMatriculas(req, res) {
+
+    try {
+        var busqueda = req.params.busqueda;
+     
+        if (!busqueda) {
+            res.status(404).send({
+                message: 'Ingrese un parametro de busqueda'
+            });
+        } else {
 
 
-        var periodo = Periodo.find().sort({ $natural: -1 }).limit(1).exec((err, periodo) => {
-            if (err) {
-                return res.status(500).send({
-                    message: 'No se han podido obtener periodo'
-                });
-            }
+            var periodo = await Periodo.findOne();
 
             if (!periodo) {
                 return res.status(200).send({
                     message: 'No tiene periodos'
                 });
             } else {
-                console.log(periodo);
-                var matriculas = Matricula.find({
-                    '$and': [{
-                        estado: '0'
-                    }, { curso: busqueda }, { periodo: periodo[0].periodo }]
-                }).populate({
-                    path: 'estudiante'
-                }).populate({
-                    path: 'curso'
-                }).sort({ $natural: -1 }).exec((err, matriculas) => {
-                    if (err) {
-                        return res.status(500).send({
-                            message: 'No se han podido obtener sus Matriculas'
-                        });
-                    }
+            
 
-                    if (!matriculas) {
-                        return res.status(200).send({
-                            message: 'No tiene matriculas'
-                        });
-                    }
+                let matriculas = await Matricula.findAll({ where: { ESTADO_MATRICULA: 0, ID_CURSO: busqueda, PERIODO: periodo.dataValues.PERIODO }, include: { model: Estudiante }, include: { model: Curso } })
+            
 
+                if (!matriculas) {
                     return res.status(200).send({
-                        matriculas
+                        message: 'No tiene matriculas'
                     });
+                }
+
+                return res.status(200).send({
+                    matriculas
                 });
+
+
+
+
+
 
             }
 
-
-
+        }
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
         });
-
     }
 }
 
@@ -294,7 +279,7 @@ function getEstudiantesMatriculas(req, res) {
 
 function getlistadoMateriasE(req, res) {
 
-    console.log("entre a materias estudiante",req.user.sub);
+    console.log("entre a materias estudiante", req.user.sub);
     var busqueda = req.user.sub;
     console.log(busqueda);
     if (!busqueda) {
@@ -330,7 +315,7 @@ function getlistadoMateriasE(req, res) {
                             message: 'No se han podido obtener su matricula'
                         });
                     }
-        
+
                     if (!matriculas) {
                         return res.status(200).send({
                             message: 'No tiene viajes'
@@ -338,9 +323,9 @@ function getlistadoMateriasE(req, res) {
                     }
                     console.log("response curso", matriculas[0].curso._id);
                     getListadoMioMateriasE(req, res, matriculas[0].curso._id)
-        
+
                 });
-              
+
             }
         });
 
@@ -352,7 +337,7 @@ function getlistadoMateriasE(req, res) {
 
 
 
-      
+
     }
 }
 

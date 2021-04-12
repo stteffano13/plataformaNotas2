@@ -24,13 +24,23 @@ const Matricula = db.sequelize.define('MATRICULA', {
     },
     FECHA_MATRICULA:
     {
-        type: Sequelize.STRING,
+        type: Sequelize.DATEONLY,
         allowNull: false
     },
 
     PERIODO:
     {
         type: Sequelize.STRING,
+        allowNull: false
+    },
+    ID_ESTUDIANTE:
+    {
+        type: Sequelize.NUMBER,
+        allowNull: false
+    },
+    ID_CURSO:
+    {
+        type: Sequelize.NUMBER,
         allowNull: false
     },
 

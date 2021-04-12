@@ -66,7 +66,7 @@ export class MatriculaService {
         console.log(params);
         let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getToken() });
         return this._http
-            .put(this.url + "update-matricula/" + matricula_to_update._id, params, { headers: headers })
+            .put(this.url + "update-matricula/" + matricula_to_update.ID_MATRICULA, params, { headers: headers })
             .map(res => res.json());
     }
 
