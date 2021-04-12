@@ -115,7 +115,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
     this.subscribe1=this._administradorService.getPeriodoActual().subscribe(response => {
       console.log("este es el periodo que vino", response.periodo)
       if (response.periodo != undefined) {
-        this.periodoLectivoActual = response.periodo[0].periodo;
+        this.periodoLectivoActual = response.periodo;
 
 
       }

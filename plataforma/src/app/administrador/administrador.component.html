@@ -374,10 +374,10 @@
               <tr *ngFor=" let listado of  listadoEstudiantes">
                 <th scope="row">1</th>
 
-                <td style="font-size: 130%">{{listado.nombre}} {{ listado.apellido}}</td>
-                <td style="font-size: 130%">{{listado.cedula}}</td>
-                <td style="font-size: 130%">{{ listado.correo}}</td>
-                <td style="font-size: 130%">{{listado.tel_celular }}</td>
+                <td style="font-size: 130%">{{listado.NOMBRE_ESTUDIANTE}} {{ listado.apellido}}</td>
+                <td style="font-size: 130%">{{listado.CEDULA_ESTUDIANTE}}</td>
+                <td style="font-size: 130%">{{ listado.CORREO_ESTUDIANTE}}</td>
+                <td style="font-size: 130%">{{listado.CELULAR_ESTUDIANTE }}</td>
                 <td>
                   <input class="btn btn-primary " type="button" value="ver" (click)="aparecerUpdateDatosEstudiante(listado)">
                 </td>
@@ -406,10 +406,10 @@
 
 
             <datalist id="listadoEstudianteMatricula">
-              <option id="oneDoor._id" *ngFor="let oneDoor of vectorListadoEstudiantes">
+              <option id="oneDoor.ID_ESTUDIANTE" *ngFor="let oneDoor of vectorListadoEstudiantes">
 
-                {{oneDoor.codigo}}.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {{oneDoor.nombre}} {{oneDoor.apellido}} &nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;{{oneDoor.cedula}}
+                {{oneDoor.CODIGO_ESTUDIANTE}}.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {{oneDoor.NOMBRE_ESTUDIANTE}} {{oneDoor.APELLIDO_ESTUDIANTE}} &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;{{oneDoor.CEDULA_ESTUDIANTE}}
               </option>
 
 
@@ -481,7 +481,7 @@
 
 
             <datalist id="busquedaDocentesAsignacion">
-              <option id="oneDoor._id" *ngFor="let oneDoor of vectorListadoDocentes">
+              <option id="oneDoor.ID_DOCENTE" *ngFor="let oneDoor of vectorListadoDocentes">
 
                 {{oneDoor.CODIGO_DOCENTE}}.&nbsp;&nbsp;&nbsp;&nbsp; {{oneDoor.NOMBRE_DOCENTE}} {{oneDoor.APELLIDO_DOCENTE}} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;{{oneDoor.CEDULA_DOCENTE}}
               </option>
@@ -581,7 +581,7 @@
 
 
             <datalist id="listadoDocentesAsignacion">
-              <option id="oneDoor._id" *ngFor="let oneDoor of vectorListadoDocentes">
+              <option id="oneDoor.ID_DOCENTE" *ngFor="let oneDoor of vectorListadoDocentes">
 
                 {{oneDoor.CODIGO_DOCENTE}}.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {{oneDoor.NOMBRE_DOCENTE}} {{oneDoor.APELLIDO_DOCENTE}} &nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;{{oneDoor.CEDULA_DOCENTE}}
@@ -661,10 +661,10 @@
 
 
                 <datalist id="listadoEstudiantes">
-                  <option id="oneDoor._id" *ngFor="let oneDoor of vectorListadoEstudiantes">
+                  <option id="oneDoor.ID_ESTUDIANTE" *ngFor="let oneDoor of vectorListadoEstudiantes">
 
-                    {{oneDoor.codigo}}.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {{oneDoor.nombre}} {{oneDoor.apellido}} &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;{{oneDoor.cedula}}
+                    {{oneDoor.CODIGO_ESTUDIANTE}}.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {{oneDoor.NOMBRE_ESTUDIANTE}} {{oneDoor.APELLIDO_ESTUDIANTE}} &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;{{oneDoor.CEDULA_ESTUDIANTE}}
                   </option>
 
 
@@ -837,7 +837,7 @@
                 <label>Cédula del docente</label>
                 <label style="font-size: 80%">&nbsp;&nbsp;La cédula no se puede modificar, tiene que eliminar el usuario</label>
                 <input type="text" class="form-control" #TelefonoM="ngModel" [(ngModel)]="datosDocentes.CEDULA_DOCENTE" name="telefonoM" disabled
-                  id="celular" pattern=".{10,10}" [disabled]='textBox' required>
+                  id="celular" pattern=".{10,10}"  required>
 
                 <div *ngIf="txtvalidacionModificarDocente" [hidden]="TelefonoM.valid || TelefonoM.pristine" class="alert alert-warning">
                   Ingrese solo 10 digitos numéricos
@@ -1033,7 +1033,7 @@
             <div class="col-lg-6">
               <div class="form-group">
                 <label> Nombre del Estudiante</label>
-                <input type="text" class="form-control" #NombreM="ngModel" [(ngModel)]="datosEstudiantes.nombre" name="nombreM" [disabled]='textBox'
+                <input type="text" class="form-control" #NombreM="ngModel" [(ngModel)]="datosEstudiantes.NOMBRE_ESTUDIANTE" name="nombreM" [disabled]='textBox'
                   pattern="[ A-Za-zñÑ]*" required>
                 <div *ngIf="txtvalidacionModificarEstudiante" [hidden]="NombreM.valid || NombreM.pristine" class="alert alert-warning">
                   Ingrese solo letras
@@ -1041,7 +1041,7 @@
               </div>
               <div class="form-group">
                 <label>Celular del Estudiante</label>
-                <input type="text" class="form-control" #CelularM="ngModel" [(ngModel)]="datosEstudiantes.tel_celular" name="celularM" [disabled]='textBox'
+                <input type="text" class="form-control" #CelularM="ngModel" [(ngModel)]="datosEstudiantes.CELULAR_ESTUDIANTE" name="celularM" [disabled]='textBox'
                   pattern=".{10,10}" required>
                 <div *ngIf="txtvalidacionModificarEstudiante" [hidden]="CelularM.valid || CelularM.pristine" class="alert alert-warning">
                   Ingrese solo 10 dígitos numericos
@@ -1050,7 +1050,7 @@
               <div class="form-group">
                 <label>Cédula del Estudiante</label>
                 <label style="font-size: 80%">&nbsp;&nbsp;La cédula no se puede modificar, tiene que eliminar el usuario</label>
-                <input type="text" class="form-control" #TelefonoM="ngModel" [(ngModel)]="datosEstudiantes.cedula" name="telefonoM" disabled
+                <input type="text" class="form-control" #TelefonoM="ngModel" [(ngModel)]="datosEstudiantes.CEDULA_ESTUDIANTE" name="telefonoM" disabled
                   pattern="[0-9]*" required>
                 <div [hidden]="TelefonoM.valid || TelefonoM.pristine" class="alert alert-warning">
                   Ingrese solo números
@@ -1062,7 +1062,7 @@
             <div class="col-lg-6">
               <div class="form-group">
                 <label>Apellido del Estudiante</label>
-                <input type="text" class="form-control" #ApellidoM="ngModel" [(ngModel)]="datosEstudiantes.apellido" name="apellidoM" [disabled]='textBox'
+                <input type="text" class="form-control" #ApellidoM="ngModel" [(ngModel)]="datosEstudiantes.APELLIDO_ESTUDIANTE" name="apellidoM" [disabled]='textBox'
                   pattern="[ A-Za-zñÑ]*" required>
                 <div *ngIf="txtvalidacionModificarEstudiante" [hidden]="ApellidoM.valid || ApellidoM.pristine" class="alert alert-warning">
                   Ingrese solo letras
@@ -1070,7 +1070,7 @@
               </div>
               <div class="form-group">
                 <label>Correo del Estudiante</label>
-                <input type="email" class="form-control" #CorreoM="ngModel" [(ngModel)]="datosEstudiantes.correo" name="correoM" [disabled]='textBox'
+                <input type="email" class="form-control" #CorreoM="ngModel" [(ngModel)]="datosEstudiantes.CORREO_ESTUDIANTE" name="correoM" [disabled]='textBox'
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                 <div *ngIf="txtvalidacionModificarEstudiante" [hidden]="CorreoM.valid || CorreoM.pristine" class="alert alert-warning">
                   Ingrese un correo electrónico válido

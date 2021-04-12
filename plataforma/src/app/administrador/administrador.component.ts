@@ -1231,7 +1231,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
   onUpdateEstudiante(estado) {
 
     console.log('mi contra con ******>>>>', this.contrasenaUpdateEstudiante);
-    this.datosEstudiantes.estado = estado;
+    this.datosEstudiantes.ESTADO_ESTUDIANTE = estado;
     this.loading = true;
 
     if (this.contrasenaUpdateEstudiante != null || this.contrasenaUpdateEstudiante != '') {

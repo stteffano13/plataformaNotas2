@@ -52,6 +52,10 @@ const Estudiante = db.sequelize.define('ESTUDIANTE', {
         allowNull: false
     }
 
+}, {
+    timestamps: false,
+    id: false
+
 })
 
 module.exports = Estudiante;
