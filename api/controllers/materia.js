@@ -292,7 +292,7 @@ async function getListadoMateriasCurso(req, res) {
 
                 let materias = await Materia.findAll({ where: { ID_CURSO: busqueda, ESTADO_MATERIA: 0, PERIODO: periodo.PERIODO }, include: [{ model: Curso }] });  /// AUNMENTAR EL PERIODO
                 console.log("materias traidas para el repiasorte final", materias);
-                if (!materias.lenght) {
+                if (materias.lenght) {
                     console.log("comprobando si entra si lengh es cero");
                     return res.status(200).send({
                         message: 'No tiene Materias'

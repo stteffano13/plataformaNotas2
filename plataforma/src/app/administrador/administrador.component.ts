@@ -1382,11 +1382,8 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
         this.mensajecorrectomodals = "La asignación se ha eliminado correctamente"; // esto puso el tefo chumadod
         console.log("satisfactoriamenteUpdate");
         this.loading = false;
-
-      
         this.busquedaAsignacionFiltrado();
         document.getElementById("openModalCorrecto").click();
-
 
       },
       error => {
@@ -1492,7 +1489,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
       response => {
 
         this.listadoEstudianteMatriculas = this.ordenar(response.matriculas);
-
+        console.log("listadoEstudianteMatriculas", this.listadoEstudianteMatriculas)
         this.getListadoMaterias(busqueda[0], busqueda[1]);
 
 

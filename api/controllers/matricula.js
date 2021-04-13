@@ -246,9 +246,9 @@ async function getEstudiantesMatriculas(req, res) {
                 });
             } else {
             
-
-                let matriculas = await Matricula.findAll({ where: { ESTADO_MATRICULA: 0, ID_CURSO: busqueda, PERIODO: periodo.dataValues.PERIODO }, include: { model: Estudiante }, include: { model: Curso } })
-            
+ 
+                let matriculas = await Matricula.findAll({ where: { ESTADO_MATRICULA: 0, ID_CURSO: busqueda, PERIODO: periodo.dataValues.PERIODO }, include: [{ model: Estudiante} , {model: Curso }] })
+                 console.log("matriculas", matriculas)
 
                 if (!matriculas) {
                     return res.status(200).send({

@@ -1150,14 +1150,14 @@
           <tr style="background-color: #343a40; align-content: center;">
             <th style="color: white; padding-top: 2%" scope="col">#</th>
             <th style="color: white;   align-content: center;   text-align: center" scope="col">Apellidos y Nombres</th>
-            <th *ngFor=" let listado of  listadoMateriasCurso;" style="color: white" scope="col" class="verticalText2">{{listado?.nombre}} </th>
+            <th *ngFor=" let listado of  listadoMateriasCurso;" style="color: white" scope="col" class="verticalText2">{{listado.NOMBRE_MATERIA}} </th>
 
           </tr>
         </thead>
         <tbody>
           <tr *ngFor=" let listado of  listadoEstudianteMatriculas; let i = index;">
             <th scope="row">{{i+1}}</th>
-            <td class="active">{{listado.estudiante.apellido}} {{listado.estudiante.nombre}}</td>
+            <td class="active">{{listado.ESTUDIANTE.APELLIDO_ESTUDIANTE}} {{listado.ESTUDIANTE.NOMBRE_ESTUDIANTE}}</td>
             <td class="active" *ngFor=" let listad of  this.nuevo2[i]">{{listad}}</td>
 
 
