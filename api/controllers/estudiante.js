@@ -115,8 +115,6 @@ async function loginEstudiante(req, res) {
         var password = params.password;
         console.log("hola tefo este es el servicio provando el hash");
         //console.log(params.getHash);
-
-
         let estudiante = await Estudiante.findOne({ where: { CORREO_ESTUDIANTE: correo, ESTADO_ESTUDIANTE: 0 } })
 
         if (!estudiante) {
@@ -131,7 +129,7 @@ async function loginEstudiante(req, res) {
             if (result) {
                 if (params.getHash) {
                     res.status(200).send({
-                        token: jwt.createToken(estudiante)
+                        token: jwt.createTokenEstudiante(estudiante)
                     });
                 } else {
                     res.status(200).send({

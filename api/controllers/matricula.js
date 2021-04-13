@@ -224,7 +224,7 @@ async function updateMatricula(req, res) {
 
 
 
-//PENDIENTEs
+
 
 async function getEstudiantesMatriculas(req, res) {
 

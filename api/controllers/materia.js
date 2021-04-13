@@ -179,40 +179,25 @@ async function busquedaMateria(req, res) {
 }
 
 
-function getListadoMioMaterias(req, res) {
+async function getListadoMioMaterias(req, res) {
     var busqueda = req.user.sub;
 
-    console.log(busqueda);
+    console.log("sub",busqueda);
     if (!busqueda) {
         res.status(404).send({
             message: 'Ingrese un parametro de busqueda'
         });
     } else {
 
-        var periodo = Periodo.find().sort({ $natural: -1 }).limit(1).exec((err, periodo) => {
-            if (err) {
-                return res.status(500).send({
-                    message: 'No se han podido obtener Materias'
-                });
-            }
-
+        let periodo = await Periodo.findOne();
+           
             if (!periodo) {
                 return res.status(200).send({
-                    message: 'No tiene Materias'
+                    message: 'No tiene Periodos'
                 });
             } else {
-
-                var materia = Materia.find({
-                    '$and': [{ docente: busqueda }, { estado: '0' }, { periodo: periodo[0].periodo }]
-                }).populate({
-                    path: 'curso'
-                }).exec((err, materias) => {
-                    if (err) {
-                        return res.status(500).send({
-                            message: 'No se han podido obtener Materias'
-                        });
-                    }
-
+                let materias = await Materia.findAll({ where: { ESTADO_MATERIA: 0, ID_DOCENTE:busqueda , PERIODO: periodo.dataValues.PERIODO}, include: [{ model: Curso }] })  /// AUNMENTAR EL PERIODO
+             
                     if (!materias) {
                         return res.status(200).send({
                             message: 'No tiene Materias'
@@ -226,9 +211,9 @@ function getListadoMioMaterias(req, res) {
 
                         });
                     }
-                });
+               
             }
-        });
+     
 
 
 

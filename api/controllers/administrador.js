@@ -80,7 +80,7 @@ async function loginAdministrador(req, res) {
 
 
                     res.status(200).send({
-                        token: jwt.createToken(administrador)
+                        token: jwt.createTokenAdministrador(administrador)
                     });
                 } else {
                     res.status(200).send({

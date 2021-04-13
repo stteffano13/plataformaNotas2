@@ -122,7 +122,7 @@ async function loginDocente(req, res) {
                 if (params.getHash) {
 
                     res.status(200).send({
-                        token: jwt.createToken(docente)
+                        token: jwt.createTokenDocente(docente)
                     });
                 } else {
                     res.status(200).send({
