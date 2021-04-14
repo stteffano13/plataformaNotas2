@@ -18,6 +18,10 @@ const SubirNota = db.sequelize.define('SUBIRNOTA', {
     },
 
 
+},
+{
+    timestamps: false,
+    id: false
 })
 
 module.exports = SubirNota;

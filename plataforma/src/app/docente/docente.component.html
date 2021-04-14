@@ -413,7 +413,7 @@
                 type="text">
             </td>
             <td id="tdfila" style="background-color: lawngreen">
-              <input disabled id="tdboton" style="background-color:lawngreen" [(ngModel)]=" this.objectCalculable[i].promedioPeriodo" name="promedioPeriodo{{i}}"
+              <input disabled id="tdboton" style="background-color:lawngreen" [(ngModel)]="this.objectCalculable[i].promedioPeriodo" name="promedioPeriodo{{i}}"
                 type="text">
             </td>
 
@@ -440,7 +440,7 @@
         </tbody>
       </table>
       <div *ngIf="banderTabla1" class="col-md-12" style="text-align: center;">
-        <button class="btn btn-primary" (click)="pruebaclick()" [hidden]="!btnFinalizar"> Calcular el registro de notas</button>
+        <button class="btn btn-primary" (click)="pruebaclick()" [hidden]="!btnFinalizar"> Calcular el registro de notas 1</button>
        <br>
         <button class="btn btn-secondary" style=" padding-right: 3%; padding-left: 3%" [hidden]="btnFinalizar" (click)="habilitarGR()">
           Cancelar</button> &nbsp;&nbsp;&nbsp;

@@ -121,7 +121,7 @@ const Nota = db.sequelize.define('NOTA', {
         type: Sequelize.NUMBER,
         allowNull: true
     },
-    PEPRIODO:
+    PERIODO:
     {
         type: Sequelize.STRING,
         allowNull: false

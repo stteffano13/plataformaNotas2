@@ -3,7 +3,7 @@ var db = require("../database/db.js");
 
 
 
-const InsumoB = db.sequelize.define('INSUMOB', {
+const NotaB = db.sequelize.define('NOTAB', {
 
     ID_NOTAB: {
         primaryKey: true,
@@ -114,7 +114,7 @@ const InsumoB = db.sequelize.define('INSUMOB', {
         type: Sequelize.STRING,
         allowNull: true
     },
-    CQ2P1INSUMO2:
+    Q2P1INSUMO2:
     {
         type: Sequelize.STRING,
         allowNull: true
@@ -154,56 +154,54 @@ const InsumoB = db.sequelize.define('INSUMOB', {
         type: Sequelize.STRING,
         allowNull: true
     },
+    Q2P2INSUMO4:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Q2P2INSUMO5:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Q2P2INSUMO6:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Q2P3INSUMO1:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Q2P3INSUMO2:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Q2P3INSUMO3:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Q2P3INSUMO4:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Q2P3INSUMO5:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Q2P3INSUMO6:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
 
 
 
-
-    DESCQ2P2INSUMO4:
-    {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    DESCQ2P2INSUMO5:
-    {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    DESCQ2P2INSUMO6:
-    {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    DESCQ2P3INSUMO1:
-    {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    DESCQ2P3INSUMO2:
-    {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    DESCQ2P3INSUMO3:
-    {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    DESCQ2P3INSUMO4:
-    {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-
-    DESCQ2P3INSUMO5:
-    {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    DESCQ2P3INSUMO6:
-    {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
 
     EXAMEN2:
     {
@@ -230,7 +228,7 @@ const InsumoB = db.sequelize.define('INSUMOB', {
         type: Sequelize.STRING,
         allowNull: true
     },
-    PEPRIODO:
+    PERIODO:
     {
         type: Sequelize.STRING,
         allowNull: false
@@ -253,4 +251,4 @@ const InsumoB = db.sequelize.define('INSUMOB', {
 });
 
 
-module.exports = InsumoB
+module.exports = NotaB

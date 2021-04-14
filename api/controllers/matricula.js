@@ -223,9 +223,6 @@ async function updateMatricula(req, res) {
 
 
 
-
-
-
 async function getEstudiantesMatriculas(req, res) {
 
     try {

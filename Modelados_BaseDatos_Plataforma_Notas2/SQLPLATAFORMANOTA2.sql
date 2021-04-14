@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     4/12/2021 10:03:23 PM                        */
+/* Created on:     4/14/2021 12:53:10 PM                        */
 /*==============================================================*/
 
 
@@ -237,9 +237,15 @@ create table NOTAB
    Q1P1INSUMO2          float,
    Q1P1INSUMO3          float,
    Q1P1INSUMO4          float,
+   Q1P2INSUMO3          float,
+   Q1P2INSUMO4          float,
+   Q1P2INSUMO5          float,
+   Q1P2INSUMO6          float,
    Q1P1INSUMO5          float,
    Q1P1INSUMO6          float,
    Q1P2INSUMO1          float,
+   Q1P2INSUMO2          float,
+   Q1P3INSUMO1          float,
    Q1P3INSUMO2          float,
    Q1P3INSUMO3          float,
    Q1P3INSUMO4          float,
@@ -258,6 +264,12 @@ create table NOTAB
    Q2P2INSUMO4          float,
    Q2P2INSUMO5          float,
    Q2P2INSUMO6          float,
+   Q2P3INSUMO1          float,
+   Q2P3INSUMO2          float,
+   Q2P3INSUMO3          float,
+   Q2P3INSUMO4          float,
+   Q2P3INSUMO5          float,
+   Q2P3INSUMO6          float,
    EXAMEN2              float,
    EXAMENSUPLETORIO     float,
    EXAMENREMEDIAL       float,

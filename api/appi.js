@@ -18,12 +18,13 @@ var estudiante_rutes = require('./routes/estudiante');
 var matricula_rutes = require('./routes/matricula');
 var materia_rutes = require('./routes/materia');
 var insumo_rutes = require('./routes/insumo');
+var nota_rutes = require('./routes/nota');
 /*
 
 
 
 
-var nota_rutes = require('./routes/nota');
+
 
 */
 
@@ -51,12 +52,13 @@ app.use('/api', estudiante_rutes);
 app.use('/api', matricula_rutes);
 app.use('/api', materia_rutes);
 app.use('/api', insumo_rutes);
+app.use('/api', nota_rutes);
 /*
 
 
 
 
-app.use('/api', nota_rutes);
+
 
 */
 module.exports = app; // hace referencia a la variable de express
