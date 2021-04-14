@@ -1119,8 +1119,8 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
     this.subscribe7=this._administradorService.getSubirNotas().subscribe(response => {
       console.log("este es el estado de nota", response)
-      if (response.subirnota.estado != undefined) {
-        if(response.subirnota.estado=='1')
+      if (response.subirnota.ESTADO_SUBIRNOTA != undefined) {
+        if(response.subirnota.ESTADO_SUBIRNOTA=='1')
         {
           this.mensajeerrormodal = "Tu periodo de asignacion de notas ha finalizado espera hasta la siguiente activacion";
           document.getElementById("openModalError").click();
@@ -1599,7 +1599,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
     doc.fromHTML("<h4>ACTA DE CALIFICACIÓN POR PERIODO" + "  " + this.periodoLectivoActual + "</h4>", 165, 28);
     
     doc.fromHTML("<h4  style='text-align: center' >MATERIA: " + this.Titulo2 + "</h4>", 230, 75);
-    doc.fromHTML("<h4  style='text-align: center'>DOCENTE: " + this.identity.apellido + " " + this.identity.nombre + "</h4>", 220, 100);
+    doc.fromHTML("<h4  style='text-align: center'>DOCENTE: " + this.identity.APELLIDO_DOCENTE + " " + this.identity.NOMBRE_DOCENTE + "</h4>", 220, 100);
     var cont = this.listadoEstudianteNotas.length;
 
 
@@ -1668,7 +1668,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
     if(variable==1){
     this.VreporteExcel=this.object;
      for (var i in this.VreporteExcel) {
-    this.VreporteExcel[i].estudiante=this.listadoEstudianteMatriculas[i].estudiante.apellido+" "+this.listadoEstudianteMatriculas[i].estudiante.apellido;
+    this.VreporteExcel[i].estudiante=this.listadoEstudianteMatriculas[i].ESTUDIANTE.APELLIDO_ESTUDIANTE+" "+this.listadoEstudianteMatriculas[i].ESTUDIANTE.NOMBRE_ESTUDIANTE;
       delete this.VreporteExcel[i]._id;
       delete this.VreporteExcel[i].materia;
       delete this.VreporteExcel[i].periodo;
@@ -1684,7 +1684,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
     {
       this.VreporteExcel=this.objectB;
      for (var i in this.VreporteExcel) {
-    this.VreporteExcel[i].estudiante=this.listadoEstudianteMatriculas[i].estudiante.apellido+" "+this.listadoEstudianteMatriculas[i].estudiante.apellido;
+    this.VreporteExcel[i].estudiante=this.listadoEstudianteMatriculas[i].ESTUDIANTE.APELLIDO_ESTUDIANTE+" "+this.listadoEstudianteMatriculas[i].ESTUDIANTE.NOMBRE_ESTUDIANTE;
       delete this.VreporteExcel[i]._id;
       delete this.VreporteExcel[i].materia;
       delete this.VreporteExcel[i].periodo;
