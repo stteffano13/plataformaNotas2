@@ -260,48 +260,48 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         console.log("listado insumos de la basica", this.listadoInsumosB);
         switch (insumo) {
 
-          case "q1p1i1": this.recivir = this.listadoInsumosB.DescQ1P1insumo1; break;
-          case "q1p1i2": this.recivir = this.listadoInsumosB.DescQ1P1insumo2; break;
-          case "q1p1i3": this.recivir = this.listadoInsumosB.DescQ1P1insumo3; break;
-          case "q1p1i4": this.recivir = this.listadoInsumosB.DescQ1P1insumo4; break;
-          case "q1p1i5": this.recivir = this.listadoInsumosB.DescQ1P1insumo5; break;
-          case "q1p1i6": this.recivir = this.listadoInsumosB.DescQ1P1insumo6; break;
+          case "q1p1i1": this.recivir = this.listadoInsumosB.DESCQ1P1INSUMO1; break;
+          case "q1p1i2": this.recivir = this.listadoInsumosB.DESCQ1P1INSUMO2; break;
+          case "q1p1i3": this.recivir = this.listadoInsumosB.DESCQ1P1INSUMO3; break;
+          case "q1p1i4": this.recivir = this.listadoInsumosB.DESCQ1P1INSUMO4; break;
+          case "q1p1i5": this.recivir = this.listadoInsumosB.DESCQ1P1INSUMO5; break;
+          case "q1p1i6": this.recivir = this.listadoInsumosB.DESCQ1P1INSUMO6; break;
 
-          case "q1p2i1": this.recivir = this.listadoInsumosB.DescQ1P2insumo1; break;
-          case "q1p2i2": this.recivir = this.listadoInsumosB.DescQ1P2insumo2; break;
-          case "q1p2i3": this.recivir = this.listadoInsumosB.DescQ1P2insumo3; break;
-          case "q1p2i4": this.recivir = this.listadoInsumosB.DescQ1P2insumo4; break;
-          case "q1p2i5": this.recivir = this.listadoInsumosB.DescQ1P2insumo5; break;
-          case "q1p2i6": this.recivir = this.listadoInsumosB.DescQ1P2insumo6; break;
+          case "q1p2i1": this.recivir = this.listadoInsumosB.DESCQ1P2INSUMO1; break;
+          case "q1p2i2": this.recivir = this.listadoInsumosB.DESCQ1P2INSUMO2; break;
+          case "q1p2i3": this.recivir = this.listadoInsumosB.DESCQ1P2INSUMO3; break;
+          case "q1p2i4": this.recivir = this.listadoInsumosB.DESCQ1P2INSUMO4; break;
+          case "q1p2i5": this.recivir = this.listadoInsumosB.DESCQ1P2INSUMO5; break;
+          case "q1p2i6": this.recivir = this.listadoInsumosB.DESCQ1P2INSUMO6; break;
 
-          case "q1p3i1": this.recivir = this.listadoInsumosB.DescQ1P3insumo1; break;
-          case "q1p3i2": this.recivir = this.listadoInsumosB.DescQ1P3insumo2; break;
-          case "q1p3i3": this.recivir = this.listadoInsumosB.DescQ1P3insumo3; break;
-          case "q1p3i4": this.recivir = this.listadoInsumosB.DescQ1P3insumo4; break;
-          case "q1p3i5": this.recivir = this.listadoInsumosB.DescQ1P3insumo5; break;
-          case "q1p3i6": this.recivir = this.listadoInsumosB.DescQ1P3insumo6; break;
+          case "q1p3i1": this.recivir = this.listadoInsumosB.DESCQ1P3INSUMO1; break;
+          case "q1p3i2": this.recivir = this.listadoInsumosB.DESCQ1P3INSUMO2; break;
+          case "q1p3i3": this.recivir = this.listadoInsumosB.DESCQ1P3INSUMO3; break;
+          case "q1p3i4": this.recivir = this.listadoInsumosB.DESCQ1P3INSUMO4; break;
+          case "q1p3i5": this.recivir = this.listadoInsumosB.DESCQ1P3INSUMO5; break;
+          case "q1p3i6": this.recivir = this.listadoInsumosB.DESCQ1P3INSUMO6; break;
 
-          case "q2p1i1": this.recivir = this.listadoInsumosB.DescQ2P1insumo1; break;
-          case "q2p1i2": this.recivir = this.listadoInsumosB.DescQ2P1insumo2; break;
-          case "q2p1i3": this.recivir = this.listadoInsumosB.DescQ2P1insumo3; break;
-          case "q2p1i4": this.recivir = this.listadoInsumosB.DescQ2P1insumo4; break;
-          case "q2p1i5": this.recivir = this.listadoInsumosB.DescQ2P1insumo5; break;
-          case "q2p1i6": this.recivir = this.listadoInsumosB.DescQ2P1insumo6; break;
+          case "q2p1i1": this.recivir = this.listadoInsumosB.DESCQ2P1INSUMO1; break;
+          case "q2p1i2": this.recivir = this.listadoInsumosB.DESCQ2P1INSUMO2; break;
+          case "q2p1i3": this.recivir = this.listadoInsumosB.DESCQ2P1INSUMO3; break;
+          case "q2p1i4": this.recivir = this.listadoInsumosB.DESCQ2P1INSUMO4; break;
+          case "q2p1i5": this.recivir = this.listadoInsumosB.DESCQ2P1INSUMO5; break;
+          case "q2p1i6": this.recivir = this.listadoInsumosB.DESCQ2P1INSUMO6; break;
 
-          case "q2p2i1": this.recivir = this.listadoInsumosB.DescQ2P2insumo1; break;
-          case "q2p2i2": this.recivir = this.listadoInsumosB.DescQ2P2insumo2; break;
-          case "q2p2i3": this.recivir = this.listadoInsumosB.DescQ2P2insumo3; break;
-          case "q2p2i4": this.recivir = this.listadoInsumosB.DescQ2P2insumo4; break;
-          case "q2p2i5": this.recivir = this.listadoInsumosB.DescQ2P2insumo5; break;
-          case "q2p2i6": this.recivir = this.listadoInsumosB.DescQ2P2insumo6; break;
+          case "q2p2i1": this.recivir = this.listadoInsumosB.DESCQ2P2INSUMO1; break;
+          case "q2p2i2": this.recivir = this.listadoInsumosB.DESCQ2P2INSUMO2; break;
+          case "q2p2i3": this.recivir = this.listadoInsumosB.DESCQ2P2INSUMO3; break;
+          case "q2p2i4": this.recivir = this.listadoInsumosB.DESCQ2P2INSUMO4; break;
+          case "q2p2i5": this.recivir = this.listadoInsumosB.DESCQ2P2INSUMO5; break;
+          case "q2p2i6": this.recivir = this.listadoInsumosB.DESCQ2P2INSUMO6; break;
 
 
-          case "q2p3i1": this.recivir = this.listadoInsumosB.DescQ2P3insumo1; break;
-          case "q2p3i2": this.recivir = this.listadoInsumosB.DescQ2P3insumo2; break;
-          case "q2p3i3": this.recivir = this.listadoInsumosB.DescQ2P3insumo3; break;
-          case "q2p3i4": this.recivir = this.listadoInsumosB.DescQ2P3insumo4; break;
-          case "q2p3i5": this.recivir = this.listadoInsumosB.DescQ2P3insumo5; break;
-          case "q2p3i6": this.recivir = this.listadoInsumosB.DescQ2P3insumo6; break;
+          case "q2p3i1": this.recivir = this.listadoInsumosB.DESCQ2P3INSUMO1; break;
+          case "q2p3i2": this.recivir = this.listadoInsumosB.DESCQ2P3INSUMO2; break;
+          case "q2p3i3": this.recivir = this.listadoInsumosB.DESCQ2P3INSUMO3; break;
+          case "q2p3i4": this.recivir = this.listadoInsumosB.DESCQ2P3INSUMO4; break;
+          case "q2p3i5": this.recivir = this.listadoInsumosB.DESCQ2P3INSUMO5; break;
+          case "q2p3i6": this.recivir = this.listadoInsumosB.DESCQ2P3INSUMO6; break;
 
         }
 
@@ -575,23 +575,23 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         console.log("listado de insumos", this.listadoInsumos);
         switch (insumo) {
 
-          case 1: this.recivir = this.listadoInsumos.Descinsumo1; break;
-          case 2: this.recivir = this.listadoInsumos.Descinsumo2; break;
-          case 3: this.recivir = this.listadoInsumos.Descinsumo3; break;
-          case 4: this.recivir = this.listadoInsumos.Descinsumo4; break;
-          case 5: this.recivir = this.listadoInsumos.Descinsumo5; break;
-          case 6: this.recivir = this.listadoInsumos.Descinsumo6; break;
-          case 7: this.recivir = this.listadoInsumos.Descinsumo7; break;
-          case 8: this.recivir = this.listadoInsumos.Descinsumo8; break;
+          case 1: this.recivir = this.listadoInsumos.DESCINSUMO1 ; break;
+          case 2: this.recivir = this.listadoInsumos.DESCINSUMO2; break;
+          case 3: this.recivir = this.listadoInsumos.DESCINSUMO3; break;
+          case 4: this.recivir = this.listadoInsumos.DESCINSUMO4; break;
+          case 5: this.recivir = this.listadoInsumos.DESCINSUMO5; break;
+          case 6: this.recivir = this.listadoInsumos.DESCINSUMO6; break;
+          case 7: this.recivir = this.listadoInsumos.DESCINSUMO7; break;
+          case 8: this.recivir = this.listadoInsumos.DESCINSUMO8; break;
 
-          case 11: this.recivir = this.listadoInsumos.Descinsumo11; break;
-          case 22: this.recivir = this.listadoInsumos.Descinsumo22; break;
-          case 33: this.recivir = this.listadoInsumos.Descinsumo33; break;
-          case 44: this.recivir = this.listadoInsumos.Descinsumo44; break;
-          case 55: this.recivir = this.listadoInsumos.Descinsumo55; break;
-          case 66: this.recivir = this.listadoInsumos.Descinsumo66; break;
-          case 77: this.recivir = this.listadoInsumos.Descinsumo77; break;
-          case 88: this.recivir = this.listadoInsumos.Descinsumo88; break;
+          case 11: this.recivir = this.listadoInsumos.DESCINSUMO11; break;
+          case 22: this.recivir = this.listadoInsumos.DESCINSUMO22; break;
+          case 33: this.recivir = this.listadoInsumos.DESCINSUMO33; break;
+          case 44: this.recivir = this.listadoInsumos.DESCINSUMO44; break;
+          case 55: this.recivir = this.listadoInsumos.DESCINSUMO55; break;
+          case 66: this.recivir = this.listadoInsumos.DESCINSUMO66; break;
+          case 77: this.recivir = this.listadoInsumos.DESCINSUMO77; break;
+          case 88: this.recivir = this.listadoInsumos.DESCINSUMO88; break;
 
         }
 

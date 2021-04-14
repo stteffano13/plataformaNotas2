@@ -91,7 +91,7 @@ const Insumo = db.sequelize.define('INSUMO', {
         type: Sequelize.STRING,
         allowNull: true
     },
-    PEPRIODO:
+    PERIODO:
     {
         type: Sequelize.STRING,
         allowNull: true
@@ -105,6 +105,10 @@ const Insumo = db.sequelize.define('INSUMO', {
  
    
    
+}, {
+    timestamps: false,
+    id: false
+
 });
 
 module.exports = Insumo

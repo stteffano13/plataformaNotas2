@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     4/10/2021 10:34:23 AM                        */
+/* Created on:     4/12/2021 10:03:23 PM                        */
 /*==============================================================*/
 
 
@@ -186,7 +186,7 @@ create table MATRICULA
    ID_CURSO             int,
    CODIGO_MATRICULA     text not null,
    PERIODO              text not null,
-   FECHA_MATRICULA      text not null,
+   FECHA_MATRICULA      date not null,
    ESTADO_MATRICULA     int not null,
    primary key (ID_MATRICULA)
 );

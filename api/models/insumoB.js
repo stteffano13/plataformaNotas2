@@ -5,7 +5,7 @@ var db = require("../database/db.js");
 
 const InsumoB = db.sequelize.define('INSUMOB', {
    
-    ID_INSUMO: {
+    ID_INSUMOB: {
         primaryKey: true,
         type: Sequelize.BIGINT,
         allowNull: false,
@@ -198,7 +198,7 @@ const InsumoB = db.sequelize.define('INSUMOB', {
     },
  
 
-    PEPRIODO:
+    PERIODO:
     {
         type: Sequelize.STRING,
         allowNull: false
@@ -212,6 +212,10 @@ const InsumoB = db.sequelize.define('INSUMOB', {
  
    
    
+}, {
+    timestamps: false,
+    id: false
+
 });
 
 module.exports = InsumoB

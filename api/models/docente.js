@@ -57,6 +57,7 @@ const Docente = db.sequelize.define('DOCENTE', {
     id: false
 
 })
+
 Docente.hasMany(Materia,{foreignKey: 'ID_DOCENTE', sourceKey: 'ID_DOCENTE'});
 Materia.belongsTo(Docente,{foreignKey: 'ID_DOCENTE', sourceKey: 'ID_DOCENTE'});
 module.exports = Docente;

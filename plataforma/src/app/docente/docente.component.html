@@ -331,7 +331,7 @@
         <tbody>
           <tr *ngFor=" let listado of  listadoEstudianteMatriculas; let i = index; let listadoN of listadoEstudianteNotas">
             <th scope="row">{{i+1}}</th>
-            <td class="active">{{listado.estudiante.apellido}} {{listado.estudiante.nombre}}</td>
+            <td class="active">{{listado.ESTUDIANTE.APELLIDO_ESTUDIANTE}} {{listado.ESTUDIANTE.NOMBRE_ESTUDIANTE}}</td>
             <td id="tdfila">
               <input id="tdboton" type="text"  [(ngModel)]="this.object[i].insumo1"  name="isumo1{{i}}">
             </td>
@@ -504,7 +504,7 @@
     <tbody>
       <tr *ngFor=" let listado of  listadoEstudianteMatriculas; let i = index; let listadoN of listadoEstudianteNotas">
         <th scope="row">{{i+1}}</th>
-        <td class="active">{{listado.estudiante.apellido}} {{listado.estudiante.nombre}}</td>
+        <td class="active">{{listado.ESTUDIANTE.APELLIDO_ESTUDIANTE}} {{listado.ESTUDIANTE.NOMBRE_ESTUDIANTE}}</td>
         <td id="tdfila">{{this.object[i].insumo1}}
           <input id="tdboton" type="text" [(ngModel)]="this.object[i].insumo1" name="isumo1{{i}}">
         </td>
@@ -1267,7 +1267,7 @@
         <tbody>
           <tr *ngFor=" let listado of  listadoEstudianteMatriculas; let i = index; let listadoN of listadoEstudianteNotas">
             <td id="tdfila"   scope="row">{{i+1}}</td>
-            <td id="tdfila" colspan="1" >{{listado.estudiante.apellido}} {{listado.estudiante.nombre}} </td>
+            <td id="tdfila" colspan="1" >{{listado.ESTUDIANTE.APELLIDO_ESTUDIANTE}} {{listado.ESTUDIANTE.NOMBRE_ESTUDIANTE}} </td>
   
   
           <td id="tdfila">{{this.objectB[i].Q1P1insumo1}}

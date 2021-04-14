@@ -47,7 +47,7 @@ const Materia = db.sequelize.define('MATERIA', {
         allowNull: false
     },
     
- 
+
 
 }, {
     timestamps: false,
