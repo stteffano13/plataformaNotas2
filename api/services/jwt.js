@@ -37,7 +37,7 @@ exports.createTokenDocente = function (user) {
 exports.createTokenEstudiante = function (user) {
     var payload = {
 
-        sub: user.ID_ESTUDIANTEE,// para guardar el id del objeto usuario  -----leer esto esta diciendo que nomas va en el hash codificado
+        sub: user.ID_ESTUDIANTE,// para guardar el id del objeto usuario  -----leer esto esta diciendo que nomas va en el hash codificado
         mane: user.NOMBRE_ESTUDIANTE,
         surname: user.APELLIDO_ESTUDIANTE,
         email: user.CORREO_ESTUDIANTE,

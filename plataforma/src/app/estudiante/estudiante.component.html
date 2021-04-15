@@ -121,10 +121,9 @@
     <div  class="container-fluid">
 
       <!-- Division Principal-->
-    
+  
 
-
-<h1  style="margin-top: 5%">{{identity.nombre}} {{identity.apellido}} </h1>
+<h1  style="margin-top: 5%">{{identity.NOMBRE_ESTUDIANTE}} {{identity.APELLIDO_ESTUDIANTE}} </h1>
 
       <!-- tabola de insumos -->
 
@@ -159,35 +158,35 @@
           <tbody>
             <tr style=" align-content: center;">
               <td scope="col">Insumo 1</td>
-              <td scope="col">{{listadoInsumos.Descinsumo1}}</td>
+              <td scope="col">{{listadoInsumos.DESCINSUMO1}}</td>
 
             </tr>
             <tr style=" align-content: center;">
               <td scope="col">Insumo 2</td>
-              <td scope="col">{{listadoInsumos.Descinsumo2}}</td>
+              <td scope="col">{{listadoInsumos.DESCINSUMO2}}</td>
             </tr>
 
             <tr style=" align-content: center;">
               <td scope="col">Insumo 3</td>
-              <td scope="col">{{listadoInsumos.Descinsumo3}}</td>
+              <td scope="col">{{listadoInsumos.DESCINSUMO3}}</td>
             </tr>
 
             <tr style=" align-content: center;">
               <td scope="col">Insumo 4</td>
-              <td scope="col">{{listadoInsumos.Descinsumo4}}</td>
+              <td scope="col">{{listadoInsumos.DESCINSUMO4}}</td>
             </tr>
 
             <tr style=" align-content: center;">
               <td scope="col">Insumo 5</td>
-              <td scope="col">{{listadoInsumos.Descinsumo5}}</td>
+              <td scope="col">{{listadoInsumos.DESCINSUMO5}}</td>
             </tr>
             <tr style=" align-content: center;">
               <td scope="col">Insumo 6</td>
-              <td scope="col">{{listadoInsumos.Descinsumo6}}</td>
+              <td scope="col">{{listadoInsumos.DESCINSUMO6}}</td>
             </tr>
             <tr style=" align-content: center;">
               <td scope="col">Insumo 7</td>
-              <td scope="col">{{listadoInsumos.Descinsumo8}}</td>
+              <td scope="col">{{listadoInsumos.DESCINSUMO7}}</td>
             </tr>
             <tr style=" align-content: center;">
               <td scope="col">Insumo 8</td>
@@ -197,46 +196,45 @@
             <tr style="background-color: #343a40; align-content: center;">
               <th colspan="2" style="color: white; padding-top: 3%" scope="col">Segundo Parcial</th>
 
-
             </tr>
 
             <tr style=" align-content: center;">
               <td scope="col">Insumo 1</td>
-              <td scope="col">{{listadoInsumos.Descinsumo11}}</td>
+              <td scope="col">{{listadoInsumos.DESCINSUMO11}}</td>
 
               <tr style=" align-content: center;">
                 <td scope="col">Insumo 2</td>
-                <td scope="col">{{listadoInsumos.Descinsumo22}}</td>
+                <td scope="col">{{listadoInsumos.DESCINSUMO22}}</td>
               </tr>
 
               <tr style=" align-content: center;">
                 <td scope="col">Insumo 3</td>
-                <td scope="col">{{listadoInsumos.Descinsumo33}}</td>
+                <td scope="col">{{listadoInsumos.DESCINSUMO33}}</td>
               </tr>
 
               <tr style=" align-content: center;">
                 <td scope="col">Insumo 4</td>
-                <td scope="col">{{listadoInsumos.Descinsumo44}}</td>
+                <td scope="col">{{listadoInsumos.DESCINSUMO44}}</td>
               </tr>
 
               <tr style=" align-content: center;">
                 <td scope="col">Insumo 5</td>
-                <td style="padding-top: 3%" scope="col">{{listadoInsumos.Descinsumo55}}</td>
+                <td style="padding-top: 3%" scope="col">{{listadoInsumos.DESCINSUMO55}}</td>
               </tr>
 
               <tr style=" align-content: center;">
                 <td scope="col">Insumo 6</td>
-                <td scope="col">{{listadoInsumos.Descinsumo66}}</td>
+                <td scope="col">{{listadoInsumos.DESCINSUMO66}}</td>
               </tr>
 
               <tr style=" align-content: center;">
                 <td scope="col">Insumo 7</td>
-                <td scope="col">{{listadoInsumos.Descinsumo77}}</td>
+                <td scope="col">{{listadoInsumos.DESCINSUMO77}}</td>
               </tr>
 
               <tr style=" align-content: center;">
                 <td scope="col">Insumo 8</td>
-                <td scope="col">{{listadoInsumos.Descinsumo88}}</td>
+                <td scope="col">{{listadoInsumos.DESCINSUMO88}}</td>
               </tr>
 
           </tbody>
@@ -545,13 +543,13 @@
           <tr *ngFor=" let listado of  vectorListadoMisMaterias; let i = index; let listadoN of listadoEstudianteNotas">
 
             <th>
-              <button (click)="actualizacionInsumos(listado._id, listado.nombre)" class="btn btn-light">
+              <button (click)="actualizacionInsumos(listado.ID_MATERIA, listado.NOMBRE_MATERIA)" class="btn btn-light">
                 <i class="fa fa-plus fa-xs"></i>
               </button>
             </th>
 
             <th scope="row">{{i}}</th>
-            <td class="active">{{listado.nombre}} </td>
+            <td class="active">{{listado.NOMBRE_MATERIA}} </td>
             <td id="tdfila">
               <input disabled id="tdboton" type="text" [(ngModel)]="this.object[i].insumo1" name="isumo1{{i}}">
             </td>
@@ -934,12 +932,12 @@
         <tr *ngFor=" let listado of  vectorListadoMisMaterias; let i = index; let listadoN of listadoEstudianteNotas">
 
           <th>
-            <button  (click)="actualizacionInsumosB(listado._id, listado.nombre)" class="btn btn-light">
+            <button  (click)="actualizacionInsumosB(listado.ID_MATERIA, listado.NOMBRE_MATERIA)" class="btn btn-light">
               <i class="fa fa-plus fa-xs"></i>
             </button>
           </th>
           <th scope="row">{{i}}</th>
-          <td valign="middle" style="padding-right: 0.5%;  padding-left: 0.5%; border-right: 0px;">{{listado.nombre}} </td>
+          <td valign="middle" style="padding-right: 0.5%;  padding-left: 0.5%; border-right: 0px;">{{listado.NOMBRE_MATERIA}} </td>
 
 
           <td id="tdfila">

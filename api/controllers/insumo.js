@@ -159,7 +159,7 @@ async function getDiscInsumo(req, res) {
 
         }
     } catch (err) {
-        await t.rollback()
+       
         res.status(500).send({
             message: 'error:' + err
         });

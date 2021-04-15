@@ -274,7 +274,7 @@ async function getEstudiantesMatriculas(req, res) {
 
 
 
-function getlistadoMateriasE(req, res) {
+async function getlistadoMateriasE(req, res) {
 
     console.log("entre a materias estudiante", req.user.sub);
     var busqueda = req.user.sub;
@@ -288,43 +288,26 @@ function getlistadoMateriasE(req, res) {
 
         //////////////////////
 
-        var periodo = Periodo.find().sort({ $natural: -1 }).limit(1).exec((err, periodo) => {
-            if (err) {
-                return res.status(500).send({
-                    message: 'No se han podido obtener sus Viajes'
-                });
-            }
+        var periodo = await Periodo.findOne();
 
             if (!periodo) {
                 return res.status(200).send({
                     message: 'No tiene periodos'
                 });
             } else {
-                var matriculas = Matricula.find({
-                    '$and': [{ estudiante: busqueda }, { estado: '0' }, { periodo: periodo[0].periodo }]
-                }).populate({
-                    path: 'estudiante'
-                }).populate({
-                    path: 'curso'
-                }).exec((err, matriculas) => {
-                    if (err) {
-                        return res.status(500).send({
-                            message: 'No se han podido obtener su matricula'
-                        });
-                    }
-
+                let matriculas = await Matricula.findAll({where:{ID_ESTUDIANTE:busqueda, ESTADO_MATRICULA:0, PERIODO:periodo.dataValues.PERIODO }, include:[{model:Estudiante},{model:Curso}]}) ;
                     if (!matriculas) {
                         return res.status(200).send({
                             message: 'No tiene viajes'
                         });
                     }
-                    console.log("response curso", matriculas[0].curso._id);
-                    getListadoMioMateriasE(req, res, matriculas[0].curso._id)
+                    console.log("response curso", matriculas[0].CURSO.ID_CURSO);
+                    getListadoMioMateriasE(req, res, matriculas[0].CURSO.ID_CURSO)
 
-                });
+           
 
             }
-        });
+     
 
 
 
@@ -339,7 +322,7 @@ function getlistadoMateriasE(req, res) {
 }
 
 
-function getListadoMioMateriasE(req, res, busquedaE) {
+async function getListadoMioMateriasE(req, res, busquedaE) {
     var busqueda = busquedaE;
 
     console.log(busqueda);
@@ -349,31 +332,16 @@ function getListadoMioMateriasE(req, res, busquedaE) {
         });
     } else {
 
-        var periodo = Periodo.find().sort({ $natural: -1 }).limit(1).exec((err, periodo) => {
-            if (err) {
-                return res.status(500).send({
-                    message: 'No se han podido obtener sus periodos'
-                });
-            }
+        var periodo = await Periodo.findOne();
+          
 
             if (!periodo) {
                 return res.status(200).send({
                     message: 'No tiene viajes'
                 });
             } else {
-
-                console.log("todo ready entre a buscar", periodo[0].periodo);
-                var materia = Materia.find({
-                    '$and': [{ curso: busqueda }, { estado: '0' }, { periodo: periodo[0].periodo }]
-                }).populate({
-                    path: 'curso'
-                }).exec((err, materias) => {
-                    if (err) {
-                        return res.status(500).send({
-                            message: 'No se han podido obtener sus Materias'
-                        });
-                    }
-
+                console.log("todo ready entre a buscar", periodo.PERIODO);
+                let materias = await Materia.findAll({where:{ID_CURSO:busqueda, ESTADO_MATERIA:0, PERIODO:periodo.dataValues.PERIODO}, include:{model:Curso}});
                     if (!materias) {
                         return res.status(200).send({
                             message: 'No tiene materias'
@@ -381,15 +349,13 @@ function getListadoMioMateriasE(req, res, busquedaE) {
                     } else {
 
                         return res.status(200).send({
-
                             materias
-
 
                         });
                     }
-                });
+             
             }
-        });
+     
 
 
 
