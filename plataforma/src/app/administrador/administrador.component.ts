@@ -1598,12 +1598,12 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
 
             this.listadoNotas.forEach(element => {
 
-              //  console.log("elementoE", elementE.estudiante._id, "elemento", element.estudiante);
+                console.log("elementoE", elementE.ESTUDIANTE.ID_ESTUDIANTE , "elemento", element, "elemento", elementM.ID_MATERIA );
 
 
-              if (elementE.estudiante._id == element.estudiante && element.materia == elementM._id) {
+              if (elementE.ESTUDIANTE.ID_ESTUDIANTE == element.ID_ESTUDIANTE && element.ID_MATERIA == elementM.ID_MATERIA) {
 
-                this.objNotasPT.push(element.pt)
+                this.objNotasPT.push(element.PT)
 
 
                 i++;
@@ -1686,9 +1686,9 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
         this.listadoEstudianteMatriculas.forEach(elementE => {
           this.listadoMateriasCurso.forEach(elementM => {
             this.listadoNotas.forEach(element => {
-              //console.log("elementoE", elementE.estudiante._id, "elemento", element.estudiante);
-              if (elementE.estudiante._id == element.estudiante && element.materia == elementM._id) {
-                this.objNotasPT.push(element.pt)
+              console.log("elementoE", elementE, "elemento", element, "ELEMTNM",elementM );
+              if (elementE.ESTUDIANTE.ID_ESTUDIANTE == element.ID_ESTUDIANTE && element.ID_MATERIA == elementM.ID_MATERIA) {
+                this.objNotasPT.push(element.PT)
               }
             });
           });
@@ -1895,10 +1895,10 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
     var materias = [];
     materias.push("NOMBRES Y APELLIDOS");
     for (var i in this.listadoMateriasCurso) {
-      materias.push(this.listadoMateriasCurso[i].nombre);
+      materias.push(this.listadoMateriasCurso[i].NOMBRE_MATERIA);
     }
     for (var i in this.listadoEstudianteMatriculas) {
-      this.VreporteExcel[i].unshift(this.listadoEstudianteMatriculas[i].estudiante.apellido + " " + this.listadoEstudianteMatriculas[i].estudiante.nombre);
+      this.VreporteExcel[i].unshift(this.listadoEstudianteMatriculas[i].ESTUDIANTE.APELLIDO_ESTUDIANTE + " " + this.listadoEstudianteMatriculas[i].ESTUDIANTE.NOMBRE_ESTUDIANTE);
     }
     this.VreporteExcel.unshift(materias);
     console.log("esto es antes de generar excel", this.VreporteExcel);
