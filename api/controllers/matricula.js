@@ -227,7 +227,7 @@ async function getEstudiantesMatriculas(req, res) {
 
     try {
         var busqueda = req.params.busqueda;
-     
+
         if (!busqueda) {
             res.status(404).send({
                 message: 'Ingrese un parametro de busqueda'
@@ -242,10 +242,10 @@ async function getEstudiantesMatriculas(req, res) {
                     message: 'No tiene periodos'
                 });
             } else {
-            
- 
-                let matriculas = await Matricula.findAll({ where: { ESTADO_MATRICULA: 0, ID_CURSO: busqueda, PERIODO: periodo.dataValues.PERIODO }, include: [{ model: Estudiante} , {model: Curso }] })
-                 console.log("matriculas", matriculas)
+
+
+                let matriculas = await Matricula.findAll({ where: { ESTADO_MATRICULA: 0, ID_CURSO: busqueda, PERIODO: periodo.dataValues.PERIODO }, include: [{ model: Estudiante }, { model: Curso }] })
+                console.log("matriculas", matriculas)
 
                 if (!matriculas) {
                     return res.status(200).send({
@@ -276,64 +276,59 @@ async function getEstudiantesMatriculas(req, res) {
 
 async function getlistadoMateriasE(req, res) {
 
-    console.log("entre a materias estudiante", req.user.sub);
-    var busqueda = req.user.sub;
-    console.log(busqueda);
-    if (!busqueda) {
-        res.status(404).send({
-            message: 'Ingrese un parametro de busqueda'
-        });
-    } else {
+    try {
+        console.log("entre a materias estudiante", req.user.sub);
+        var busqueda = req.user.sub;
+        console.log(busqueda);
+        if (!busqueda) {
+            res.status(404).send({
+                message: 'Ingrese un parametro de busqueda'
+            });
+        } else {
 
 
-        //////////////////////
+            //////////////////////
 
-        var periodo = await Periodo.findOne();
+            var periodo = await Periodo.findOne();
 
             if (!periodo) {
                 return res.status(200).send({
                     message: 'No tiene periodos'
                 });
             } else {
-                let matriculas = await Matricula.findAll({where:{ID_ESTUDIANTE:busqueda, ESTADO_MATRICULA:0, PERIODO:periodo.dataValues.PERIODO }, include:[{model:Estudiante},{model:Curso}]}) ;
-                    if (!matriculas) {
-                        return res.status(200).send({
-                            message: 'No tiene viajes'
-                        });
-                    }
-                    console.log("response curso", matriculas[0].CURSO.ID_CURSO);
-                    getListadoMioMateriasE(req, res, matriculas[0].CURSO.ID_CURSO)
-
-           
-
+                let matriculas = await Matricula.findAll({ where: { ID_ESTUDIANTE: busqueda, ESTADO_MATRICULA: 0, PERIODO: periodo.dataValues.PERIODO }, include: [{ model: Estudiante }, { model: Curso }] });
+                if (!matriculas) {
+                    return res.status(200).send({
+                        message: 'No tiene viajes'
+                    });
+                }
+                console.log("response curso", matriculas[0].CURSO.ID_CURSO);
+                getListadoMioMateriasE(req, res, matriculas[0].CURSO.ID_CURSO)
             }
-     
+        }
 
-
-
-
-
-
-
-
-
-
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
+        });
     }
 }
 
 
 async function getListadoMioMateriasE(req, res, busquedaE) {
-    var busqueda = busquedaE;
 
-    console.log(busqueda);
-    if (!busqueda) {
-        res.status(404).send({
-            message: 'Ingrese un parametro de busqueda'
-        });
-    } else {
+    try {
+        var busqueda = busquedaE;
 
-        var periodo = await Periodo.findOne();
-          
+        console.log(busqueda);
+        if (!busqueda) {
+            res.status(404).send({
+                message: 'Ingrese un parametro de busqueda'
+            });
+        } else {
+
+            var periodo = await Periodo.findOne();
+
 
             if (!periodo) {
                 return res.status(200).send({
@@ -341,24 +336,27 @@ async function getListadoMioMateriasE(req, res, busquedaE) {
                 });
             } else {
                 console.log("todo ready entre a buscar", periodo.PERIODO);
-                let materias = await Materia.findAll({where:{ID_CURSO:busqueda, ESTADO_MATERIA:0, PERIODO:periodo.dataValues.PERIODO}, include:{model:Curso}});
-                    if (!materias) {
-                        return res.status(200).send({
-                            message: 'No tiene materias'
-                        });
-                    } else {
+                let materias = await Materia.findAll({ where: { ID_CURSO: busqueda, ESTADO_MATERIA: 0, PERIODO: periodo.dataValues.PERIODO }, include: { model: Curso } });
+                if (!materias) {
+                    return res.status(200).send({
+                        message: 'No tiene materias'
+                    });
+                } else {
 
-                        return res.status(200).send({
-                            materias
+                    return res.status(200).send({
+                        materias
 
-                        });
-                    }
-             
+                    });
+                }
+
             }
-     
 
+        }
 
-
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
+        });
     }
 
 }

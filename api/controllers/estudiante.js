@@ -155,44 +155,49 @@ async function loginEstudiante(req, res) {
 
 
 async function busquedaEstudiantes(req, res) {
-    var busqueda = req.params.busqueda;
-    //console.log(busqueda);
-    if (!busqueda) {
-        res.status(404).send({
-            message: 'Ingrese un parametro de busqueda'
-        });
-    } else {
-        let estudiantes = await Estudiante.findAll({
-            where: {
-                [Op.and]: [{
-                    ESTADO_ESTUDIANTE: 0
-                },
 
-                {
-                    [Op.or]: [{ NOMBRE_ESTUDIANTE: { [Op.like]: busqueda + '%' } },
-                    { APELLIDO_ESTUDIANTE: { [Op.like]: busqueda + '%' } },
-                    { CORREO_ESTUDIANTE: { [Op.like]: busqueda + '%' } },
-                    { CEDULA_ESTUDIANTE: { [Op.like]: busqueda + '%' } },
-                    { CODIGO_ESTUDIANTE: { [Op.like]: busqueda + '%' } },
-
-                    ]
-                }
-                ]
-            }
-        });
-
-
-        if (!estudiantes) {
+    try {
+        var busqueda = req.params.busqueda;
+        //console.log(busqueda);
+        if (!busqueda) {
             res.status(404).send({
-                message: "No se encuentra resultados de la busqueda"
+                message: 'Ingrese un parametro de busqueda'
             });
         } else {
-            res.status(200).send({
-                estudiantes
+            let estudiantes = await Estudiante.findAll({
+                where: {
+                    [Op.and]: [{
+                        ESTADO_ESTUDIANTE: 0
+                    },
+
+                    {
+                        [Op.or]: [{ NOMBRE_ESTUDIANTE: { [Op.like]: busqueda + '%' } },
+                        { APELLIDO_ESTUDIANTE: { [Op.like]: busqueda + '%' } },
+                        { CORREO_ESTUDIANTE: { [Op.like]: busqueda + '%' } },
+                        { CEDULA_ESTUDIANTE: { [Op.like]: busqueda + '%' } },
+                        { CODIGO_ESTUDIANTE: { [Op.like]: busqueda + '%' } },
+
+                        ]
+                    }
+                    ]
+                }
             });
+
+            if (!estudiantes) {
+                res.status(404).send({
+                    message: "No se encuentra resultados de la busqueda"
+                });
+            } else {
+                res.status(200).send({
+                    estudiantes
+                });
+            }
+
         }
-
-
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
+        });
     }
 }
 

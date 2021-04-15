@@ -180,47 +180,50 @@ async function busquedaMateria(req, res) {
 
 
 async function getListadoMioMaterias(req, res) {
-    var busqueda = req.user.sub;
 
-    console.log("sub",busqueda);
-    if (!busqueda) {
-        res.status(404).send({
-            message: 'Ingrese un parametro de busqueda'
-        });
-    } else {
+    try {
+        var busqueda = req.user.sub;
 
-        let periodo = await Periodo.findOne();
-           
+        console.log("sub", busqueda);
+        if (!busqueda) {
+            res.status(404).send({
+                message: 'Ingrese un parametro de busqueda'
+            });
+        } else {
+
+            let periodo = await Periodo.findOne();
+
             if (!periodo) {
                 return res.status(200).send({
                     message: 'No tiene Periodos'
                 });
             } else {
-                let materias = await Materia.findAll({ where: { ESTADO_MATERIA: 0, ID_DOCENTE:busqueda , PERIODO: periodo.dataValues.PERIODO}, include: [{ model: Curso }] })  /// AUNMENTAR EL PERIODO
-             
-                    if (!materias) {
-                        return res.status(200).send({
-                            message: 'No tiene Materias'
-                        });
-                    } else {
+                let materias = await Materia.findAll({ where: { ESTADO_MATERIA: 0, ID_DOCENTE: busqueda, PERIODO: periodo.dataValues.PERIODO }, include: [{ model: Curso }] })  /// AUNMENTAR EL PERIODO
 
-                        return res.status(200).send({
+                if (!materias) {
+                    return res.status(200).send({
+                        message: 'No tiene Materias'
+                    });
+                } else {
 
-                            materias
+                    return res.status(200).send({
+
+                        materias
 
 
-                        });
-                    }
-               
+                    });
+                }
+
             }
-     
 
-
-
+        }
+    } catch (err) {
+        res.status(500).send({
+            message: err.name
+        });
     }
 
 }
-
 
 
 
