@@ -235,9 +235,9 @@
 
 
         <li class="nav-item dropdown">
-          <a title="Crear paralelo" class="nav-link dropdown-toggle mr-lg-2" id="openModalIngresarParalelo" data-toggle="modal" aria-haspopup="true"
+          <a title="Crear paralelo" class="nav-link dropdown-toggle " id="openModalIngresarParalelo" data-toggle="modal" aria-haspopup="true"
             aria-expanded="false" data-target="#ModalIngresarParalelo">
-            <i class="fa fa-fw fa-list-alt"></i>
+            <i class="fa  fa-list-alt"></i>
             <span class="d-lg-none">Paralelo
               <span class="badge badge-pill badge-primary"> Nuevos</span>
             </span>
@@ -252,7 +252,7 @@
 
 
         <li class="nav-item dropdown">
-          <a title="Eliminar  Paralelo" class="nav-link dropdown-toggle mr-lg-2 " id="openModalEliminarParalelo" data-toggle="modal"
+          <a title="Eliminar  Paralelo" class="nav-link dropdown-toggle  " id="openModalEliminarParalelo" data-toggle="modal"
             aria-haspopup="true" aria-expanded="false" data-target="#ModalEliminarParalelo">
             <i class="fa fa-fw fa-list-alt"></i>
             <span class="d-lg-none">Paralelo
@@ -389,7 +389,7 @@
       <!-- ====================================================    Listado Matriculas ============================================-->
       <div class="pre-scrollable" style="max-height: 100%; " *ngIf="listadosMostrarMatriculas">
         <br>
-        <div class="row container" style="text-align: center; margin-left: 10%">
+        <div class="row container w-100  mx-auto">
           <div class="col-md-4 ">
             <label>Seleccione el periodo académico </label>
             <select (change)="buscarMatriculas($event.target.value)" class=" custom-select " required>
@@ -420,7 +420,7 @@
           <div class="col-lg-2">
             <label style="color: white"> hola</label>
 
-            <button class=" btn  btn-primary form-control" (click)="busquedaMatriculaFiltrado()">Buscar </button>
+            <button class=" btn  btn-primary form-control w-100" (click)="busquedaMatriculaFiltrado()">Buscar </button>
           </div>
 
 
@@ -472,7 +472,7 @@
       <!-- ====================================================  Listado Asignacion ============================================-->
       <div class="pre-scrollable" style="max-height: 100%; " *ngIf="listadosMostrarAsignacion">
         <br>
-        <div class="row" style="text-align: center; margin-left: 5%">
+        <div class="row mx-auto" >
 
           <div class="col-md-4 ">
             <label for="apellido">Seleccione el Docente</label>
@@ -491,7 +491,7 @@
 
           </div>
 
-          <div class="col-md-2 ">
+          <div class="col-md-3 ">
             <label>Periodo académico </label>
             <select (change)="buscarAsignacionPeriodo($event.target.value)" class=" custom-select " required>
               <option value="no asignado" selected>no asignado</option>
@@ -568,8 +568,8 @@
         <h5 style="color: blue">Nueva asignación de materias</h5>
         <form #IngresarAsignacion="ngForm" novalidate>
           <div class="row">
-            <div class="col-lg-12">
-              <img src="../../assets/imgs/IngresarAsignacion.png" style="display: block; margin-left: 42%; width: 13%;  height:18%; border-radius:50%">
+            <div class="col-6 col-md-3 mx-auto">
+              <img src="../../assets/imgs/IngresarAsignacion.png" >
             </div>
           </div>
           <br>
@@ -646,9 +646,11 @@
         <h5 style="color: blue">Nueva matricula</h5>
         <form #IngresarMatricula="ngForm" novalidate>
           <div class="row">
-            <div class="col-lg-12">
-              <img src="../../assets/imgs/IngresarMatricula.png" style="display: block; margin-left: 43%; width: 13%;  height:18%; border-radius:50%">
+            <div class="col-6 col-md-3 mx-auto">
+              <img src="../../assets/imgs/IngresarMatricula.png" >
             </div>
+
+            
           </div>
           <br>
           <div class="row">
@@ -712,8 +714,8 @@
         <h5 style="color: blue">Ingresar nuevo docente</h5>
         <form #IngresarDocente="ngForm" (ngSubmit)="onRegisterDocente()" novalidate>
           <div class="row">
-            <div class="col-lg-12">
-              <img src="../../assets/imgs/IngresarDocente.png" style="display: block; margin-left: 45%; width: 12%;  height:18%; border-radius:50%">
+            <div class="col-6 col-md-3 mx-auto">
+              <img src="../../assets/imgs/IngresarDocente.png" class=" txt-center">
             </div>
           </div>
           <br>
@@ -919,10 +921,11 @@
         <h5 style="color: blue">Ingresar nuevo estudiante</h5>
         <form #IngresarEstudiante="ngForm" (ngSubmit)="onRegisterEstudiante()">
           <div class="row">
-            <div class="col-lg-12">
-              <img [src]="url2" style="display: block; margin-left: 43%; width: 13%;  height:18%; border-radius:50%">
 
+            <div class="col-6 col-md-3 mx-auto">
+              <img [src]="url2" class=" txt-center">
             </div>
+            
           </div>
           <br>
           <div class="row">
@@ -1132,7 +1135,7 @@
       <div *ngIf="banderReporteExcel" style="margin-top:3%" class="container-fluid">
         <h5 style="color: blue">Reporte Consolidado de Notas</h5>
         <br>
-        <select (change)="asignarMateriaCurso($event.target.value)" class=" custom-select " required>
+        <select (change)="asignarMateriaCurso($event.target.value)" class=" custom-select  mx-auto" required>
           <option [value]="" selected>Selecciona el curso</option>
           <option *ngFor="let oneDoor of this.vectorListadoCursos" value="{{oneDoor.ID_CURSO}},{{oneDoor.CURSO}} ">{{oneDoor.CURSO}}: {{oneDoor.PARALELO}} </option>
         </select>

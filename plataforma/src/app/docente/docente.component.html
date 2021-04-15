@@ -34,7 +34,7 @@
           <p style="color: #ffffff">Periodo Actual {{this.periodoLectivoActual}} 
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </li>
         <li>
@@ -45,6 +45,7 @@
 
 
         </li>
+        <p class="px-4"></p>
 
         <!-- ====================================================       Notificaciones  INGRESAR PARALELO ============================================-->
 
@@ -440,7 +441,7 @@
         </tbody>
       </table>
       <div *ngIf="banderTabla1" class="col-md-12" style="text-align: center;">
-        <button class="btn btn-primary" (click)="pruebaclick()" [hidden]="!btnFinalizar"> Calcular el registro de notas 1</button>
+        <button class="btn btn-primary" (click)="pruebaclick()" [hidden]="!btnFinalizar"> Calcular el registro de notas</button>
        <br>
         <button class="btn btn-secondary" style=" padding-right: 3%; padding-left: 3%" [hidden]="btnFinalizar" (click)="habilitarGR()">
           Cancelar</button> &nbsp;&nbsp;&nbsp;
