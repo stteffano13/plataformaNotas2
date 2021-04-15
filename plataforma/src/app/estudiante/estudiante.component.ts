@@ -330,10 +330,10 @@ export class EstudianteComponent implements OnInit, DoCheck {
         this.vectorListadoMisMaterias.forEach(elementE => {
 
           this.listadoNotas.forEach(element => {
-
-            console.log("elementoE", elementE._id, "elemento", element.materia);
+          
+            console.log("elementoE", elementE.ID_MATERIA, "elemento", element.ID_MATERIA);
             if (elementE != null && element != null) {
-              if (elementE._id == element.materia) {
+              if (elementE.ID_MATERIA == element.ID_MATERIA) {
                 this.objectB[i].Q1P1insumo1 = element.Q1P1INSUMO1;
                 this.objectB[i].Q1P1insumo2 = element.Q1P1INSUMO2;
                 this.objectB[i].Q1P1insumo3 = element.Q1P1INSUMO3;
@@ -385,10 +385,11 @@ export class EstudianteComponent implements OnInit, DoCheck {
                 this.objectB[i].examenGracia = element.EXAMENGRACIA;
 
                 this.calculosBInit(i);
-                i++;
+             
 
               }
             }
+            i++;
           });
         });
 

@@ -374,7 +374,7 @@
               <tr *ngFor=" let listado of  listadoEstudiantes">
                 <th scope="row">1</th>
 
-                <td style="font-size: 130%">{{listado.NOMBRE_ESTUDIANTE}} {{ listado.apellido}}</td>
+                <td style="font-size: 130%">{{listado.NOMBRE_ESTUDIANTE}} {{ listado.APELLIDO_ESTUDIANTE}}</td>
                 <td style="font-size: 130%">{{listado.CEDULA_ESTUDIANTE}}</td>
                 <td style="font-size: 130%">{{ listado.CORREO_ESTUDIANTE}}</td>
                 <td style="font-size: 130%">{{listado.CELULAR_ESTUDIANTE }}</td>
@@ -1162,7 +1162,7 @@
             <th scope="row">{{i+1}}</th>
             <td class="active">{{listado.ESTUDIANTE.APELLIDO_ESTUDIANTE}} {{listado.ESTUDIANTE.NOMBRE_ESTUDIANTE}}</td>
             <td class="active" *ngFor=" let listad of  this.nuevo2[i]">{{listad}}</td>
-            <!--<td class="active" *ngFor=" let listad of  this.objNotasPT">{{listad}}</td>-->
+          <!-- <td class="active" *ngFor=" let listad of  this.objNotasPT">{{listad}}</td>-->
 
           </tr>
         </tbody>

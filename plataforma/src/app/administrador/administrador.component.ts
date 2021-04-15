@@ -1838,7 +1838,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
       //console.log('mi FOR', vector[k]);
       for (let f = 0; f < (cont - 1) - k; f++) {
         // console.log('mi FOR', vector[f]);
-        if (vector[f].estudiante.apellido.localeCompare(vector[f + 1].estudiante.apellido) > 0) {
+        if (vector[f].ESTUDIANTE.APELLIDO_ESTUDIANTE.localeCompare(vector[f + 1].ESTUDIANTE.APELLIDO_ESTUDIANTE) > 0) {
           let aux;
           aux = vector[f];
           vector[f] = vector[f + 1];
