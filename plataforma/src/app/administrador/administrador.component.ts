@@ -1967,7 +1967,6 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
       html: '#consolidado', startY: 110, styles: {
         overflow: 'linebreak',
         fontSize: 8,
-
         cellWidth: 'auto',
         halign: "center",
         cellPadding: 2
