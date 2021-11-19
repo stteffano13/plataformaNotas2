@@ -166,6 +166,12 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
     delete this.objectB;
     delete this.objB;
     delete this.objectCalculableB;
+    delete this.objectC;
+    delete this.objNC;
+    delete this.objNCC;
+    delete this.objectCalculableC;
+  
+  
 
 
   }
@@ -2302,8 +2308,6 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         this.objectC[i].sesentaporciento = this.objectCalculableC[i].sesentaporciento;
         this.objectC[i].cuarentaporciento = this.objectCalculableC[i].cuarentaporciento;
         this.objectC[i].promedioFinal = this.objectCalculableC[i].promedioFinal;
-      
-
       }
     } else
 

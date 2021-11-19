@@ -15,6 +15,8 @@ import 'jspdf-autotable';
 import { UserOptions } from 'jspdf-autotable';
 
 import * as html2canvas from 'html2canvas';
+import { NotaC } from '../models/notaC';
+import { CalculableC } from '../models/calculableC';
 
 
 @Component({
@@ -28,7 +30,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
   // banderas tablas
   public banderTabla1 = false;
   public banderTabla2 = false;
-
+  public banderTabla3 = false;
   public loading;
   public periodoLectivoActual;
   public vectorListadoMisMaterias;
@@ -46,15 +48,24 @@ export class EstudianteComponent implements OnInit, DoCheck {
   public objectB = [];
   public objectCalculableB = [];
 
+
+  public objNC: NotaC;
+  public objNCC: CalculableC;
+  public objectC = [];
+  public objectCalculableC = [];
+
   public mensajeerrormodal;
 
 
   public caso;
   public banderInsumo = false;
   public banderInsumoB = false;
+  public banderInsumoC = false;
+
   public guardarMateriaMatricula;
   public listadoInsumos;
   public listadoInsumosB;
+  public listadoInsumosC;
   public recivir;
   public counter = 5;
 
@@ -65,7 +76,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
   public subscribe4;
   public subscribe5;
   public subscribe6;
- 
+
 
   constructor(private _materiaService: MateriaService,
     private _administradorService: AdministradorService,
@@ -79,20 +90,19 @@ export class EstudianteComponent implements OnInit, DoCheck {
     this.loading = true;
     this.getListadoMisMaterias();
     this.getPeriodoActual();
-   
+
 
     this.identity = this._estudianteServices.getIdentity();
   }
 
   ngDoCheck() {
-   /* if(this.banderTabla1)
-    document.getElementById("btnTraerNotas").click();
-    if(this.banderTabla2)
-    document.getElementById("btnTraerNotasB").click();*/
+    /* if(this.banderTabla1)
+     document.getElementById("btnTraerNotas").click();
+     if(this.banderTabla2)
+     document.getElementById("btnTraerNotasB").click();*/
   }
 
-  ngOnDestroy()
-  {
+  ngOnDestroy() {
     console.log("chao");
     this.subscribe1.unsubscribe();
     this.subscribe2.unsubscribe();
@@ -104,22 +114,26 @@ export class EstudianteComponent implements OnInit, DoCheck {
     delete this.obj;
     delete this.objectCalculable;
     delete this.objC;
-    delete this.objectB; 
+    delete this.objectB;
     delete this.objB;
     delete this.objectCalculableB;
-   
-    
+    delete this.objNC;
+    delete this.objNCC;
+    delete this.objectC;
+    delete this.objectCalculableC;
+
+
   }
   getPeriodoActual() {
 
-    this.subscribe1=this._administradorService.getPeriodoActual().subscribe(response => {
+    this.subscribe1 = this._administradorService.getPeriodoActual().subscribe(response => {
       console.log("este es el periodo que vino", response.periodo)
       if (response.periodo != undefined) {
         this.periodoLectivoActual = response.periodo;
 
 
       }
-    }, (err) => { this.loading=false; console.log("Existen Complicaciones Intente mas tarde", err) }
+    }, (err) => { this.loading = false; console.log("Existen Complicaciones Intente mas tarde", err) }
     );
 
   }
@@ -128,59 +142,80 @@ export class EstudianteComponent implements OnInit, DoCheck {
 
     this.loading = true;
     this.vectorListadoMisMaterias = [];
-    this.subscribe2= await this._matriculaServices.getListadoMioMateria().subscribe(response => {
+    this.subscribe2 = await this._matriculaServices.getListadoMioMateria().subscribe(response => {
 
       if (response.materias[0] != undefined) {
         this.vectorListadoMisMaterias = response.materias;
         console.log("las amterias", this.vectorListadoMisMaterias);
-        if (this.vectorListadoMisMaterias[0].CURSO.CURSO != "BÁSICO SUPERIOR INTENSIVO") {
+        if (this.vectorListadoMisMaterias[0].CURSO.CURSO.indexOf("(DISTANCIA VIRTUAL)") != -1 || this.vectorListadoMisMaterias[0].CURSO.CURSO.indexOf("(SEMIPRESENCIAL)") != -1) {
 
-          this.banderTabla1 = true;
-
-          for (let i = 0; i <= Object.keys(this.vectorListadoMisMaterias).length; i++) {
-
-            this.object.push(this.obj = new Nota("", "", "", "","0","0","0","0","0","0","0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
-            this.objectCalculable.push(this.objC = new Calculable("0", "0", "0", "0", "0", "0", "0"));
-            console.log("estos son los seros del objeto", this.object);
-          }
-        
-
-         // this.traerNotas();
-          //  this.traerNotas(this.periodoLectivoActual);
-        } else {
+          this.banderTabla3 = true;
           this.banderTabla1 = false;
-          this.banderTabla2 = true;
-
+          this.banderTabla2 = false;
 
           for (let i = 0; i < Object.keys(this.vectorListadoMisMaterias).length; i++) {
 
-            this.objectB.push(this.objB = new NotaBasica("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0","0", "0", "0", "0", "0", "0" ,"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
-            this.objectCalculableB.push(this.objC = new Calculable("0", "0", "0", "0", "0", "0", "0"));
-
+            this.objectC.push(this.objNC = new NotaC("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
+            this.objectCalculableC.push(this.objNCC = new CalculableC("0", "0", "0",));
+            console.log("estos son los seros del objeto C", this.objectC);
           }
 
-         // this.traerNotasB(this.periodoLectivoActual);
-        }
+
+          // this.traerNotas();
+          //  this.traerNotas(this.periodoLectivoActual);
+        } else
+          if (this.vectorListadoMisMaterias[0].CURSO.CURSO != "BÁSICO SUPERIOR INTENSIVO") {
+
+            this.banderTabla1 = true;
+            this.banderTabla2 = false;
+            this.banderTabla3 = false;
+            for (let i = 0; i < Object.keys(this.vectorListadoMisMaterias).length; i++) {
+
+              this.object.push(this.obj = new Nota("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
+              this.objectCalculable.push(this.objC = new Calculable("0", "0", "0", "0", "0", "0", "0"));
+              console.log("estos son los seros del objeto", this.object);
+            }
+
+
+            // this.traerNotas();
+            //  this.traerNotas(this.periodoLectivoActual);
+          } else {
+            this.banderTabla1 = false;
+            this.banderTabla2 = true;
+            this.banderTabla3 = false;
+
+
+            for (let i = 0; i < Object.keys(this.vectorListadoMisMaterias).length; i++) {
+
+              this.objectB.push(this.objB = new NotaBasica("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
+              this.objectCalculableB.push(this.objC = new Calculable("0", "0", "0", "0", "0", "0", "0"));
+
+            }
+
+            // this.traerNotasB(this.periodoLectivoActual);
+          }
 
       }
-     if(this.banderTabla1)
-    document.getElementById("btnTraerNotas").click();
-    if(this.banderTabla2)
-    document.getElementById("btnTraerNotasB").click();
-    }, (err) => {  this.loading=false;  console.log("Existen Complicaciones Intente mas tarde", err) }
+      if (this.banderTabla3)
+        document.getElementById("btnTraerNotasC").click();
+      if (this.banderTabla1)
+        document.getElementById("btnTraerNotas").click();
+      if (this.banderTabla2)
+        document.getElementById("btnTraerNotasB").click();
+    }, (err) => { this.loading = false; console.log("Existen Complicaciones Intente mas tarde", err) }
     );
-    
+
   }
 
 
   traerNotas() {
     var periodo = this.periodoLectivoActual;
-    this.subscribe3=this._notaService.buscarNotasEstudiante(periodo).subscribe(
+    this.subscribe3 = this._notaService.buscarNotasEstudiante(periodo).subscribe(
       response => {
 
         this.listadoNotas = response.notas;
 
-        
+
         console.log("listado notas", this.listadoNotas, "vector materias", this.vectorListadoMisMaterias);
         //  ordenar
         let i = 0;
@@ -219,9 +254,8 @@ export class EstudianteComponent implements OnInit, DoCheck {
                 i++;
 
               }
-            }else
-            {
-              
+            } else {
+
               i++;
             }
           });
@@ -229,7 +263,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
 
         this.loading = false;
 
-      
+
 
       },
       error => {
@@ -316,9 +350,9 @@ export class EstudianteComponent implements OnInit, DoCheck {
 
 
   traerNotasB() {
- var periodo = this.periodoLectivoActual;
+    var periodo = this.periodoLectivoActual;
 
- this.subscribe4=this._notaService.buscarNotasEstudianteB(periodo).subscribe(
+    this.subscribe4 = this._notaService.buscarNotasEstudianteB(periodo).subscribe(
       response => {
         this.loading = false;
         this.listadoNotas = response.notas;
@@ -330,7 +364,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
         this.vectorListadoMisMaterias.forEach(elementE => {
 
           this.listadoNotas.forEach(element => {
-          
+
             console.log("elementoE", elementE.ID_MATERIA, "elemento", element.ID_MATERIA);
             if (elementE != null && element != null) {
               if (elementE.ID_MATERIA == element.ID_MATERIA) {
@@ -385,7 +419,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
                 this.objectB[i].examenGracia = element.EXAMENGRACIA;
 
                 this.calculosBInit(i);
-             
+
 
               }
             }
@@ -540,7 +574,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
       periodo: this.periodoLectivoActual
     }
     console.log("esto e sloq ue hay que buscar como estudainte", objDescInsumos);
-    this.subscribe5= this._insumoService.getDescInsumos(objDescInsumos).subscribe(response => {
+    this.subscribe5 = this._insumoService.getDescInsumos(objDescInsumos).subscribe(response => {
 
       if (response.insumos != undefined) {
         this.listadoInsumos = response.insumos;
@@ -548,7 +582,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
         console.log("listado insumos", this.listadoInsumos);
 
       }
-    }, (err) => {  this.loading= false; console.log("Existen Complicaciones Intente mas tarde", err) }
+    }, (err) => { this.loading = false; console.log("Existen Complicaciones Intente mas tarde", err) }
     );
 
 
@@ -569,7 +603,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
       periodo: this.periodoLectivoActual
     }
 
-    this.subscribe6=this._insumoService.getDescInsumosB(objDescInsumosB).subscribe(response => {
+    this.subscribe6 = this._insumoService.getDescInsumosB(objDescInsumosB).subscribe(response => {
 
       if (response.insumosB != undefined) {
         this.listadoInsumosB = response.insumosB;
@@ -577,7 +611,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
 
 
       }
-    }, (err) => { this.loading=false;  console.log("Existen Complicaciones Intente mas tarde", err) }
+    }, (err) => { this.loading = false; console.log("Existen Complicaciones Intente mas tarde", err) }
     );
 
 
@@ -595,6 +629,218 @@ export class EstudianteComponent implements OnInit, DoCheck {
 
     this.banderInsumoB = false;
   }
+
+
+
+  traerNotasC() {
+    var periodo = this.periodoLectivoActual;
+
+    this.subscribe4 = this._notaService.buscarNotasEstudianteC(periodo).subscribe(
+      response => {
+        this.loading = false;
+        this.listadoNotas = response.notas;
+
+
+        console.log("listado notas", this.listadoNotas, "vector materias", this.vectorListadoMisMaterias);
+        //  ordenar
+        let i = 0;
+        this.vectorListadoMisMaterias.forEach(elementE => {
+
+          this.listadoNotas.forEach(element => {
+
+            console.log("elementoE", elementE.ID_MATERIA, "elemento", element.ID_MATERIA);
+            if (elementE != null && element != null) {
+              if (elementE.ID_MATERIA == element.ID_MATERIA) {
+                this.objectC[i].Puforo = element.PUFORO;
+                this.objectC[i].Putarea1 = element.PUTAREA1;
+                this.objectC[i].Putarea2 = element.PUTAREA2;
+                this.objectC[i].Putarea3 = element.PUTAREA3;
+                this.objectC[i].Putarea4 = element.PUTAREA4;
+                this.objectC[i].Puexamen = element.PUEXAMEN;
+
+                this.objectC[i].Suforo = element.SUFORO;
+                this.objectC[i].Sutarea1 = element.SUTAREA1;
+                this.objectC[i].Sutarea2 = element.SUTAREA2;
+                this.objectC[i].Sutarea3 = element.SUTAREA3;
+                this.objectC[i].Sutarea4 = element.SUTAREA4;
+                this.objectC[i].Suexamen = element.SUEXAMEN;
+
+                this.objectC[i].Tuforo = element.TUFORO;
+                this.objectC[i].Tutarea1 = element.TUTAREA1;
+                this.objectC[i].Tutarea2 = element.TUTAREA2;
+                this.objectC[i].Tutarea3 = element.TUTAREA3;
+                this.objectC[i].Tutarea4 = element.TUTAREA4;
+                this.objectC[i].Tuexamen = element.TUEXAMEN;
+
+
+                this.objectC[i].Cuforo = element.CUFORO;
+                this.objectC[i].Cutarea1 = element.CUTAREA1;
+                this.objectC[i].Cutarea2 = element.CUTAREA2;
+                this.objectC[i].Cutarea3 = element.CUTAREA3;
+                this.objectC[i].Cutarea4 = element.CUTAREA4;
+                this.objectC[i].Cuexamen = element.CUEXAMEN;
+
+                this.objectC[i].examenFinal = element.EXAMENFINAL;
+                this.objectC[i].examenSupletorio = element.EXAMENSUPLETORIO;
+                this.objectC[i].examenRemedial = element.EXAMENREMEDIAL;
+                this.objectC[i].examenGracia = element.EXAMENGRACIA;
+
+             
+                this.calculosCInit(i);
+
+
+              }
+            }
+            i++;
+          });
+        });
+
+
+
+        this.loading = false;
+
+      },
+      error => {
+        this.loading = false;
+        var errorMessage = <any>error;
+        if (errorMessage) {
+          console.log(errorMessage);
+          try {
+            var body = JSON.parse(error._body);
+            errorMessage = body.message;
+          } catch {
+            errorMessage = "No hay conexión intentelo más tarde";
+            this.loading = false;
+            document.getElementById("openModalError").click();
+          }
+          // this.loading =false;
+        }
+        // this.loading =false;
+      }
+
+    );
+
+  }
+
+  calculosCInit(i) {
+
+
+
+    if (this.objectC[i].Puforo > 10 || this.objectC[i].Putarea1 > 10 || this.objectC[i].Putarea2 > 10
+      || this.objectC[i].Putarea3 > 10 || this.objectC[i].Putarea4 > 10 || this.objectC[i].Puexamen > 10
+
+      || this.objectC[i].Suforo > 10 || this.objectC[i].Sutarea1 > 10 || this.objectC[i].Sutarea2 > 10
+      || this.objectC[i].Sutarea3 > 10 || this.objectC[i].Sutarea4 > 10 || this.objectC[i].Suexamen > 10
+
+      || this.objectC[i].Tuforo > 10 || this.objectC[i].Tutarea1 > 10 || this.objectC[i].Tutarea2 > 10
+      || this.objectC[i].Tutarea3 > 10 || this.objectC[i].Tutarea4 > 10 || this.objectC[i].Tuexamen > 10
+
+
+      || this.objectC[i].Cuforo > 10 || this.objectC[i].Cutarea1 > 10 || this.objectC[i].Cutarea2 > 10
+      || this.objectC[i].Cutarea3 > 10 || this.objectC[i].Cutarea4 > 10 || this.objectC[i].Cuexamen > 10
+
+      || this.objectC[i].examenFinal > 10 || this.objectC[i].examenGracia > 10 || this.objectC[i].examenRemedial > 10 || this.objectC[i].examenSupletorio > 10) {
+
+
+      this.mensajeerrormodal = "Alguna de las notas es mayor a 10 reviselas nuevamente";
+
+      document.getElementById("openModalError").click();
+
+    } else {
+      var sesentaporciento = ((parseFloat(this.objectC[i].Puforo) + parseFloat(this.objectC[i].Putarea1)
+        + parseFloat(this.objectC[i].Putarea2) + parseFloat(this.objectC[i].Putarea3) + parseFloat(this.objectC[i].Putarea4)
+        + parseFloat(this.objectC[i].Puexamen) +
+
+        parseFloat(this.objectC[i].Suforo) + parseFloat(this.objectC[i].Sutarea1) + parseFloat(this.objectC[i].Sutarea2) +
+        + parseFloat(this.objectC[i].Sutarea3) + parseFloat(this.objectC[i].Sutarea4) + parseFloat(this.objectC[i].Suexamen) +
+
+        parseFloat(this.objectC[i].Tuforo) + parseFloat(this.objectC[i].Tutarea1) + parseFloat(this.objectC[i].Tutarea2) +
+        parseFloat(this.objectC[i].Tutarea3) + parseFloat(this.objectC[i].Tutarea4) + parseFloat(this.objectC[i].Tuexamen) +
+
+        parseFloat(this.objectC[i].Cuforo) + parseFloat(this.objectC[i].Cutarea1) + parseFloat(this.objectC[i].Cutarea2) +
+        parseFloat(this.objectC[i].Cutarea3) + parseFloat(this.objectC[i].Cutarea4) + parseFloat(this.objectC[i].Cuexamen)
+
+      ) / 24) * 0.6;
+
+
+
+      var cuarentaporciento = (parseFloat(this.objectC[i].examenFinal) * 0.4)
+      var promediofinal = sesentaporciento + cuarentaporciento;
+
+
+
+      this.objectCalculableC[i].sesentaporciento = sesentaporciento.toFixed(2);
+      this.objectCalculableC[i].cuarentaporciento = cuarentaporciento.toFixed(2);
+      this.objectCalculableC[i].promedioFinal = promediofinal.toFixed(2);
+
+
+      // calculos de examennes complementarios
+      if (this.objectC[i].examenSupletorio >= 7) {
+        this.objectCalculableC[i].promedioFinal = 7;
+
+      }
+
+
+      if (this.objectC[i].examenRemedial >= 7) {
+        this.objectCalculableC[i].promedioFinal = 7;
+
+      }
+
+
+      if (this.objectC[i].examenGracia >= 7) {
+        this.objectCalculableC[i].promedioFinal = 7;
+
+      }
+
+    }
+  }
+
+
+
+  actualizacionInsumosC(insumo, materia) {
+    this.listadoInsumosC = "";
+    this.recivir = materia;
+    this.banderInsumoC = true;
+
+
+    var objDescInsumosC =
+    {
+      materia: insumo,
+      periodo: this.periodoLectivoActual
+    }
+
+    this.subscribe6 = this._insumoService.getDescInsumosC(objDescInsumosC).subscribe(response => {
+
+      if (response.insumosC != undefined) {
+        this.listadoInsumosC = response.insumosC;
+        console.log("listado insumos C", this.listadoInsumosC);
+
+
+      }
+    }, (err) => { this.loading = false; console.log("Existen Complicaciones Intente mas tarde", err) }
+    );
+
+
+
+
+  }
+
+  cerrarDescInsumosC() {
+
+    this.banderInsumoC = false;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   generarPdf() {
@@ -616,72 +862,98 @@ export class EstudianteComponent implements OnInit, DoCheck {
     doc.addImage(logo, 'PNG', 30, 15, 100, 80);
     doc.fromHTML("<h2>COLEGIO DE BACHILLERATO PCEI EBENEZER</h2>", 170, 2);
     doc.fromHTML("<h4>ACTA DE CALIFICACIÓN POR PERIODO" + "  " + this.periodoLectivoActual + "</h4>", 170, 28);
-    doc.fromHTML("<h4>" + this.vectorListadoMisMaterias[0].CURSO.CURSO + " " + this.vectorListadoMisMaterias[0].CURSO.PARALELO + "</h4>", 250, 48);
-    doc.fromHTML("<h4>ESTUDIANTE: " + this.identity.APELLIDO_ESTUDIANTE + "  " + this.identity.NOMBRE_ESTUDIANTE + "</h4>", 200, 68);
+    doc.fromHTML("<h4>" + this.vectorListadoMisMaterias[0].CURSO.CURSO + " " + this.vectorListadoMisMaterias[0].CURSO.PARALELO + "</h4>", 170, 48);
+    doc.fromHTML("<h4>ESTUDIANTE: " + this.identity.APELLIDO_ESTUDIANTE + "  " + this.identity.NOMBRE_ESTUDIANTE + "</h4>", 170, 68);
 
     var cont = this.vectorListadoMisMaterias.length;
+    if (this.banderTabla3) {
 
-    if (this.banderTabla1) {
+      doc.autoTable({
+        html: '#results3', startY: 120, columnStyles: {
+          9: { fillColor: [249, 247, 95] },
+          11: { fillColor: [249, 247, 95] },
+          12: { fillColor: [207, 233, 176] }, 21: { fillColor: [249, 247, 95] }, 23: { fillColor: [249, 247, 95] },
+          24: { fillColor: [207, 233, 176] }, 25: { fillColor: [191, 250, 119] }
+        },
+        styles: { overflow: 'linebreak', fontSize: 6 }
+      });
 
-      doc.autoTable({ html: '#results', startY: 120 ,columnStyles: {9: {fillColor: [249, 247, 95]},
-       11: {fillColor: [249, 247, 95]},
-       12: {fillColor: [207, 233, 176]}, 21: {fillColor: [249, 247, 95]},  23: {fillColor: [249, 247, 95]},
-       24: {fillColor: [207, 233, 176]}, 25: {fillColor: [191, 250, 119]} },
-      styles: { overflow: 'linebreak',  fontSize: 6} });
 
-    
       this.loading = false;
 
       doc.save('Reporte_Notas_Alumno.pdf');
-  
+
+
+
+
+    } else
+    if (this.banderTabla1) {
+
+      doc.autoTable({
+        html: '#results', startY: 120, columnStyles: {
+          9: { fillColor: [249, 247, 95] },
+          11: { fillColor: [249, 247, 95] },
+          12: { fillColor: [207, 233, 176] }, 21: { fillColor: [249, 247, 95] }, 23: { fillColor: [249, 247, 95] },
+          24: { fillColor: [207, 233, 176] }, 25: { fillColor: [191, 250, 119] }
+        },
+        styles: { overflow: 'linebreak', fontSize: 6 }
+      });
+
+
+      this.loading = false;
+
+      doc.save('Reporte_Notas_Alumno.pdf');
+
 
 
 
     } else {
       doc.autoTable({
-        html: '#results2', startY: 120,columnStyles: {19: {fillColor: [249, 247, 95]},
-        21: {fillColor: [249, 247, 95]},
-        22: {fillColor: [207, 233, 176]}, 41: {fillColor: [249, 247, 95]},  43: {fillColor: [249, 247, 95]},
-        44: {fillColor: [207, 233, 176]}, 45: {fillColor: [191, 250, 119]} }, margin: {left: 30}, styles: {
-         
+        html: '#results2', startY: 120, columnStyles: {
+          19: { fillColor: [249, 247, 95] },
+          21: { fillColor: [249, 247, 95] },
+          22: { fillColor: [207, 233, 176] }, 41: { fillColor: [249, 247, 95] }, 43: { fillColor: [249, 247, 95] },
+          44: { fillColor: [207, 233, 176] }, 45: { fillColor: [191, 250, 119] }
+        }, margin: { left: 30 }, styles: {
+
           overflow: 'linebreak',
           fontSize: 5,
           //rowHeight: 0,
           cellWidth: 'auto',
           cellPadding: 3,
-     
-       // calculateWidths: 300
+
+          // calculateWidths: 300
 
         }
 
       });
-     
+
       this.loading = false;
 
       doc.save('Reporte_Notas_Alumno.pdf');
     }
 
-/* html2canvas(document.getElementById('results2'), { scale: 5 }).then(function (canvas) {
-        var img = canvas.toDataURL("image/png");
-        var context = canvas.getContext("2d");
-        context.scale(5, 5);
-        context["imageSmoothingEnabled"] = false;
-        context["mozImageSmoothingEnabled"] = false
-        context["oImageSmoothingEnabled"] = false
-        context["webkitImageSmoothingEnabled"] = false
-        context["msImageSmoothingEnabled"] = false
-
-        // var doc = new jsPDF('l', 'mm');
-        doc.addImage(img, 'JPEG', 18, 130, 580, 40 * cont);
-        doc.save('Reporte_Notas_Alumno.pdf');
-      });
-      let intervalId = setInterval(() => {
-        this.counter = this.counter - 1;
-
-        console.log(this.counter)
-        if (this.counter === 0) { clearInterval(intervalId); this.loading = false; }
-      }, 1000)
-*/
+    /* html2canvas(document.getElementById('results2'), { scale: 5 }).then(function (canvas) {
+            var img = canvas.toDataURL("image/png");
+            var context = canvas.getContext("2d");
+            context.scale(5, 5);
+            context["imageSmoothingEnabled"] = false;
+            context["mozImageSmoothingEnabled"] = false
+            context["oImageSmoothingEnabled"] = false
+            context["webkitImageSmoothingEnabled"] = false
+            context["msImageSmoothingEnabled"] = false
+    
+            // var doc = new jsPDF('l', 'mm');
+            doc.addImage(img, 'JPEG', 18, 130, 580, 40 * cont);
+            doc.save('Reporte_Notas_Alumno.pdf');
+          });
+          let intervalId = setInterval(() => {
+            this.counter = this.counter - 1;
+    
+            console.log(this.counter)
+            if (this.counter === 0) { clearInterval(intervalId); this.loading = false; }
+          }, 1000)
+    */
     /*  var j = 0;
       for (var i = 1; i <= 2; i++) {
         doc.fromHTML( "<tr>   <td>" + this.vectorListadoMisMaterias[j].nombre + "</td> </tr><tr> <td>Celda 6</td>  </tr>  <tbody> </table>", 15,
