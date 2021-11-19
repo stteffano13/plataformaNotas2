@@ -57,6 +57,27 @@ export class InsumoService {
     }
 
 
+    registerInsumoC(insumoC_to_register) {
+        let json = JSON.stringify(insumoC_to_register);
+        let params = json;
+        console.log("Materia", params);
+        let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getToken() });
+        return this._http
+            .post(this.url + "registerInsumoC", params, { headers: headers })
+            .map(res => res.json());
+    }
+
+    getDescInsumosC(insumoC_to_search) {
+        let json = JSON.stringify(insumoC_to_search);
+        let params = json;
+        console.log("Materia", params);
+        let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getToken() });
+        return this._http
+            .post(this.url + "getDiscInsumoC", params, { headers: headers })
+            .map(res => res.json());
+    }
+
+
     getToken() {
 
         let token = localStorage.getItem("Token");

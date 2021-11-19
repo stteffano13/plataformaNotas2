@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     4/14/2021 12:53:10 PM                        */
+/* Created on:     11/18/2021 12:03:30 PM                       */
 /*==============================================================*/
 
 
@@ -16,6 +16,8 @@ drop table if exists INSUMO;
 
 drop table if exists INSUMOB;
 
+drop table if exists INSUMOC;
+
 drop table if exists MATERIA;
 
 drop table if exists MATRICULA;
@@ -23,6 +25,8 @@ drop table if exists MATRICULA;
 drop table if exists NOTA;
 
 drop table if exists NOTAB;
+
+drop table if exists NOTAC;
 
 drop table if exists PERIODO;
 
@@ -162,6 +166,37 @@ create table INSUMOB
 );
 
 /*==============================================================*/
+/* Table: INSUMOC                                               */
+/*==============================================================*/
+create table INSUMOC
+(
+   ID_INSUMOC           int not null auto_increment,
+   ID_MATERIA           int,
+   DESCPUFORO           text,
+   DESCPUTAREA1         text,
+   DESCPUTAREA2         text,
+   DESCPUTAREA3         text,
+   DESCPUTAREA4         text,
+   DESCSUFORO           text,
+   DESCSUTAREA1         text,
+   DESCSUTAREA2         text,
+   DESCSUTAREA3         text,
+   DESCSUTAREA4         text,
+   DESCTUFORO           text,
+   DESCTUTAREA1         text,
+   DESCTUTAREA2         text,
+   DESCTUTAREA3         text,
+   DESCTUTAREA4         text,
+   DESCCUFORO           text,
+   DESCCUTAREA1         text,
+   DESCCUTAREA2         text,
+   DESCCUTAREA3         text,
+   DESCCUTAREA4         text,
+   PERIODO              text,
+   primary key (ID_INSUMOC)
+);
+
+/*==============================================================*/
 /* Table: MATERIA                                               */
 /*==============================================================*/
 create table MATERIA
@@ -237,15 +272,14 @@ create table NOTAB
    Q1P1INSUMO2          float,
    Q1P1INSUMO3          float,
    Q1P1INSUMO4          float,
+   Q1P1INSUMO5          float,
+   Q1P1INSUMO6          float,
    Q1P2INSUMO3          float,
    Q1P2INSUMO4          float,
    Q1P2INSUMO5          float,
    Q1P2INSUMO6          float,
-   Q1P1INSUMO5          float,
-   Q1P1INSUMO6          float,
    Q1P2INSUMO1          float,
    Q1P2INSUMO2          float,
-   Q1P3INSUMO1          float,
    Q1P3INSUMO2          float,
    Q1P3INSUMO3          float,
    Q1P3INSUMO4          float,
@@ -262,6 +296,13 @@ create table NOTAB
    Q2P2INSUMO2          float,
    Q2P2INSUMO3          float,
    Q2P2INSUMO4          float,
+   EXAMEN2              float,
+   EXAMENSUPLETORIO     float,
+   EXAMENREMEDIAL       float,
+   EXAMENGRACIA         float,
+   PERIODO              text,
+   PT                   float,
+   Q1P3INSUMO1          float,
    Q2P2INSUMO5          float,
    Q2P2INSUMO6          float,
    Q2P3INSUMO1          float,
@@ -270,13 +311,48 @@ create table NOTAB
    Q2P3INSUMO4          float,
    Q2P3INSUMO5          float,
    Q2P3INSUMO6          float,
-   EXAMEN2              float,
+   primary key (ID_NOTAB)
+);
+
+/*==============================================================*/
+/* Table: NOTAC                                                 */
+/*==============================================================*/
+create table NOTAC
+(
+   ID_NOTAC             int not null auto_increment,
+   ID_MATERIA           int,
+   ID_ESTUDIANTE        int,
+   PUFORO               float,
+   PUTAREA1             float,
+   PUTAREA2             float,
+   PUTAREA3             float,
+   PUTAREA4             float,
+   PUEXAMEN             float,
+   SUFORO               float,
+   SUTAREA1             float,
+   SUTAREA2             float,
+   SUTAREA3             float,
+   SUTAREA4             float,
+   SUEXAMEN             float,
+   TUFORO               float,
+   TUTAREA1             float,
+   TUTAREA2             float,
+   TUTAREA3             float,
+   TUTAREA4             float,
+   TUEXAMEN             float,
+   CUFORO               float,
+   CUTAREA1             float,
+   CUTAREA2             float,
+   CUTAREA3             float,
+   CUTAREA4             float,
+   CUEXAMEN             float,
+   EXAMENFINAL          float,
+   PT                   float,
    EXAMENSUPLETORIO     float,
    EXAMENREMEDIAL       float,
    EXAMENGRACIA         float,
    PERIODO              text,
-   PT                   float,
-   primary key (ID_NOTAB)
+   primary key (ID_NOTAC)
 );
 
 /*==============================================================*/
@@ -305,6 +381,9 @@ alter table INSUMO add constraint FK_MATERIA_INSUMO foreign key (ID_MATERIA)
 alter table INSUMOB add constraint FK_MATERIA_INSUMOB foreign key (ID_MATERIA)
       references MATERIA (ID_MATERIA) on delete restrict on update restrict;
 
+alter table INSUMOC add constraint FK_RELATIONSHIP_13 foreign key (ID_MATERIA)
+      references MATERIA (ID_MATERIA) on delete restrict on update restrict;
+
 alter table MATERIA add constraint FK_CURSO_MATERIA foreign key (ID_CURSO)
       references CURSO (ID_CURSO) on delete restrict on update restrict;
 
@@ -328,4 +407,10 @@ alter table NOTAB add constraint FK_ESTUDIANTE_NOTAB foreign key (ID_ESTUDIANTE)
 
 alter table NOTAB add constraint FK_MATERIA_NOTAB foreign key (ID_MATERIA)
       references MATERIA (ID_MATERIA) on delete restrict on update restrict;
+
+alter table NOTAC add constraint FK_RELATIONSHIP_11 foreign key (ID_MATERIA)
+      references MATERIA (ID_MATERIA) on delete restrict on update restrict;
+
+alter table NOTAC add constraint FK_RELATIONSHIP_12 foreign key (ID_ESTUDIANTE)
+      references ESTUDIANTE (ID_ESTUDIANTE) on delete restrict on update restrict;
 

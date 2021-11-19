@@ -1788,10 +1788,10 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
   selectedCursoA(value) {
     console.log("value", value);
     let curso: String[] = new Array();
-    curso = value.split(" ");
+    curso = value.split(".");
     this.disabledMateriaImpartir = false;
-    console.log("value[1]", curso[1]);
-    if (curso[2].indexOf("SUPERIOR") != -1 || curso[2].indexOf("OCTAVO") != -1 || curso[2].indexOf("NOVENO") != -1 || curso[2].indexOf("DECIMO") != -1) {
+    console.log("value[1]", curso);
+    if (curso[1].indexOf("SUPERIOR") != -1 || curso[1].indexOf("OCTAVO") != -1 || curso[1].indexOf("NOVENO") != -1 || curso[1].indexOf("DECIMO") != -1 ) {
       this.vectorlistadoMaterias = this.arrayOctavo;
       console.log("entre basico");
     } else {

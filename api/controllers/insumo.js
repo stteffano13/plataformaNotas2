@@ -2,7 +2,7 @@
 
 var Insumo = require('../models/insumo');
 var InsumoB = require('../models/insumoB');
-
+var InsumoC = require('../models/insumoC');
 
 
 async function saveInsumos(req, res) {
@@ -57,7 +57,7 @@ async function saveInsumos2(params, res) {
         insumo.DESCINSUMO55 = params.Descinsumo55;
         insumo.DESCINSUMO66 = params.Descinsumo66;
         insumo.DESCINSUMO77 = params.Descinsumo77;
-        insumo.Descinsumo88 = params.Descinsumo88;
+        insumo.DESCINSUMO88 = params.Descinsumo88;
         insumo.PERIODO = params.periodo;
         insumo.ID_MATERIA = params.materia;
 
@@ -159,7 +159,7 @@ async function getDiscInsumo(req, res) {
 
         }
     } catch (err) {
-       
+
         res.status(500).send({
             message: 'error:' + err
         });
@@ -356,7 +356,180 @@ async function getDiscInsumoB(req, res) {
 
         }
     } catch (err) {
+
+        res.status(500).send({
+            message: 'error:' + err
+        });
+    }
+}
+
+
+
+
+async function saveInsumosC(req, res) {
+
+    try {
+        var params = req.body;
+        let insumosC = await InsumoC.findOne({ where: { PERIODO: params.periodo, ID_MATERIA: params.materia } });
+
+        if (insumosC) {
+
+            updateInsumosC(insumosC, params, res);
+
+        } else {
+
+            saveInsumosC2(params, res);
+
+        }
+    } catch (err) {
         await t.rollback()
+        res.status(500).send({
+            message: 'error:' + err
+        });
+    }
+
+}
+
+
+async function saveInsumosC2(params, res) {
+
+    try {
+        var insumoC = InsumoC.build();
+        console.log("entre a los insumos basica 2", params);
+
+        insumoC.DESCPUFORO = params.Descpuforo;
+        insumoC.DESCPUTAREA1 = params.Descput1;
+        insumoC.DESCPUTAREA2 = params.Descput2;
+        insumoC.DESCPUTAREA3 = params.Descput3;
+        insumoC.DESCPUTAREA4 = params.Descput4;
+
+
+        insumoC.DESCSUFORO = params.Descsuforo;
+        insumoC.DESCSUTAREA1 = params.Descsut1;
+        insumoC.DESCSUTAREA2 = params.Descsut2;
+        insumoC.DESCSUTAREA3 = params.Descsut3;
+        insumoC.DESCSUTAREA4 = params.Descsut4;
+
+
+        insumoC.DESCTUFORO = params.Desctuforo;
+        insumoC.DESCTUTAREA1 = params.Desctut1;
+        insumoC.DESCTUTAREA2 = params.Desctut2;
+        insumoC.DESCTUTAREA3 = params.Desctut3;
+        insumoC.DESCTUTAREA4 = params.Desctut4;
+
+        insumoC.DESCCUFORO = params.Desccuforo;
+        insumoC.DESCCUTAREA1 = params.Desccut1;
+        insumoC.DESCCUTAREA2 = params.Desccut2;
+        insumoC.DESCCUTAREA3 = params.Desccut3;
+        insumoC.DESCCUTAREA4 = params.Desccut4;
+
+
+
+        insumoC.PERIODO = params.periodo;
+        insumoC.ID_MATERIA = params.materia;
+        let insumoCStored = await insumoC.save();
+        if (!insumoCStored) {
+            res.status(404).send({
+                message: 'No se ha registrado el insumo'
+            });
+        } else {
+            res.status(200).send({
+                message: 'El Insumo se ha registrado correctamente'
+            });
+        }
+    } catch (err) {
+
+        res.status(500).send({
+            message: 'error:' + err
+        });
+    }
+}
+
+
+async function updateInsumosC(insumosC, params, res) {
+
+    try {
+        console.log("estos son losinsumos que viene parael bachillerato en el update", params);
+
+        let insumoCUpdate = await InsumoC.update({
+            DESCPUFORO: params.Descpuforo,
+            DESCPUTAREA1: params.Descput1,
+            DESCPUTAREA2: params.Descput2,
+            DESCPUTAREA3: params.Descput3,
+            DESCPUTAREA4: params.Descput4,
+
+            DESCSUFORO: params.Descsuforo,
+            DESCSUTAREA1: params.Descsut1,
+            DESCSUTAREA2: params.Descsut2,
+            DESCSUTAREA3: params.Descsut3,
+            DESCSUTAREA4: params.Descsut4,
+
+            DESCTUFORO: params.Desctuforo,
+            DESCTUTAREA1: params.Desctut1,
+            DESCTUTAREA2: params.Desctut2,
+            DESCTUTAREA3: params.Desctut3,
+            DESCTUTAREA4: params.Desctut4,
+
+            DESCCUFORO: params.Desccuforo,
+            DESCCUTAREA1: params.Desccut1,
+            DESCCUTAREA2: params.Desccut2,
+            DESCCUTAREA3: params.Desccut3,
+            DESCCUTAREA4: params.Desccut4,
+
+            PERIODO: params.periodo,
+            ID_MATERIA: params.materia
+        }, { where: { ID_INSUMOC: insumosC.ID_INSUMOC } });
+
+
+        if (!insumoCUpdate) {
+            res.status(404).send({
+                message: "El insumo no ha podido actualizarse."
+            });
+        } else {
+
+            res.status(200).send({
+                message: "El insumo se actualizo correctamente."
+            });
+
+        }
+
+    } catch (err) {
+        await t.rollback()
+        res.status(500).send({
+            message: 'error:' + err
+        });
+    }
+
+}
+
+
+async function getDiscInsumoC(req, res) {
+
+    try {
+        var busqueda = req.body;
+        console.log("busqueda insumos", busqueda);
+        if (!busqueda) {
+            res.status(404).send({
+                message: 'Ingrese un parametro de busqueda'
+            });
+        } else {
+
+
+            let insumosC = await InsumoC.findOne({ where: { ID_MATERIA: busqueda.materia, PERIODO: busqueda.periodo } });
+
+            if (!insumosC) {
+                return res.status(200).send({
+                    message: 'No existe descripcion algna de insumos'
+                });
+            }
+
+            return res.status(200).send({
+                insumosC
+            });
+
+        }
+    } catch (err) {
+
         res.status(500).send({
             message: 'error:' + err
         });
@@ -370,7 +543,10 @@ module.exports = {          // para exportar todas las funciones de este modulo
     saveInsumosB,
     saveInsumosB2,
     updateInsumosB,
-    getDiscInsumoB
+    getDiscInsumoB,
+    saveInsumosC2,
+    saveInsumosC,
+    getDiscInsumoC
 
 
 };

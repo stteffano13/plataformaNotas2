@@ -600,7 +600,7 @@
                   name="selectedCursoAsignacion" required type="text" class="form-control">
                 <datalist id="listadoCursosAsignacion">
                   <option *ngFor="let oneDoor of vectorListadoCursos">
-                    {{oneDoor.CODIGO_CURSO}}.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{oneDoor.CURSO}},{{oneDoor.PARALELO}}
+                    {{oneDoor.CODIGO_CURSO}}.{{oneDoor.CURSO}},{{oneDoor.PARALELO}}
                   </option>
                 </datalist>
               </div>
@@ -1225,6 +1225,16 @@
           <div style="width: 80%; border: 0; background-color: white;  margin-left: 10%" disabled class="modal-body  row">
             <select (change)="asignarCurso($event.target.value)" class=" custom-select col-lg-8" required>
               <option disabled selected hidde value="" selected>Seleccione un curso</option>
+              <option value="OCTAVO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL)">OCTAVO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL)</option>
+              <option value="NOVENO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL)">NOVENO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL) </option>
+              <option value="DÉCIMO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL)">DÉCIMO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL)</option>
+      
+              <option value="PRIMER AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)">PRIMER AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)</option>
+              <option value="SEGUNDO AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)">SEGUNDO AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)</option>
+              <option value="TERCER AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)">TERCER AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)</option>
+
+
+
               <option value="OCTAVO AÑO DE EDUCACIÓN GENERAL BÁSICA">OCTAVO AÑO DE EDUCACIÓN GENERAL BÁSICA</option>
               <option value="NOVENO AÑO DE EDUCACIÓN GENERAL BÁSICA">NOVENO AÑO DE EDUCACIÓN GENERAL BÁSICA</option>
               <option value="DÉCIMO AÑO DE EDUCACIÓN GENERAL BÁSICA">DÉCIMO AÑO DE EDUCACIÓN GENERAL BÁSICA</option>

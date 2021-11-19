@@ -66,7 +66,7 @@ async function loginAdministrador(req, res) {
 
         let administrador = await Administrador.findOne({ where: { CORREO_ADMINISTRADOR: correo } });
 
-
+       console.log("correo", correo);
         if (!administrador) {
             // console.log("error 404 el usuario no existe");
             res.status(402).send({

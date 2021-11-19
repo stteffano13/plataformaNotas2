@@ -115,7 +115,7 @@ async function loginEstudiante(req, res) {
         var password = params.password;
         console.log("hola tefo este es el servicio provando el hash");
         //console.log(params.getHash);
-        let estudiante = await Estudiante.findOne({ where: { CORREO_ESTUDIANTE: correo, ESTADO_ESTUDIANTE: 0 } })
+        let estudiante = await Estudiante.findOne({ where: { CEDULA_ESTUDIANTE: correo, ESTADO_ESTUDIANTE: 0 } })
 
         if (!estudiante) {
             // console.log("error 404 el usuario no existe");

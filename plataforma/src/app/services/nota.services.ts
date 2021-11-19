@@ -49,6 +49,18 @@ export class NotaService {
     }
 
 
+    
+    registerNotaC(notaC_to_register) {
+        let json = JSON.stringify(notaC_to_register);
+        let params = json;
+        console.log("Materia", params);
+        let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getToken() });
+        return this._http
+            .post(this.url + "registerNotaC", params, { headers: headers })
+            .map(res => res.json());
+    }
+
+
 
     buscarNotas(notas_buscar) {
 
@@ -57,9 +69,6 @@ export class NotaService {
         let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getToken() });
         return this._http.post(this.url + "buscarNotas", params, { headers: headers }).map(res => res.json());
     }
-
-
-
 
     
 
@@ -70,6 +79,16 @@ export class NotaService {
         let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getToken() });
         return this._http
             .post(this.url + "buscarNotasB", params, { headers: headers })
+            .map(res => res.json());
+    }
+
+    buscarNotasC(notasC_buscar) {
+
+        let json = JSON.stringify(notasC_buscar);
+        let params = json;
+        let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getToken() });
+        return this._http
+            .post(this.url + "buscarNotasC", params, { headers: headers })
             .map(res => res.json());
     }
 
@@ -103,6 +122,19 @@ export class NotaService {
             .map(res => res.json());
     }
 
+   buscarNotasEstudianteC(notasEC_buscar) {
+        var objFecha = {
+            fecha: notasEC_buscar
+        }
+
+        console.log("buscador de periodo", objFecha);
+        let json = JSON.stringify(objFecha);
+        let params = json;
+        let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getToken() });
+        return this._http
+            .post(this.url + "buscarNotasEstudianteC", params, { headers: headers })
+            .map(res => res.json());
+    }
 
     
     buscarNotasMatris(notas_buscar) {
@@ -124,6 +156,17 @@ export class NotaService {
         let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getToken() });
         return this._http
             .post(this.url + "buscarNotasMatrisB", params, { headers: headers })
+            .map(res => res.json());
+    }
+
+    buscarNotasMatrisC(notasC_buscar) {
+
+        let json = JSON.stringify(notasC_buscar);
+        let params = json;
+      
+        let headers = new Headers({ "Content-type": "application/json", "Authorization": this.getToken() });
+        return this._http
+            .post(this.url + "buscarNotasMatrisC", params, { headers: headers })
             .map(res => res.json());
     }
 

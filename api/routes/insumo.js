@@ -10,5 +10,7 @@ api.post('/registerInsumo',md_auth.ensureAuth, InsumoController.saveInsumos);
 api.post('/getDiscInsumo',md_auth.ensureAuth, InsumoController.getDiscInsumo);
 api.post('/registerInsumoB',md_auth.ensureAuth, InsumoController.saveInsumosB);
 api.post('/getDiscInsumoB',md_auth.ensureAuth, InsumoController.getDiscInsumoB);
+api.post('/registerInsumoC',md_auth.ensureAuth, InsumoController.saveInsumosC);
+api.post('/getDiscInsumoC',md_auth.ensureAuth, InsumoController.getDiscInsumoC);
 
 module.exports = api;

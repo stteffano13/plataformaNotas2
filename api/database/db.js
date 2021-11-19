@@ -1,9 +1,9 @@
 const Sequelize = require("sequelize");
 const db = {}
 
-const sequelize = new Sequelize("sebadr_SIC", "sebadr_SIC", "23041996taN@", {
+const sequelize = new Sequelize("ebenezercolegioe_sic_distancia", "ebenezercolegioe_sic_distancia", "23041996taN@", {
 //const sequelize = new Sequelize("basetesis", "root", "12345678", {
-    host: '75.102.22.56',
+    host: '50.31.177.149',
    // host: '192.168.245.129',
     dialect: "mysql",
     operatorsAliase: false,

@@ -82,7 +82,7 @@ async function guardarPrimero(estudiante, params, res) {
 
 
 async function guardarSegundo(idE, idC, params, res) {
-
+console.log("entre guardar segundo")
     try {
         var count = 0;
         var fecha = now.format('YYYY-MM-DD');
@@ -227,6 +227,7 @@ async function getEstudiantesMatriculas(req, res) {
 
     try {
         var busqueda = req.params.busqueda;
+        console.log("bsuqueda",busqueda);
 
         if (!busqueda) {
             res.status(404).send({
