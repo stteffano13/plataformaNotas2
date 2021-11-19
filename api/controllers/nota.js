@@ -300,7 +300,7 @@ function buscarNotasMatris(req, res) {
 
 
   var paramsi = req.body;
-
+  console.log("params", paramsi)
   var vectorNotas = [];
   var cont2 = 0;
   cont3 = 0;
@@ -331,7 +331,7 @@ function buscarNotasMatris(req, res) {
           }
 
         } else {
-          console.log("de este estudiante no hay notas de ingles", params.estudiante.nombre, "materia", paramsM.nombre)
+          console.log("de este estudiante no hay notas de ingles", params.ESTUDIANTE.NOMBRE_ESTUDIANTE, "materia", paramsM.NOMBRE_MATERIA)
           cont2++;
           if (cont2 == multi) {
             res.status(200).send({
@@ -1001,7 +1001,7 @@ async function buscarNotasMatrisC(req, res) {
 
 
   var paramsi = req.body;
-
+  console.log("paramas pp", paramsi)
   var vectorNotas = [];
   var cont2 = 0;
   cont3 = 0;

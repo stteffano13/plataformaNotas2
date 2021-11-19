@@ -22,6 +22,7 @@ import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { UserOptions } from 'jspdf-autotable';
 import { ExcelService } from '../services/excel.service';
+import { debug } from 'console';
 
 
 
@@ -494,46 +495,46 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
     this.listadoMatriculasNueva = [];
     this.listadoMatriculas = "";
     this.loading = true;
-    
-      this.subscribe3 = this._matriculaServices.buscarMatriculas(this.busquedaMatricula).subscribe(
-        response => {
-          console.log("satisfactoriamente matriculas", response.matriculas);
 
-          this.listadoMatriculas = response.matriculas;
+    this.subscribe3 = this._matriculaServices.buscarMatriculas(this.busquedaMatricula).subscribe(
+      response => {
+        console.log("satisfactoriamente matriculas", response.matriculas);
 
-          if (this.listadoMatriculas == null) {
-            this.listadoM = false;
+        this.listadoMatriculas = response.matriculas;
 
-          } else {
-            console.log("entre a loq ue tenia");
-            this.listadoM = true;
+        if (this.listadoMatriculas == null) {
+          this.listadoM = false;
+
+        } else {
+          console.log("entre a loq ue tenia");
+          this.listadoM = true;
+          this.loading = false;
+          this.busquedaMatricula2();
+        }
+        // console.log(this.listadoChoferes);
+        this.loading = false;
+      },
+      error => {
+        this.loading = false;
+        var errorMessage = <any>error;
+        if (errorMessage) {
+          console.log(errorMessage);
+          document.getElementById("openModalError").click();
+          try {
+            var body = JSON.parse(error._body);
+            errorMessage = body.message;
+          } catch {
+            errorMessage = "No hay conexión intentelo más tarde";
             this.loading = false;
-            this.busquedaMatricula2();
-          }
-          // console.log(this.listadoChoferes);
-          this.loading = false;
-        },
-        error => {
-          this.loading = false;
-          var errorMessage = <any>error;
-          if (errorMessage) {
-            console.log(errorMessage);
             document.getElementById("openModalError").click();
-            try {
-              var body = JSON.parse(error._body);
-              errorMessage = body.message;
-            } catch {
-              errorMessage = "No hay conexión intentelo más tarde";
-              this.loading = false;
-              document.getElementById("openModalError").click();
-            }
-            // this.loading =false;
           }
           // this.loading =false;
         }
+        // this.loading =false;
+      }
 
-      );
-    
+    );
+
   }
 
 
@@ -644,7 +645,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
 
       });
 
-      console.log(" this.listadoAsignacionNueva",  this.listadoAsignacionNueva);
+      console.log(" this.listadoAsignacionNueva", this.listadoAsignacionNueva);
 
     } catch (err) {
       this.mensajecorrectomodals = "Es necesario ingresar los 3 parametros de busqueda";
@@ -1481,7 +1482,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
 
 
   asignarMateriaCurso(value) {
-
+    debugger;
     var busqueda = value.split(",");
     this.loading = true;
 
@@ -1525,29 +1526,41 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
 
         console.log("materias que traigo ", this.listadoMateriasCurso);
 
-        if (this.listadoEstudianteMatriculas != null && valu1 != "BÁSICO SUPERIOR INTENSIVO ") {
 
-
+        if (this.listadoEstudianteMatriculas != null && (valu1.indexOf("(DISTANCIA VIRTUAL)") != -1 || valu1.indexOf("(SEMIPRESENCIAL)") != -1)) {
           this.loading = false;
           var objBuscarNotas = {
 
             materias: this.listadoMateriasCurso,
             buscar: this.listadoEstudianteMatriculas
           }
-          this.traerNotasMatris();
+          this.traerNotasMatrisC(objBuscarNotas);
 
-          //this.traerNotasB(objBuscarNotas);
+        } else
 
-        } else {
-          this.loading = false;
-          var objBuscarNotas = {
+          if (this.listadoEstudianteMatriculas != null && valu1 != "BÁSICO SUPERIOR INTENSIVO ") {
 
-            materias: this.listadoMateriasCurso,
-            buscar: this.listadoEstudianteMatriculas
+
+            this.loading = false;
+            var objBuscarNotas = {
+
+              materias: this.listadoMateriasCurso,
+              buscar: this.listadoEstudianteMatriculas
+            }
+            this.traerNotasMatris();
+
+            //this.traerNotasB(objBuscarNotas);
+
+          } else {
+            this.loading = false;
+            var objBuscarNotas = {
+
+              materias: this.listadoMateriasCurso,
+              buscar: this.listadoEstudianteMatriculas
+            }
+            this.traerNotasMatrisB(objBuscarNotas);
+
           }
-          this.traerNotasMatrisB(objBuscarNotas);
-
-        }
 
       },
       error => {
@@ -1598,7 +1611,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
 
             this.listadoNotas.forEach(element => {
 
-                console.log("elementoE", elementE.ESTUDIANTE.ID_ESTUDIANTE , "elemento", element, "elemento", elementM.ID_MATERIA );
+              console.log("elementoE", elementE.ESTUDIANTE.ID_ESTUDIANTE, "elemento", element, "elemento", elementM.ID_MATERIA);
 
 
               if (elementE.ESTUDIANTE.ID_ESTUDIANTE == element.ID_ESTUDIANTE && element.ID_MATERIA == elementM.ID_MATERIA) {
@@ -1686,7 +1699,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
         this.listadoEstudianteMatriculas.forEach(elementE => {
           this.listadoMateriasCurso.forEach(elementM => {
             this.listadoNotas.forEach(element => {
-              console.log("elementoE", elementE, "elemento", element, "ELEMTNM",elementM );
+              console.log("elementoE", elementE, "elemento", element, "ELEMTNM", elementM);
               if (elementE.ESTUDIANTE.ID_ESTUDIANTE == element.ID_ESTUDIANTE && element.ID_MATERIA == elementM.ID_MATERIA) {
                 this.objNotasPT.push(element.PT)
               }
@@ -1706,6 +1719,85 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
           if (i == this.diviciones.length - 1) {
             this.nuevo = this.diviciones[i].substring(1).split(",");
 
+          } else {
+
+            if (i % 2 == 0) {
+
+              var n = this.diviciones[i].slice(0, -1).split(",");
+              this.nuevo = n.filter(Boolean);
+            } else {
+              var n2 = this.diviciones[i].slice(1, -1).split(",");
+              this.nuevo = n2.filter(Boolean);
+
+            }
+          }
+          this.nuevo2.push(this.nuevo);
+          console.log("final", this.nuevo2);
+        }
+
+        this.loading = false;
+
+      },
+      error => {
+        this.loading = false;
+        var errorMessage = <any>error;
+        if (errorMessage) {
+          console.log(errorMessage);
+          try {
+            var body = JSON.parse(error._body);
+            errorMessage = body.message;
+          } catch {
+            errorMessage = "No hay conexión intentelo más tarde";
+            this.loading = false;
+            document.getElementById("openModalError").click();
+          }
+          // this.loading =false;
+        }
+        // this.loading =false;
+      }
+
+    );
+
+  }
+  
+
+
+  traerNotasMatrisC(value) {
+    this.objNotasPT = [];
+    this.diviciones;
+    this.nuevo = [];
+    this.nuevo2 = [];
+    this._notaService.buscarNotasMatrisC(value).subscribe(
+      response => {
+        this.loading = false;
+        this.listadoNotas = response.vectorNotas;
+
+        //  ordenar
+
+        this.listadoEstudianteMatriculas.forEach(elementE => {
+          this.listadoMateriasCurso.forEach(elementM => {
+            this.listadoNotas.forEach(element => {
+              console.log("elementoE", elementE, "elemento", element, "ELEMTNM", elementM);
+              if (elementE.ESTUDIANTE.ID_ESTUDIANTE == element.ID_ESTUDIANTE && element.ID_MATERIA == elementM.ID_MATERIA) {
+                this.objNotasPT.push(element.PT)
+              }
+            });
+          });
+          this.objNotasPT.push(";");
+        });
+        this.objNotasPT.pop();
+        console.log("notas del promedio total", this.objNotasPT);
+        this.diviciones = this.objNotasPT.toString().split(";");
+        console.log("diviciones0", this.diviciones[0]);
+        console.log("divicione1", this.diviciones[1]);
+        console.log("divicione2", this.diviciones[2]);
+          
+        for (let i = 0; i < this.diviciones.length; i++) {
+        
+
+          if (i == this.diviciones.length - 1) {
+            this.nuevo = this.diviciones[i].split(",");
+            
           } else {
 
             if (i % 2 == 0) {
@@ -1791,7 +1883,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
     curso = value.split(".");
     this.disabledMateriaImpartir = false;
     console.log("value[1]", curso);
-    if (curso[1].indexOf("SUPERIOR") != -1 || curso[1].indexOf("OCTAVO") != -1 || curso[1].indexOf("NOVENO") != -1 || curso[1].indexOf("DECIMO") != -1 ) {
+    if (curso[1].indexOf("SUPERIOR") != -1 || curso[1].indexOf("OCTAVO") != -1 || curso[1].indexOf("NOVENO") != -1 || curso[1].indexOf("DECIMO") != -1) {
       this.vectorlistadoMaterias = this.arrayOctavo;
       console.log("entre basico");
     } else {
@@ -1865,8 +1957,8 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
 
     doc.addImage(logo, 'PNG', 30, 15, 100, 80);
     doc.fromHTML("<h2>COLEGIO DE BACHILLERATO PCEI EBENEZER</h2>", 170, 2);
-    doc.fromHTML("<h4>ACTA CONSOLIDADA DE NOTAS </h4>", 255, 28);
-    doc.fromHTML("<h4> PERIODO:" + "  " + this.opcionPeriodoLectivo + "</h4>", 250, 48);
+    doc.fromHTML("<h4>ACTA CONSOLIDADA DE NOTAS </h4>", 170, 28);
+    doc.fromHTML("<h4> PERIODO:" + "  " + this.opcionPeriodoLectivo + "</h4>", 170, 48);
 
 
 
