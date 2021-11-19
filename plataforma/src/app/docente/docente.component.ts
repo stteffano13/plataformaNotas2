@@ -2292,6 +2292,21 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
   generarExel(variable) {
 
+    if (variable == 3) {
+      this.VreporteExcel = this.objectC;
+      for (var i in this.VreporteExcel) {
+        this.VreporteExcel[i].estudiante = this.listadoEstudianteMatriculas[i].ESTUDIANTE.APELLIDO_ESTUDIANTE + " " + this.listadoEstudianteMatriculas[i].ESTUDIANTE.NOMBRE_ESTUDIANTE;
+        delete this.VreporteExcel[i]._id;
+        delete this.VreporteExcel[i].materia;
+        delete this.VreporteExcel[i].periodo;
+        this.objectC[i].sesentaporciento = this.objectCalculableC[i].sesentaporciento;
+        this.objectC[i].cuarentaporciento = this.objectCalculableC[i].cuarentaporciento;
+        this.objectC[i].promedioFinal = this.objectCalculableC[i].promedioFinal;
+      
+
+      }
+    } else
+
     if (variable == 1) {
       this.VreporteExcel = this.object;
       for (var i in this.VreporteExcel) {
