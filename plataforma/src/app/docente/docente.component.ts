@@ -170,8 +170,8 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
     delete this.objNC;
     delete this.objNCC;
     delete this.objectCalculableC;
-  
-  
+
+
 
 
   }
@@ -1540,7 +1540,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
       if (response.materias[0] != undefined) {
         this.vectorListadoMisMaterias = response.materias;
-
+        console.log("vector lsitado materias", this.vectorListadoMisMaterias)
       }
     }, (err) => { console.log("Existen Complicaciones Intente mas tarde", err) }
     );
@@ -2205,8 +2205,8 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
       doc.fromHTML("<h4  style='text-align: center' >" + this.Titulo1 + "</h4>", 170, 48);
       doc.autoTable({
         html: '#results3', startY: 150, columnStyles: {
-         
-         26: { fillColor:  [249, 247, 95] },28: { fillColor:  [249, 247, 95] },29: { fillColor: [191, 250, 119] }
+
+          26: { fillColor: [249, 247, 95] }, 28: { fillColor: [249, 247, 95] }, 29: { fillColor: [191, 250, 119] }
         }, styles: {
           overflow: 'linebreak',
           fontSize: 8,
@@ -2311,36 +2311,36 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
       }
     } else
 
-    if (variable == 1) {
-      this.VreporteExcel = this.object;
-      for (var i in this.VreporteExcel) {
-        this.VreporteExcel[i].estudiante = this.listadoEstudianteMatriculas[i].ESTUDIANTE.APELLIDO_ESTUDIANTE + " " + this.listadoEstudianteMatriculas[i].ESTUDIANTE.NOMBRE_ESTUDIANTE;
-        delete this.VreporteExcel[i]._id;
-        delete this.VreporteExcel[i].materia;
-        delete this.VreporteExcel[i].periodo;
-        this.object[i].ochenta_p1 = this.objectCalculable[i].ochentaporciento1;
-        this.object[i].veinte_p1 = this.objectCalculable[i].veinteporciento1;
-        this.object[i].promedio1 = this.objectCalculable[i].promedio1;
-        this.object[i].ochenta_p2 = this.objectCalculable[i].ochentaporciento2;
-        this.object[i].veinte_p2 = this.objectCalculable[i].veinteporciento2;
-        this.object[i].promedio2 = this.objectCalculable[i].promedio2;
+      if (variable == 1) {
+        this.VreporteExcel = this.object;
+        for (var i in this.VreporteExcel) {
+          this.VreporteExcel[i].estudiante = this.listadoEstudianteMatriculas[i].ESTUDIANTE.APELLIDO_ESTUDIANTE + " " + this.listadoEstudianteMatriculas[i].ESTUDIANTE.NOMBRE_ESTUDIANTE;
+          delete this.VreporteExcel[i]._id;
+          delete this.VreporteExcel[i].materia;
+          delete this.VreporteExcel[i].periodo;
+          this.object[i].ochenta_p1 = this.objectCalculable[i].ochentaporciento1;
+          this.object[i].veinte_p1 = this.objectCalculable[i].veinteporciento1;
+          this.object[i].promedio1 = this.objectCalculable[i].promedio1;
+          this.object[i].ochenta_p2 = this.objectCalculable[i].ochentaporciento2;
+          this.object[i].veinte_p2 = this.objectCalculable[i].veinteporciento2;
+          this.object[i].promedio2 = this.objectCalculable[i].promedio2;
 
+        }
+      } else {
+        this.VreporteExcel = this.objectB;
+        for (var i in this.VreporteExcel) {
+          this.VreporteExcel[i].estudiante = this.listadoEstudianteMatriculas[i].ESTUDIANTE.APELLIDO_ESTUDIANTE + " " + this.listadoEstudianteMatriculas[i].ESTUDIANTE.NOMBRE_ESTUDIANTE;
+          delete this.VreporteExcel[i]._id;
+          delete this.VreporteExcel[i].materia;
+          delete this.VreporteExcel[i].periodo;
+          this.objectB[i].Ochenta_P1 = this.objectCalculableB[i].ochentaporciento1;
+          this.objectB[i].Veinte_P1 = this.objectCalculableB[i].veinteporciento1;
+          this.objectB[i].Promedio1 = this.objectCalculableB[i].promedio1;
+          this.objectB[i].Ochenta_P2 = this.objectCalculableB[i].ochentaporciento2;
+          this.objectB[i].Veinte_P2 = this.objectCalculableB[i].veinteporciento2;
+          this.objectB[i].Promedio2 = this.objectCalculableB[i].promedio2;
+        }
       }
-    } else {
-      this.VreporteExcel = this.objectB;
-      for (var i in this.VreporteExcel) {
-        this.VreporteExcel[i].estudiante = this.listadoEstudianteMatriculas[i].ESTUDIANTE.APELLIDO_ESTUDIANTE + " " + this.listadoEstudianteMatriculas[i].ESTUDIANTE.NOMBRE_ESTUDIANTE;
-        delete this.VreporteExcel[i]._id;
-        delete this.VreporteExcel[i].materia;
-        delete this.VreporteExcel[i].periodo;
-        this.objectB[i].Ochenta_P1 = this.objectCalculableB[i].ochentaporciento1;
-        this.objectB[i].Veinte_P1 = this.objectCalculableB[i].veinteporciento1;
-        this.objectB[i].Promedio1 = this.objectCalculableB[i].promedio1;
-        this.objectB[i].Ochenta_P2 = this.objectCalculableB[i].ochentaporciento2;
-        this.objectB[i].Veinte_P2 = this.objectCalculableB[i].veinteporciento2;
-        this.objectB[i].Promedio2 = this.objectCalculableB[i].promedio2;
-      }
-    }
     // var materias = [];
     // materias.push("NOMBRES Y APELLIDOS");
     // for (var i in this.listadoMateriasCurso) {
