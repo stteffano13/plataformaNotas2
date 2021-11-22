@@ -885,7 +885,7 @@
         <tr *ngFor=" let listado of  vectorListadoMisMaterias; let i = index; let listadoN of listadoEstudianteNotas">
 
 
-          <td class="active">{{listado.nombre}} </td>
+          <td class="active">{{listado.NOMBRE_MATERIA}} </td>
           <td id="tdfila">{{this.object[i].insumo1}}
             <input id="tdboton" type="text" [(ngModel)]="this.object[i].insumo1" name="isumo1{{i}}">
           </td>

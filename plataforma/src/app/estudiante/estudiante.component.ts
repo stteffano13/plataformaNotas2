@@ -210,6 +210,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
 
   traerNotas() {
     var periodo = this.periodoLectivoActual;
+    console.log("perdiodo antes de mandar", periodo)
     this.subscribe3 = this._notaService.buscarNotasEstudiante(periodo).subscribe(
       response => {
 
@@ -259,6 +260,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
               i++;
             }
           });
+          //i++;
         });
 
         this.loading = false;
@@ -366,7 +368,8 @@ export class EstudianteComponent implements OnInit, DoCheck {
           this.listadoNotas.forEach(element => {
             debugger;
             console.log("elementoE", elementE.ID_MATERIA, "elemento", element.ID_MATERIA);
-            if (elementE != null && element != null) {
+            
+              if ((elementE != 0 && element != 0) && (elementE != null && element != null)) {
               if (elementE.ID_MATERIA == element.ID_MATERIA) {
 
                 
@@ -422,12 +425,14 @@ export class EstudianteComponent implements OnInit, DoCheck {
 
                 this.calculosBInit(i);
 
-
+                i++;
               }
+            }else{
+              i++;
             }
            
           });
-          i++;
+         
         });
 
 
@@ -652,7 +657,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
           this.listadoNotas.forEach(element => {
 
             console.log("elementoE", elementE.ID_MATERIA, "elemento", element.ID_MATERIA);
-            if (elementE != null && element != null) {
+            if ((elementE != 0 && element != 0) && (elementE != null && element != null)) {
               if (elementE.ID_MATERIA == element.ID_MATERIA) {
                 this.objectC[i].Puforo = element.PUFORO;
                 this.objectC[i].Putarea1 = element.PUTAREA1;
@@ -691,11 +696,14 @@ export class EstudianteComponent implements OnInit, DoCheck {
              
                 this.calculosCInit(i);
 
-
+                i++;
               }
+            }else{
+              i++;
             }
-            i++;
+           
           });
+          
         });
 
 
