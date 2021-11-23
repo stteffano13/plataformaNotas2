@@ -227,6 +227,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
             console.log("elementoE", elementE.ID_MATERIA, "elemento", element);
             if ((elementE != 0 && element != 0) && (elementE != null && element != null)) {
               if (elementE.ID_MATERIA == element.ID_MATERIA) {
+                debugger;
                 this.object[i].insumo1 = element.INSUMO1;
                 this.object[i].insumo2 = element.INSUMO2;
                 this.object[i].insumo3 = element.INSUMO3;
@@ -252,15 +253,12 @@ export class EstudianteComponent implements OnInit, DoCheck {
                 this.object[i].examenGracia = element.EXAMENGRACIA;
 
                 this.calculosInit(i);
-                i++;
+             
 
               }
-            } else {
-
-              i++;
-            }
+            } 
           });
-          //i++;
+         i++;
         });
 
         this.loading = false;
@@ -425,14 +423,12 @@ export class EstudianteComponent implements OnInit, DoCheck {
 
                 this.calculosBInit(i);
 
-                i++;
+              
               }
-            }else{
-              i++;
             }
            
           });
-         
+         i++;
         });
 
 
@@ -696,14 +692,12 @@ export class EstudianteComponent implements OnInit, DoCheck {
              
                 this.calculosCInit(i);
 
-                i++;
+              
               }
-            }else{
-              i++;
             }
            
           });
-          
+          i++;
         });
 
 
