@@ -889,6 +889,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
 
       doc.autoTable({
         html: '#results', startY: 120, columnStyles: {
+          5:{fillColor:[247, 83, 116]},
           9: { fillColor: [249, 247, 95] },
           11: { fillColor: [249, 247, 95] },
           12: { fillColor: [207, 233, 176] }, 21: { fillColor: [249, 247, 95] }, 23: { fillColor: [249, 247, 95] },

@@ -2205,7 +2205,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
       doc.fromHTML("<h4  style='text-align: center' >" + this.Titulo1 + "</h4>", 170, 48);
       doc.autoTable({
         html: '#results3', startY: 150, columnStyles: {
-
+         
           26: { fillColor: [249, 247, 95] }, 28: { fillColor: [249, 247, 95] }, 29: { fillColor: [191, 250, 119] }
         }, styles: {
           overflow: 'linebreak',
@@ -2233,6 +2233,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         doc.fromHTML("<h4  style='text-align: center' >" + this.Titulo1 + "</h4>", 200, 48);
         doc.autoTable({
           html: '#results', startY: 150, columnStyles: {
+            6: { fillColor: [247, 83, 116] },
             10: { fillColor: [249, 247, 95] },
             12: { fillColor: [249, 247, 95] },
             13: { fillColor: [207, 233, 176] }, 22: { fillColor: [249, 247, 95] }, 24: { fillColor: [249, 247, 95] },
