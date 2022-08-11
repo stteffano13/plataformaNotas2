@@ -46,65 +46,11 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </li>
-        <!--        <li>
-          <select (change)="asignarMateriaCurso($event.target.value)" class=" custom-select " required>
-            <option [value]="" selected>Selecciona materia y curso</option>
-            <option *ngFor="let oneDoor of vectorListadoMisMaterias" value="{{oneDoor.curso._id}},{{oneDoor._id}},{{oneDoor.curso.curso}},{{oneDoor.nombre}}">{{oneDoor.nombre}}</option>
-          </select>
-
-
-        </li>-->
-
-        <!-- ====================================================       Notificaciones  INGRESAR PARALELO ============================================-->
-
-
-        <!--  <li class="nav-item dropdown">
-          <a title="Crear paralelo" class="nav-link dropdown-toggle mr-lg-2" id="openModalIngresarParalelo" data-toggle="modal" aria-haspopup="true"
-            aria-expanded="false" data-target="#ModalIngresarParalelo">
-            <i class="fa fa-fw fa-list-alt"></i>
-            <span class="d-lg-none">Paralelo
-              <span class="badge badge-pill badge-primary"> Nuevos</span>
-            </span>
-            <span class="indicator text-primary d-none d-lg-block">
-              <i class="fa fa-fw fa-circle"></i>
-
-            </span>
-          </a>
-        </li>-->
-
-        <!-- ====================================================       Notificaciones  ELIMINAR  PARALELO ============================================-->
-
-
-        <!-- <li class="nav-item dropdown">
-          <a title="Crear paralelo" class="nav-link dropdown-toggle mr-lg-2" id="openModalEliminarParalelo" data-toggle="modal" aria-haspopup="true"
-            aria-expanded="false" data-target="#ModalEliminarParalelo">
-            <i class="fa fa-fw fa-list-alt"></i>
-            <span class="d-lg-none">Paralelo
-              <span class="badge badge-pill badge-primary"> Nuevos</span>
-            </span>
-            <span class="indicator text-primary d-none d-lg-block">
-              <i class="fa fa-fw fa-circle"></i>
-
-            </span>
-          </a>
-        </li>-->
+      
 
 
         <li class="nav-item">
 
-          <!-- ====================================================       BUSCADOR UNIVERSAL  ============================================-->
-
-          <!-- <form class="form-inline my-2 my-lg-0 mr-lg-2">
-            <div class="input-group">
-              <input title="Buscardor de usuarios, choferes y automóviles" class="form-control" type="text" placeholder="Buscar" #Buscar="ngModel"
-                [(ngModel)]="buscar" name="buscar">
-              <span class="input-group-append">
-                <button title="Buscardor de usuarios, choferes y automóviles" class="btn btn-primary" (click)="busqueda()" type="button">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>-->
         </li>
         <li class="nav-item" title="Salir del Sistema Montecarlo VIP">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
@@ -127,10 +73,12 @@
 
 
       <h1 style="margin-top: 5%">{{identity.NOMBRE_ESTUDIANTE}} {{identity.APELLIDO_ESTUDIANTE}} </h1>
-
+      <h1 >{{ vectorListadoMisMaterias[0].CURSO.CURSO}} {{ vectorListadoMisMaterias[0].CURSO.PARALELO}} </h1>
+     
       <!-- tabola de insumos -->
 
       <div *ngIf="banderInsumo" id="formContent">
+     
         <button (click)="cerrarDescInsumos()" class="btn btn-light">
           <i class="fa fa-window-close fa-lg"></i>
         </button>
@@ -248,6 +196,7 @@
       </div>
 
       <!--Tbla insumos basica-->
+      
 
       <div *ngIf="banderInsumoB" id="formContent">
         <button (click)="cerrarDescInsumosB()" class="btn btn-light">
@@ -661,6 +610,7 @@
 
 
       </div>
+      
       <!-- ====================================================    Tabla para Notas 1 ============================================-->
 
 

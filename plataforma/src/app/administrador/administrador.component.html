@@ -447,6 +447,7 @@
                 <th style="color: white" scope="col">Cédula</th>
                 <th style="color: white" scope="col">Curso</th>
                 <th style="color: white" scope="col">Periodo</th>
+                <th style="color: white" scope="col">Estado</th>
                 <th style="color: white" scope="col">Opción</th>
               </tr>
             </thead>
@@ -454,11 +455,13 @@
               <tr *ngFor=" let listado of  listadoMatriculasNueva;let i = index">
                 <th scope="row">{{i+1}}</th>
 
-                <td style="font-size: 130%">{{listado.ESTUDIANTE.NOMBRE_ESTUDIANTE}}</td>
-                <td style="font-size: 130%"> {{ listado.ESTUDIANTE.APELLIDO_ESTUDIANTE}}</td>
-                <td style="font-size: 130%">{{listado.ESTUDIANTE.CEDULA_ESTUDIANTE}}</td>
-                <td style="font-size: 130%">{{listado.CURSO.CURSO }} "{{listado.CURSO.PARALELO }}"</td>
-                <td style="font-size: 130%">{{listado.PERIODO }}</td>
+                <td >{{listado.ESTUDIANTE.NOMBRE_ESTUDIANTE}}</td>
+                <td > {{ listado.ESTUDIANTE.APELLIDO_ESTUDIANTE}}</td>
+                <td>{{listado.ESTUDIANTE.CEDULA_ESTUDIANTE}}</td>
+                <td>{{listado.CURSO.CURSO }} "{{listado.CURSO.PARALELO }}"</td>
+                <td >{{listado.PERIODO }}</td>
+                <td *ngIf="listado.ESTADO_MATRICULA==0">Activo</td>
+                <td *ngIf="listado.ESTADO_MATRICULA==10">Pendiente</td>
                 <td>
                   <input class="btn btn-primary " type="button" value="Eliminar" (click)="updateDatosMatricula(listado)">
                 </td>

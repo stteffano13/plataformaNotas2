@@ -199,7 +199,7 @@ async function getListadoMioMaterias(req, res) {
                 });
             } else {
                 let materias = await Materia.findAll({ where: { ESTADO_MATERIA: 0, ID_DOCENTE: busqueda, PERIODO: periodo.dataValues.PERIODO }, include: [{ model: Curso }] })  /// AUNMENTAR EL PERIODO
-
+             
                 if (!materias) {
                     return res.status(200).send({
                         message: 'No tiene Materias'

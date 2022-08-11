@@ -12,7 +12,7 @@ var path = require('path');
 var fs = require('fs');
 const { Console } = require('console');
 
-
+const { Op } = require("sequelize");
 // Create a new moment object
 var now = moment();
 
@@ -95,10 +95,13 @@ console.log("entre guardar segundo")
         })
 
         if (matriculaEncontrada) {
-            return res.status(500).send({
-                message: "El Estudiante ya fue matriculado"
-            });
-        } else {
+
+            params.estado=10;
+        //    return res.status(500).send({
+        //         message: "El Estudiante ya fue matriculado"
+        //     });
+         } 
+         //else {
 
             let array = await Matricula.findAll();
 
@@ -141,7 +144,7 @@ console.log("entre guardar segundo")
             }
 
 
-        }
+       // }
 
     } catch (err) {
         res.status(500).send({
@@ -169,7 +172,7 @@ async function busquedaMatriculas(req, res) {
             let busqueda2 = busqueda.split('.');
             let bsuquedaEstudiante = await Estudiante.findOne({ where: { CODIGO_ESTUDIANTE: busqueda2[0] } });
 
-            let matriculas = await Matricula.findAll({ where: { ESTADO_MATRICULA: 0, ID_ESTUDIANTE: bsuquedaEstudiante.dataValues.ID_ESTUDIANTE }, include: [{ model: Estudiante }, { model: Curso }] })  /// AUNMENTAR EL PERIODO
+            let matriculas = await Matricula.findAll({ where: { ESTADO_MATRICULA: {[Op.or]:[0,10]}, ID_ESTUDIANTE: bsuquedaEstudiante.dataValues.ID_ESTUDIANTE }, include: [{ model: Estudiante }, { model: Curso }] })  /// AUNMENTAR EL PERIODO
 
             console.log("matriculas", matriculas)
 
@@ -206,7 +209,9 @@ async function updateMatricula(req, res) {
 
         let matriculaEncontrada = await Matricula.findOne({ where: { ID_MATRICULA: messageId } });
         let matriculaUpdate = await matriculaEncontrada.update({ ESTADO_MATRICULA: update.estado });
-
+        let matriculaPendienteEncontrada =await  Matricula.findOne({ where: { ESTADO_MATRICULA: 10 } });
+        let matriculaPendienteActualizada = await matriculaPendienteEncontrada.update({ ESTADO_MATRICULA:0});
+        
         if (!matriculaUpdate) {
             res.status(404).send({ message: "La matricula no se ha actualizado" });
         } else {

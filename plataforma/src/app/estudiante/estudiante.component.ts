@@ -88,9 +88,10 @@ export class EstudianteComponent implements OnInit, DoCheck {
   ngOnInit() {
 
     this.loading = true;
-    this.getListadoMisMaterias();
     this.getPeriodoActual();
 
+    this.getListadoMisMaterias();
+   
 
     this.identity = this._estudianteServices.getIdentity();
   }
