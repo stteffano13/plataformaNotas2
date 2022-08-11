@@ -716,8 +716,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
 
   DescripcionInsumosC() {
-    this.descripcionInsumoC = new InsumoC("", "", "", "", "", "", "", "", "", "", "", "", "", "",
-      "", "", "", "", "", "", "", "", "", "");
+    this.descripcionInsumoC = new InsumoC("", "", "", "", "", "", "", "", "", "", "", "", "", "","","","","", "", "", "", "", "", "", "", "", "", "","");
 
     this.descripcionInsumoC.materia = this.guardarMateriaMatricula;
     this.descripcionInsumoC.periodo = this.periodoLectivoActual;
@@ -1629,7 +1628,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
           for (let i = 0; i < Object.keys(this.listadoEstudianteMatriculas).length; i++) {
 
-            this.objectC.push(this.objNC = new NotaC("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",));
+            this.objectC.push(this.objNC = new NotaC("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
             this.objectCalculableC.push(this.objNCC = new CalculableC("0", "0", "0"));
           }
           console.log("estas es la materia a busca", busqueda[1]);
