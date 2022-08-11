@@ -805,6 +805,14 @@ async function saveNotasC2(params, res, cont, paramsi) {
     notaC.CUEXAMEN = params.Cuexamen;
 
 
+    notaC.QUFORO = params.Quforo;
+    notaC.QUTAREA1 = params.Qutarea1;
+    notaC.QUTAREA2 = params.Qutarea2;
+    notaC.QUTAREA3 = params.Qutarea3;
+    notaC.QUTAREA4 = params.Qutarea4;
+    notaC.QUEXAMEN = params.Quexamen;
+
+
     notaC.EXAMENFINAL = params.examenFinal;
     notaC.EXAMENSUPLETORIO = params.examenSupletorio;
     notaC.EXAMENREMEDIAL = params.examenRemedial;
@@ -875,6 +883,13 @@ async function updateNotasFinC(notas, params, res, cont, paramsi) {
       CUTAREA3: params.Cutarea3,
       CUTAREA4: params.Cutarea4,
       CUEXAMEN: params.Cuexamen,
+
+      QUFORO: params.Quforo,
+      QUTAREA1: params.Qutarea1,
+      QUTAREA2: params.Qutarea2,
+      QUTAREA3: params.Qutarea3,
+      QUTAREA4: params.Qutarea4,
+      QUEXAMEN: params.Quexamen,
 
 
       EXAMENFINAL: params.examenFinal,

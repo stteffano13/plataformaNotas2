@@ -814,6 +814,11 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
           case "cut3": this.recivir = this.listadoInsumosC.DESCCUTAREA3; break;
           case "cut4": this.recivir = this.listadoInsumosC.DESCCUTAREA4; break;
 
+          case "quf": this.recivir = this.listadoInsumosC.DESCQUFORO; break;
+          case "qut1": this.recivir = this.listadoInsumosC.DESCQUTAREA1; break;
+          case "qut2": this.recivir = this.listadoInsumosC.DESCQUTAREA2; break;
+          case "qut3": this.recivir = this.listadoInsumosC.DESCQUTAREA3; break;
+          case "qut4": this.recivir = this.listadoInsumosC.DESCQUTAREA4; break;
 
         }
 
@@ -1184,6 +1189,9 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
       || this.objectC[i].Cuforo > 10 || this.objectC[i].Cutarea1 > 10 || this.objectC[i].Cutarea2 > 10
       || this.objectC[i].Cutarea3 > 10 || this.objectC[i].Cutarea4 > 10 || this.objectC[i].Cuexamen > 10
 
+      || this.objectC[i].Quforo > 10 || this.objectC[i].Qutarea1 > 10 || this.objectC[i].Qutarea2 > 10
+      || this.objectC[i].Qutarea3 > 10 || this.objectC[i].Qutarea4 > 10 || this.objectC[i].Quexamen > 10
+
       || this.objectC[i].examenFinal > 10 || this.objectC[i].examenGracia > 10 || this.objectC[i].examenRemedial > 10 || this.objectC[i].examenSupletorio > 10) {
 
       this.btnFinalizar3 = true;
@@ -1207,9 +1215,12 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         parseFloat(this.objectC[i].Tutarea3) + parseFloat(this.objectC[i].Tutarea4) + parseFloat(this.objectC[i].Tuexamen) +
 
         parseFloat(this.objectC[i].Cuforo) + parseFloat(this.objectC[i].Cutarea1) + parseFloat(this.objectC[i].Cutarea2) +
-        parseFloat(this.objectC[i].Cutarea3) + parseFloat(this.objectC[i].Cutarea4) + parseFloat(this.objectC[i].Cuexamen)
+        parseFloat(this.objectC[i].Cutarea3) + parseFloat(this.objectC[i].Cutarea4) + parseFloat(this.objectC[i].Cuexamen)+
 
-      ) / 24) * 0.6;
+        parseFloat(this.objectC[i].Quforo) + parseFloat(this.objectC[i].Qutarea1) + parseFloat(this.objectC[i].Qutarea2) +
+        parseFloat(this.objectC[i].Qutarea3) + parseFloat(this.objectC[i].Qutarea4) + parseFloat(this.objectC[i].Quexamen)
+
+      ) / 30) * 0.6;
 
 
 
@@ -1435,9 +1446,12 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         parseFloat(this.objectC[i].Tutarea3) + parseFloat(this.objectC[i].Tutarea4) + parseFloat(this.objectC[i].Tuexamen) +
 
         parseFloat(this.objectC[i].Cuforo) + parseFloat(this.objectC[i].Cutarea1) + parseFloat(this.objectC[i].Cutarea2) +
-        parseFloat(this.objectC[i].Cutarea3) + parseFloat(this.objectC[i].Cutarea4) + parseFloat(this.objectC[i].Cuexamen)
+        parseFloat(this.objectC[i].Cutarea3) + parseFloat(this.objectC[i].Cutarea4) + parseFloat(this.objectC[i].Cuexamen)+
 
-      ) / 24) * 0.6;
+        parseFloat(this.objectC[i].Quforo) + parseFloat(this.objectC[i].Qutarea1) + parseFloat(this.objectC[i].Qutarea2) +
+        parseFloat(this.objectC[i].Qutarea3) + parseFloat(this.objectC[i].Qutarea4) + parseFloat(this.objectC[i].Quexamen)
+
+      ) / 30) * 0.6;
 
 
 
@@ -1607,7 +1621,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         console.log("para habilitar  tablas", busqueda[2]);
         console.log("listado estudfiante", this.listadoEstudianteMatriculas)
 
-        if (busqueda[2].indexOf("(DISTANCIA VIRTUAL)") != -1 || busqueda[2].indexOf("(SEMIPRESENCIAL)") != -1) {
+        if (busqueda[2].indexOf("(DISTANCIA VIRTUAL)") != -1) {
           this.banderTabla1 = false;
           this.banderTabla2 = false;
           this.banderTabla3 = true;

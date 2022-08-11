@@ -148,7 +148,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
       if (response.materias[0] != undefined) {
         this.vectorListadoMisMaterias = response.materias;
         console.log("las amterias", this.vectorListadoMisMaterias);
-        if (this.vectorListadoMisMaterias[0].CURSO.CURSO.indexOf("(DISTANCIA VIRTUAL)") != -1 || this.vectorListadoMisMaterias[0].CURSO.CURSO.indexOf("(SEMIPRESENCIAL)") != -1) {
+        if (this.vectorListadoMisMaterias[0].CURSO.CURSO.indexOf("(DISTANCIA VIRTUAL)") != -1) {
 
           this.banderTabla3 = true;
           this.banderTabla1 = false;
@@ -156,7 +156,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
 
           for (let i = 0; i < Object.keys(this.vectorListadoMisMaterias).length; i++) {
 
-            this.objectC.push(this.objNC = new NotaC("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
+            this.objectC.push(this.objNC = new NotaC("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0","0","0","0","0","0"));
             this.objectCalculableC.push(this.objNCC = new CalculableC("0", "0", "0",));
             console.log("estos son los seros del objeto C", this.objectC);
           }
@@ -560,7 +560,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
 
   logout() {
     this._estudianteServices.logout();
-    location.reload(true);
+    location.reload();
   }
 
   recargar() {
@@ -685,6 +685,13 @@ export class EstudianteComponent implements OnInit, DoCheck {
                 this.objectC[i].Cutarea4 = element.CUTAREA4;
                 this.objectC[i].Cuexamen = element.CUEXAMEN;
 
+                this.objectC[i].Quforo = element.QUFORO;
+                this.objectC[i].Qutarea1 = element.QUTAREA1;
+                this.objectC[i].Qutarea2 = element.QUTAREA2;
+                this.objectC[i].Qutarea3 = element.QUTAREA3;
+                this.objectC[i].Qutarea4 = element.QUTAREA4;
+                this.objectC[i].Quexamen = element.QUEXAMEN;
+
                 this.objectC[i].examenFinal = element.EXAMENFINAL;
                 this.objectC[i].examenSupletorio = element.EXAMENSUPLETORIO;
                 this.objectC[i].examenRemedial = element.EXAMENREMEDIAL;
@@ -745,6 +752,9 @@ export class EstudianteComponent implements OnInit, DoCheck {
       || this.objectC[i].Cuforo > 10 || this.objectC[i].Cutarea1 > 10 || this.objectC[i].Cutarea2 > 10
       || this.objectC[i].Cutarea3 > 10 || this.objectC[i].Cutarea4 > 10 || this.objectC[i].Cuexamen > 10
 
+      || this.objectC[i].Quforo > 10 || this.objectC[i].Qutarea1 > 10 || this.objectC[i].Qutarea2 > 10
+      || this.objectC[i].Qutarea3 > 10 || this.objectC[i].Qutarea4 > 10 || this.objectC[i].Quexamen > 10
+
       || this.objectC[i].examenFinal > 10 || this.objectC[i].examenGracia > 10 || this.objectC[i].examenRemedial > 10 || this.objectC[i].examenSupletorio > 10) {
 
 
@@ -764,9 +774,12 @@ export class EstudianteComponent implements OnInit, DoCheck {
         parseFloat(this.objectC[i].Tutarea3) + parseFloat(this.objectC[i].Tutarea4) + parseFloat(this.objectC[i].Tuexamen) +
 
         parseFloat(this.objectC[i].Cuforo) + parseFloat(this.objectC[i].Cutarea1) + parseFloat(this.objectC[i].Cutarea2) +
-        parseFloat(this.objectC[i].Cutarea3) + parseFloat(this.objectC[i].Cutarea4) + parseFloat(this.objectC[i].Cuexamen)
+        parseFloat(this.objectC[i].Cutarea3) + parseFloat(this.objectC[i].Cutarea4) + parseFloat(this.objectC[i].Cuexamen)+
 
-      ) / 24) * 0.6;
+        parseFloat(this.objectC[i].Quforo) + parseFloat(this.objectC[i].Qutarea1) + parseFloat(this.objectC[i].Qutarea2) +
+        parseFloat(this.objectC[i].Qutarea3) + parseFloat(this.objectC[i].Qutarea4) + parseFloat(this.objectC[i].Quexamen)
+
+      ) / 30) * 0.6;
 
 
 

@@ -73,7 +73,7 @@
 
 
       <h1 style="margin-top: 5%">{{identity.NOMBRE_ESTUDIANTE}} {{identity.APELLIDO_ESTUDIANTE}} </h1>
-      <h1 >{{ vectorListadoMisMaterias[0].CURSO.CURSO}} {{ vectorListadoMisMaterias[0].CURSO.PARALELO}} </h1>
+      <h3 >{{ vectorListadoMisMaterias[0].CURSO.CURSO}} {{ vectorListadoMisMaterias[0].CURSO.PARALELO}} </h3>
      
       <!-- tabola de insumos -->
 
@@ -93,7 +93,7 @@
             <tr style=" align-content: center;">
               <th colspan="2" style="padding-top: 3%" scope="col">
                 <h6>Descripción de insumos de la materia de: {{recivir}}</h6>
-                <p style="color: #ffffff">holaaaaaaaaaaaaaaaaaammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
+               
               </th>
 
             </tr>
@@ -574,7 +574,7 @@
 
             
            
-                <tr>
+            <tr style="background-color: #343a40; align-content: center;">
               <th colspan="2" style="color: white;" scope="col">Cuarta Unidad</th>
 
             </tr>
@@ -604,6 +604,37 @@
               <td scope="col">{{listadoInsumosC.DESCCUTAREA4}}</td>
             </tr>
 
+
+
+            <tr style="background-color: #343a40; align-content: center;">
+              <th colspan="2" style="color: white;" scope="col">Quinta Unidad</th>
+
+            </tr>
+
+            <tr style=" align-content: center;">
+              <td scope="col">Foro</td>
+              <td scope="col">{{listadoInsumosC.DESCQUFORO}}</td>
+            </tr>
+
+            <tr style=" align-content: center;">
+              <td scope="col">Tarea 1</td>
+              <td scope="col">{{listadoInsumosC.DESCQUTAREA1}}</td>
+            </tr>
+
+            <tr style=" align-content: center;">
+              <td scope="col">Tarea 2</td>
+              <td scope="col">{{listadoInsumosC.DESCQUTAREA2}}</td>
+            </tr>
+
+            <tr style=" align-content: center;">
+              <td scope="col">Tarea 3</td>
+              <td scope="col">{{listadoInsumosC.DESCQUTAREA3}}</td>
+            </tr>
+
+            <tr style=" align-content: center;">
+              <td scope="col">Tarea 4</td>
+              <td scope="col">{{listadoInsumosC.DESCQUTAREA4}}</td>
+            </tr>
             
           </tbody>
         </table>
@@ -1563,6 +1594,7 @@
           <th COLSPAN="6">Segunda Unidad</th>
           <th COLSPAN="6">Tercera Unidad</th>
           <th COLSPAN="6">Cuarta Unidad</th>
+          <th COLSPAN="6">Quinta Unidad</th>
           <th COLSPAN="3">Evaluaciones</th>
           <th COLSPAN="4">Promedio Final y examenes complementarios</th>
 
@@ -1605,6 +1637,14 @@
           <th style="color: white" scope="col" class="verticalText">Examen </th>
 
           <!-- Cuarta unidad-->
+          <th style="color: white" scope="col" class="verticalText">Foro </th>
+          <th style="color: white" scope="col" class="verticalText">Tarea 1 </th>
+          <th style="color: white" scope="col" class="verticalText">Tarea 2 </th>
+          <th style="color: white" scope="col" class="verticalText">Tarea 3 </th>
+          <th style="color: white" scope="col" class="verticalText">Tarea 4 </th>
+          <th style="color: white" scope="col" class="verticalText">Examen </th>
+
+          <!-- Quinta unidad-->
           <th style="color: white" scope="col" class="verticalText">Foro </th>
           <th style="color: white" scope="col" class="verticalText">Tarea 1 </th>
           <th style="color: white" scope="col" class="verticalText">Tarea 2 </th>
@@ -1717,6 +1757,26 @@
             <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Cuexamen" name="Cuexamen{{i}}">
           </td>
 
+          
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Quforo" name="Quforo{{i}}">
+          </td>
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea1" name="Qutarea1{{i}}">
+          </td>
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea2" name="Qutarea2{{i}}">
+          </td>
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea3" name="Qutarea3{{i}}">
+          </td>
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea4" name="Qutarea4{{i}}">
+          </td>
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Quexamen" name="Quexamen{{i}}">
+          </td>
+
 
 
 
@@ -1782,6 +1842,7 @@ style="margin-top: -1000%; font-size: 80%; width: 100%; margin-left: 0%">
     <th COLSPAN="6">Segunda Unidad</th>
     <th COLSPAN="6">Tercera Unidad</th>
     <th COLSPAN="6">Cuarta Unidad</th>
+    <th COLSPAN="6">Quinta Unidad</th>
     <th COLSPAN="3">Evaluaciones</th>
     <th COLSPAN="4">Promedio Final y examenes complementarios</th>
 
@@ -1823,6 +1884,14 @@ style="margin-top: -1000%; font-size: 80%; width: 100%; margin-left: 0%">
     <th style="color: white" scope="col" class="verticalText">Ex</th>
 
     <!-- Cuarta unidad-->
+    <th style="color: white" scope="col" class="verticalText">Foro </th>
+    <th style="color: white" scope="col" class="verticalText">T1 </th>
+    <th style="color: white" scope="col" class="verticalText">T2 </th>
+    <th style="color: white" scope="col" class="verticalText">T3 </th>
+    <th style="color: white" scope="col" class="verticalText">T4 </th>
+    <th style="color: white" scope="col" class="verticalText">Ex </th>
+
+    <!-- Quinta unidad-->
     <th style="color: white" scope="col" class="verticalText">Foro </th>
     <th style="color: white" scope="col" class="verticalText">T1 </th>
     <th style="color: white" scope="col" class="verticalText">T2 </th>
@@ -1930,6 +1999,26 @@ style="margin-top: -1000%; font-size: 80%; width: 100%; margin-left: 0%">
       <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Cuexamen" name="Cuexamen{{i}}">
     </td>
 
+
+
+    <td id="tdfila">{{this.objectC[i].Quforo}}
+      <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Quforo" name="Quforo{{i}}">
+    </td>
+    <td id="tdfila">{{this.objectC[i].Qutarea1}}
+      <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea1" name="Qutarea1{{i}}">
+    </td>
+    <td id="tdfila">{{this.objectC[i].Qutarea2}}
+      <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea2" name="Qutarea2{{i}}">
+    </td>
+    <td id="tdfila">{{this.objectC[i].Qutarea3}}
+      <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea3" name="Qutarea3{{i}}">
+    </td>
+    <td id="tdfila">{{this.objectC[i].Qutarea4}}
+      <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea4" name="Qutarea4{{i}}">
+    </td>
+    <td id="tdfila">{{this.objectC[i].Quexamen}}
+      <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Quexamen" name="Quexamen{{i}}">
+    </td>
 
 
 

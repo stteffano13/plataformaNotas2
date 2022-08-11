@@ -10,12 +10,14 @@ export class NotaC {
         public Putarea3:String,
         public Putarea4:String,
         public Puexamen:String,
+
         public Suforo:String,
         public Sutarea1:String,
         public Sutarea2:String,
         public Sutarea3:String,
         public Sutarea4:String,
         public Suexamen:String,
+
         public Tuforo:String,
         public Tutarea1:String,
         public Tutarea2:String,
@@ -29,6 +31,13 @@ export class NotaC {
         public Cutarea3:String,
         public Cutarea4:String,
         public Cuexamen:String,
+
+        public Quforo:String,
+        public Qutarea1:String,
+        public Qutarea2:String,
+        public Qutarea3:String,
+        public Qutarea4:String,
+        public Quexamen:String,
         
         public Sesenta_P:String,
         public examenFinal:String,

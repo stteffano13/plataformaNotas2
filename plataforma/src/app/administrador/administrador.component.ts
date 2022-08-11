@@ -104,7 +104,9 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
 
   public arrayOctavo = [
     "CIENCIAS SOCIALES",
-    "INFORMATICA",
+    "INFORMÁTICA",
+    "CIENCIAS NATURALES",
+    "INGLES",
     'MATEMATICAS',
     'LENGUAJE Y COMUNICACIÓN',
     "EDUCACIÓN PARA LA CIUDADANÍA"];
@@ -113,35 +115,48 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
   public array1Bach = [
     "FÍSICA",
     "QUIMICA",
+    'MATEMATICAS',
     "EDUCACIÓN PARA LA CIUDADANÍA",
     "INGLÉS",
     "BIOLOGÍA",
     "LENGUA Y LITERATURA",
     "HISTORIA",
-    "EMPRENDIMIENTO Y GESTIÓN"
+    "EMPRENDIMIENTO Y GESTIÓN",
+    "FILOSOFÍA",
+    "EDUCACIÓN CULTURAL Y ARTÍSTICA",
+    "EDUCACIÓN FÍSICA"
   ];
 
 
   public array2Bach = [
     "FÍSICA",
-    "QUÍMICA",
+    "QUIMICA",
+    'MATEMATICAS',
     "EDUCACIÓN PARA LA CIUDADANÍA",
     "INGLÉS",
     "BIOLOGÍA",
     "LENGUA Y LITERATURA",
     "HISTORIA",
-    "EMPRENDIMIENTO Y GESTIÓN"
+    "EMPRENDIMIENTO Y GESTIÓN",
+    "FILOSOFÍA",
+    "EDUCACIÓN CULTURAL Y ARTÍSTICA",
+    "EDUCACIÓN FÍSICA"
+    
   ];
 
   public array3Bach = [
     "FÍSICA",
-    "QUÍMICA",
+    "QUIMICA",
+    'MATEMATICAS',
     "EDUCACIÓN PARA LA CIUDADANÍA",
     "INGLÉS",
     "BIOLOGÍA",
     "LENGUA Y LITERATURA",
     "HISTORIA",
-    "EMPRENDIMIENTO Y GESTIÓN"
+    "EMPRENDIMIENTO Y GESTIÓN",
+    "FILOSOFÍA",
+    "EDUCACIÓN CULTURAL Y ARTÍSTICA",
+    "EDUCACIÓN FÍSICA"
 
   ];
 
@@ -1527,7 +1542,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
         console.log("materias que traigo ", this.listadoMateriasCurso);
 
 
-        if (this.listadoEstudianteMatriculas != null && (valu1.indexOf("(DISTANCIA VIRTUAL)") != -1 || valu1.indexOf("(SEMIPRESENCIAL)") != -1)) {
+        if (this.listadoEstudianteMatriculas != null && (valu1.indexOf("(DISTANCIA VIRTUAL)") != -1)) {
           this.loading = false;
           var objBuscarNotas = {
 

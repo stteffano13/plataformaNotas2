@@ -1527,6 +1527,7 @@
           <th COLSPAN="6">Segunda Unidad</th>
           <th COLSPAN="6">Tercera Unidad</th>
           <th COLSPAN="6">Cuarta Unidad</th>
+          <th COLSPAN="6">Quinta Unidad</th>
           <th COLSPAN="3">Evaluaciones</th>
           <th COLSPAN="4">Promedio Final y examenes complementarios</th>
 
@@ -1676,6 +1677,38 @@
               <i class="fa fa-plus fa-1fx"></i>
             </button>
           </th>
+          <th style="color: white" scope="col" class="verticalText">Relleno </th>
+          
+          <th>
+            <button (click)="actualizacionInsumosC('quf')" class="btn btn-light">
+              <i class="fa fa-plus fa-1fx"></i>
+            </button>
+          </th>
+
+          <th>
+            <button (click)="actualizacionInsumosC('qut1')" class="btn btn-light">
+              <i class="fa fa-plus fa-1fx"></i>
+            </button>
+          </th>
+
+          <th>
+            <button (click)="actualizacionInsumosC('qut2')" class="btn btn-light">
+              <i class="fa fa-plus fa-1fx"></i>
+            </button>
+          </th>
+
+          <th>
+            <button (click)="actualizacionInsumosC('qut3')" class="btn btn-light">
+              <i class="fa fa-plus fa-1fx"></i>
+            </button>
+          </th>
+
+          <th>
+            <button (click)="actualizacionInsumosC('qut4')" class="btn btn-light">
+              <i class="fa fa-plus fa-1fx"></i>
+            </button>
+          </th>
+
 
 
           <th style="color: white" scope="col">Relleno</th>
@@ -1733,6 +1766,13 @@
           <th style="color: white" scope="col" class="verticalText">Tarea 4 </th>
           <th style="color: white" scope="col" class="verticalText">Examen </th>
 
+           <!-- Quinta unidad-->
+           <th style="color: white" scope="col" class="verticalText">Foro </th>
+           <th style="color: white" scope="col" class="verticalText">Tarea 1 </th>
+           <th style="color: white" scope="col" class="verticalText">Tarea 2 </th>
+           <th style="color: white" scope="col" class="verticalText">Tarea 3 </th>
+           <th style="color: white" scope="col" class="verticalText">Tarea 4 </th>
+           <th style="color: white" scope="col" class="verticalText">Examen </th>
           <!-- Evaluaciones-->
           <th style="color: white" scope="col" class="verticalText">60% </th>
           <th style="color: white" scope="col" class="verticalText">Examen Final</th>
@@ -1750,7 +1790,7 @@
       <tbody>
         <tr
           *ngFor=" let listado of  listadoEstudianteMatriculas; let i = index; let listadoN of listadoEstudianteNotas">
-          <th scope="row">{{i}}</th>
+          <th scope="row">{{i+1}}</th>
           <td colspan="1" valign="middle">{{listado.ESTUDIANTE.APELLIDO_ESTUDIANTE}}
             {{listado.ESTUDIANTE.NOMBRE_ESTUDIANTE}} </td>
 
@@ -1835,6 +1875,25 @@
             <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Cuexamen" name="Cuexamen{{i}}">
           </td>
 
+
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Quforo" name="Quforo{{i}}">
+          </td>
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea1" name="Qutarea1{{i}}">
+          </td>
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea2" name="Qutarea2{{i}}">
+          </td>
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea3" name="Qutarea3{{i}}">
+          </td>
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Qutarea4" name="Qutarea4{{i}}">
+          </td>
+          <td id="tdfila">
+            <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].Quexamen" name="Quexamen{{i}}">
+          </td>
 
 
 
@@ -1975,6 +2034,14 @@
           <th style="color: white">T4 </th>
           <th style="color: white">Ex </th>
 
+           <!-- Quinta unidad-->
+           <th style="color: white">Foro </th>
+           <th style="color: white">T1 </th>
+           <th style="color: white">T2 </th>
+           <th style="color: white">T3 </th>
+           <th style="color: white">T4 </th>
+           <th style="color: white">Ex </th>
+
           <!-- Evaluaciones-->
           <th style="color: white">60% </th>
           <th style="color: white">Ex Final</th>
@@ -2032,6 +2099,12 @@
           <td id="tdfila">{{ this.objectC[i].Cuexamen}}</td>
 
 
+          <td id="tdfila">{{this.objectC[i].Quforo}} </td>
+          <td id="tdfila">{{this.objectC[i].Qutarea1}}</td>
+          <td id="tdfila">{{this.objectC[i].Qutarea2}}</td>
+          <td id="tdfila">{{this.objectC[i].Qutarea3}}</td>
+          <td id="tdfila">{{ this.objectC[i].Qutarea4}}</td>
+          <td id="tdfila">{{ this.objectC[i].Quexamen}}</td>
 
 
 

@@ -118,6 +118,60 @@ const InsumoC = db.sequelize.define('INSUMOC', {
     },
    
 
+    DESCTUFORO:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    DESCTUTAREA1:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    DESCTUTAREA2:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    DESCTUTAREA3:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    DESCTUTAREA4:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+
+    DESCQUFORO:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    DESCQUTAREA1:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    DESCQUTAREA2:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    DESCQUTAREA3:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    DESCQUTAREA4:
+    {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+
+   
+
     PERIODO:
     {
         type: Sequelize.STRING,

@@ -615,12 +615,11 @@
             <div class="col-lg-6">
               <div class="form-group">
                 <label for="apellido">Seleccione la materia a impartir</label>
-                <input style="font-size: 85%" [disabled]="disabledMateriaImpartir" list="listadoMateriasAsignacion" [(ngModel)]="selectedMateriaAsignacion"
-                  name="selectedMateriaAsignacion" required type="text" class="form-control">
-                <datalist id="listadoMateriasAsignacion">
-                  <option *ngFor="let oneDoor of vectorlistadoMaterias"> {{oneDoor}}</option>
+                <select style="font-size: 85%" [disabled]="disabledMateriaImpartir" list="listadoMateriasAsignacion" [(ngModel)]="selectedMateriaAsignacion"
+                  name="selectedMateriaAsignacion" required type="select" class="form-control">
+                  <option *ngFor="let oneDoor of vectorlistadoMaterias"> {{oneDoor}}</option></select>
 
-                </datalist>
+                
               </div>
 
 
@@ -1228,19 +1227,23 @@
           <div style="width: 80%; border: 0; background-color: white;  margin-left: 10%" disabled class="modal-body  row">
             <select (change)="asignarCurso($event.target.value)" class=" custom-select col-lg-8" required>
               <option disabled selected hidde value="" selected>Seleccione un curso</option>
+
               <option value="OCTAVO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL)">OCTAVO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL)</option>
               <option value="NOVENO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL)">NOVENO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL) </option>
               <option value="DÉCIMO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL)">DÉCIMO AÑO DE EDUCACIÓN GENERAL BÁSICA (DISTANCIA VIRTUAL)</option>
       
-              <option value="PRIMER AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)">PRIMER AÑO DE BACHILLERATO GENERAL UNIFICADO (DISTANCIA VIRTUAL)</option>
-              <option value="SEGUNDO AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)">SEGUNDO AÑO DE BACHILLERATO GENERAL UNIFICADO (DISTANCIA VIRTUAL)</option>
-              <option value="TERCER AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)">TERCER AÑO DE BACHILLERATO GENERAL UNIFICADO (DISTANCIA VIRTUAL)</option>
+              <option value="PRIMER AÑO DE BACHILLERATO GENERAL UNIFICADO (DISTANCIA VIRTUAL)">PRIMER AÑO DE BACHILLERATO GENERAL UNIFICADO (DISTANCIA VIRTUAL)</option>
+              <option value="SEGUNDO AÑO DE BACHILLERATO GENERAL UNIFICADO (DISTANCIA VIRTUAL)">SEGUNDO AÑO DE BACHILLERATO GENERAL UNIFICADO (DISTANCIA VIRTUAL)</option>
+              <option value="TERCER AÑO DE BACHILLERATO GENERAL UNIFICADO (DISTANCIA VIRTUAL)">TERCER AÑO DE BACHILLERATO GENERAL UNIFICADO (DISTANCIA VIRTUAL)</option>
+
+              <option value="PRIMER AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)">PRIMER AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)</option>
+              <option value="SEGUNDO AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)">SEGUNDO AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)</option>
+              <option value="TERCER AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)">TERCER AÑO DE BACHILLERATO GENERAL UNIFICADO (SEMIPRESENCIAL)</option>
+
+              <option value="BÁSICO SUPERIOR INTENSIVO (SEMIPRESENCIAL)">BÁSICO SUPERIOR INTENSIVO (SEMIPRESENCIAL)</option>
 
 
-              <option value="BÁSICO SUPERIOR INTENSIVO">BÁSICO SUPERIOR INTENSIVO</option>
-              <option value="PRIMER AÑO DE BACHILLERATO GENERAL UNIFICADO">PRIMER AÑO DE BACHILLERATO GENERAL UNIFICADO</option>
-              <option value="SEGUNDO AÑO DE BACHILLERATO GENERAL UNIFICADO">SEGUNDO AÑO DE BACHILLERATO GENERAL UNIFICADO</option>
-              <option value="TERCER AÑO DE BACHILLERATO GENERAL UNIFICADO">TERCER AÑO DE BACHILLERATO GENERAL UNIFICADO</option>
+          
             </select>
 
             <input class="form-control col-lg-3 " style="margin-left: 3%" placeholder="Paralelo" type=" text" #Curso="ngModel" [(ngModel)]="curso_register.paralelo"

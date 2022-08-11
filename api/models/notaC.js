@@ -141,6 +141,38 @@ const NotaC = db.sequelize.define('NOTAC', {
         type: Sequelize.NUMBER,
         allowNull: true
     },
+
+
+    QUFORO:
+    {
+        type: Sequelize.NUMBER,
+        allowNull: true
+    },
+    QUTAREA1:
+    {
+        type: Sequelize.NUMBER,
+        allowNull: true
+    },
+    QUTAREA2:
+    {
+        type: Sequelize.NUMBER,
+        allowNull: true
+    },
+    QUTAREA3:
+    {
+        type: Sequelize.NUMBER,
+        allowNull: true
+    },
+    QUTAREA4:
+    {
+        type: Sequelize.NUMBER,
+        allowNull: true
+    },
+    QUEXAMEN:
+    {
+        type: Sequelize.NUMBER,
+        allowNull: true
+    },
     EXAMENFINAL:
     {
         type: Sequelize.NUMBER,

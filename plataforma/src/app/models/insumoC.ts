@@ -27,6 +27,12 @@ export class InsumoC {
         public Desccut2:String,
         public Desccut3:String,
         public Desccut4:String,
+
+        public Descquforo:String,
+        public Descqut1:String,
+        public Descqut2:String,
+        public Descqut3:String,
+        public Descqut4:String,
         
     ) { }
 }
