@@ -13,7 +13,7 @@ async function saveAdministrador(req, res) {
 
     try {
         var params = req.body; // cuerpo de la peticion post de la direccion http por post
-        // console.log(params);
+        console.log(params);
         let administradorEncontrado = await Administrador.findOne({ where: { CORREO_ADMINISTRADOR: params.correo } });
 
         if (administradorEncontrado) {

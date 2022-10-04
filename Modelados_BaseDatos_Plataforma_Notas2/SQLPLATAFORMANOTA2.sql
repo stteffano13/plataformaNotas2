@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     11/18/2021 12:03:30 PM                       */
+/* Created on:     8/11/2022 5:25:24 PM                         */
 /*==============================================================*/
 
 
@@ -193,6 +193,11 @@ create table INSUMOC
    DESCCUTAREA3         text,
    DESCCUTAREA4         text,
    PERIODO              text,
+   DESCQUFORO           text,
+   DESCQUTAREA1         text,
+   DESCQUTAREA2         text,
+   DESCQUTAREA3         text,
+   DESCQUTAREA4         text,
    primary key (ID_INSUMOC)
 );
 
@@ -346,6 +351,12 @@ create table NOTAC
    CUTAREA3             float,
    CUTAREA4             float,
    CUEXAMEN             float,
+   QUFORO               float,
+   QUTAREA1             float,
+   QUTAREA2             float,
+   QUTAREA3             float,
+   QUTAREA4             float,
+   QUEXAMEN             float,
    EXAMENFINAL          float,
    PT                   float,
    EXAMENSUPLETORIO     float,

@@ -1500,10 +1500,10 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
     debugger;
     var busqueda = value.split(",");
     this.loading = true;
-
+    console.log("busqueda estudiantes",busqueda)
     this.subscribe20 = this._matriculaServices.buscarEstudianteMatricula(busqueda[0]).subscribe(
       response => {
-
+         console.log("response matriculas",response.matriculas)
         this.listadoEstudianteMatriculas = this.ordenar(response.matriculas);
         console.log("listadoEstudianteMatriculas", this.listadoEstudianteMatriculas)
         this.getListadoMaterias(busqueda[0], busqueda[1]);
@@ -1553,7 +1553,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
 
         } else
 
-          if (this.listadoEstudianteMatriculas != null && valu1 != "BÁSICO SUPERIOR INTENSIVO ") {
+          if (this.listadoEstudianteMatriculas != null && valu1 != "BÁSICO SUPERIOR INTENSIVO") {
 
 
             this.loading = false;
@@ -1700,6 +1700,7 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
 
 
   traerNotasMatrisB(value) {
+    console.log("traer pilas amtris b",value)
     this.objNotasPT = [];
     this.diviciones;
     this.nuevo = [];
@@ -1941,20 +1942,27 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
       cont += 1;
     });
     console.log(cont);
+    try{
     for (let k = 0; k < cont - 1; k++) {
       //console.log('mi FOR', vector[k]);
       for (let f = 0; f < (cont - 1) - k; f++) {
         // console.log('mi FOR', vector[f]);
+       
         if (vector[f].ESTUDIANTE.APELLIDO_ESTUDIANTE.localeCompare(vector[f + 1].ESTUDIANTE.APELLIDO_ESTUDIANTE) > 0) {
           let aux;
           aux = vector[f];
           vector[f] = vector[f + 1];
           vector[f + 1] = aux;
         }
+   
       }
     }
+
     console.log("<<<<<< MI VECTOR DESPUES DE LA ORDENADA >>>>>>", vector);
     return vector;
+  }catch(e){
+    console.log("error ahorita",e)
+  }
   }
 
   generarPdf() {

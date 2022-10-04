@@ -646,7 +646,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
         this.listadoNotas = response.notas;
 
 
-        console.log("listado notas", this.listadoNotas, "vector materias", this.vectorListadoMisMaterias);
+        console.log("listado notas C", this.listadoNotas, "vector materias", this.vectorListadoMisMaterias);
         //  ordenar
         let i = 0;
         this.vectorListadoMisMaterias.forEach(elementE => {

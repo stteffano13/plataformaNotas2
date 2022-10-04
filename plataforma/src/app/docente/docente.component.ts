@@ -1425,6 +1425,9 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
       || this.objectC[i].Cuforo > 10 || this.objectC[i].Cutarea1 > 10 || this.objectC[i].Cutarea2 > 10
       || this.objectC[i].Cutarea3 > 10 || this.objectC[i].Cutarea4 > 10 || this.objectC[i].Cuexamen > 10
 
+      || this.objectC[i].Quforo > 10 || this.objectC[i].Qutarea1 > 10 || this.objectC[i].Qutarea2 > 10
+      || this.objectC[i].Qutarea3 > 10 || this.objectC[i].Qutarea4 > 10 || this.objectC[i].Quexamen > 10
+
       || this.objectC[i].examenFinal > 10 || this.objectC[i].examenGracia > 10 || this.objectC[i].examenRemedial > 10 || this.objectC[i].examenSupletorio > 10) {
 
       this.btnFinalizar3 = true;
@@ -1981,6 +1984,13 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
                 this.objectC[i].Cutarea4 = element.CUTAREA4;
                 this.objectC[i].Cuexamen = element.CUEXAMEN;
 
+                this.objectC[i].Quforo = element.QUFORO;
+                this.objectC[i].Qutarea1 = element.QUTAREA1;
+                this.objectC[i].Qutarea2 = element.QUTAREA2;
+                this.objectC[i].Qutarea3 = element.QUTAREA3;
+                this.objectC[i].Qutarea4 = element.QUTAREA4;
+                this.objectC[i].Quexamen = element.QUEXAMEN;
+
                 this.objectC[i].examenFinal = element.EXAMENFINAL;
                 this.objectC[i].examenSupletorio = element.EXAMENSUPLETORIO;
                 this.objectC[i].examenRemedial = element.EXAMENREMEDIAL;
@@ -2143,6 +2153,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
   registroNotasC() {
     console.log("bandera de subir notas", this.banderSubirNotas);
+    console.log("notas c antes de enviar",this.objectC)
     if (this.banderSubirNotas == true) {
       this.banderaHabilitarC = true;
       this.pruebaclick();
@@ -2219,7 +2230,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
       doc.autoTable({
         html: '#results3', startY: 150, columnStyles: {
          
-          26: { fillColor: [249, 247, 95] }, 28: { fillColor: [249, 247, 95] }, 29: { fillColor: [191, 250, 119] }
+          32: { fillColor: [249, 247, 95] }, 34: { fillColor: [249, 247, 95] }, 35: { fillColor: [191, 250, 119] }
         }, styles: {
           overflow: 'linebreak',
           fontSize: 8,
@@ -2319,8 +2330,8 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         delete this.VreporteExcel[i]._id;
         delete this.VreporteExcel[i].materia;
         delete this.VreporteExcel[i].periodo;
-        this.objectC[i].sesentaporciento = this.objectCalculableC[i].sesentaporciento;
-        this.objectC[i].cuarentaporciento = this.objectCalculableC[i].cuarentaporciento;
+        this.objectC[i].Sesenta_P = this.objectCalculableC[i].sesentaporciento;
+        this.objectC[i].Cuarenta_P = this.objectCalculableC[i].cuarentaporciento;
         this.objectC[i].promedioFinal = this.objectCalculableC[i].promedioFinal;
       }
     } else

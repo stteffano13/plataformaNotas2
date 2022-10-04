@@ -676,22 +676,23 @@ async function buscarNotasMatrisB(req, res) {
   var contM = Object.keys(paramsi.materias).length;
   var contE = Object.keys(paramsi.buscar).length;
   var multi = contM * contE;
+  console.log("buscar-------------------------------------------------------------",contE)
 
   console.log("esta es la multiplicacion de los vectores", multi);
   paramsi.buscar.forEach(async (params) => {
     paramsi.materias.forEach(async (paramsM) => {
-      console.log("estudiante", params, "materia", paramsM.ID_MATERIA);
+      //console.log("estudiante", params, "materia", paramsM.ID_MATERIA);
 
       try {
         let notas = await NotaB.findOne({ where: { ID_ESTUDIANTE: params.ESTUDIANTE.ID_ESTUDIANTE, PERIODO: params.PERIODO, ID_MATERIA: paramsM.ID_MATERIA } });
 
         if (notas) {
-          console.log("materias una por una", notas);
+          //console.log("materias una por una", notas);
           cont2++;
 
           vectorNotas.push(notas);
           if (cont3 + cont2 + cont == multi) {
-            console.log("estes es el vector de nbotas que regresa para l matris", vectorNotas);
+           // console.log("estes es el vector de nbotas que regresa para l matris", vectorNotas);
             res.status(200).send({
               vectorNotas
             });
@@ -820,6 +821,8 @@ async function saveNotasC2(params, res, cont, paramsi) {
     notaC.PT = params.pt;
 
     let notaStored = await notaC.save();
+
+    console.log("notas c guardadas----------------------------------------------------", notaStored);
 
     if (!notaStored && cont == Object.keys(paramsi).length) {
       res.status(404).send({

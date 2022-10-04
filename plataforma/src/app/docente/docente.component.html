@@ -1984,6 +1984,7 @@
           <th COLSPAN="6">Segunda Unidad</th>
           <th COLSPAN="6">Tercera Unidad</th>
           <th COLSPAN="6">Cuarta Unidad</th>
+          <th COLSPAN="6">Quinta Unidad</th>
           <th COLSPAN="3">Evaluaciones</th>
           <th COLSPAN="4">Promedio Final y examenes complementarios</th>
 
@@ -2059,7 +2060,7 @@
       <tbody>
         <tr
           *ngFor=" let listado of  listadoEstudianteMatriculas; let i = index; let listadoN of listadoEstudianteNotas">
-          <th scope="row">{{i}}</th>
+          <th scope="row">{{i+1}}</th>
           <td colspan="1" valign="middle">{{listado.ESTUDIANTE.APELLIDO_ESTUDIANTE}}
             {{listado.ESTUDIANTE.NOMBRE_ESTUDIANTE}} </td>
 
