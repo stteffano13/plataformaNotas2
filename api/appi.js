@@ -5,7 +5,6 @@ var bodyParser = require('body-parser');
 var app = express();
 
 
-//Notificaciones
 
 //cargar Rutas
 
@@ -28,9 +27,10 @@ var nota_rutes = require('./routes/nota');
 
 */
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json()); //convertir a json als peticiones
-
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json()); //convertir a json als peticiones
+app.use(bodyParser.json({limit: '5000mb'}));
+app.use(bodyParser.urlencoded({limit: '5000mb', extended: true}));
 //configurar cabeceras http
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');

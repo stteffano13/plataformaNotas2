@@ -716,7 +716,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
 
   DescripcionInsumosC() {
-    this.descripcionInsumoC = new InsumoC("", "", "", "", "", "", "", "", "", "", "", "", "", "","","","","", "", "", "", "", "", "", "", "", "", "","");
+    this.descripcionInsumoC = new InsumoC("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
     this.descripcionInsumoC.materia = this.guardarMateriaMatricula;
     this.descripcionInsumoC.periodo = this.periodoLectivoActual;
@@ -1214,7 +1214,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         parseFloat(this.objectC[i].Tutarea3) + parseFloat(this.objectC[i].Tutarea4) + parseFloat(this.objectC[i].Tuexamen) +
 
         parseFloat(this.objectC[i].Cuforo) + parseFloat(this.objectC[i].Cutarea1) + parseFloat(this.objectC[i].Cutarea2) +
-        parseFloat(this.objectC[i].Cutarea3) + parseFloat(this.objectC[i].Cutarea4) + parseFloat(this.objectC[i].Cuexamen)+
+        parseFloat(this.objectC[i].Cutarea3) + parseFloat(this.objectC[i].Cutarea4) + parseFloat(this.objectC[i].Cuexamen) +
 
         parseFloat(this.objectC[i].Quforo) + parseFloat(this.objectC[i].Qutarea1) + parseFloat(this.objectC[i].Qutarea2) +
         parseFloat(this.objectC[i].Qutarea3) + parseFloat(this.objectC[i].Qutarea4) + parseFloat(this.objectC[i].Quexamen)
@@ -1448,7 +1448,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         parseFloat(this.objectC[i].Tutarea3) + parseFloat(this.objectC[i].Tutarea4) + parseFloat(this.objectC[i].Tuexamen) +
 
         parseFloat(this.objectC[i].Cuforo) + parseFloat(this.objectC[i].Cutarea1) + parseFloat(this.objectC[i].Cutarea2) +
-        parseFloat(this.objectC[i].Cutarea3) + parseFloat(this.objectC[i].Cutarea4) + parseFloat(this.objectC[i].Cuexamen)+
+        parseFloat(this.objectC[i].Cutarea3) + parseFloat(this.objectC[i].Cutarea4) + parseFloat(this.objectC[i].Cuexamen) +
 
         parseFloat(this.objectC[i].Quforo) + parseFloat(this.objectC[i].Qutarea1) + parseFloat(this.objectC[i].Qutarea2) +
         parseFloat(this.objectC[i].Qutarea3) + parseFloat(this.objectC[i].Qutarea4) + parseFloat(this.objectC[i].Quexamen)
@@ -1642,59 +1642,63 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
           }
           this.traerNotasC(objBuscarNotas);
           this.DescripcionInsumosC();
-        } else
 
-          if (busqueda[2] != "BÁSICO SUPERIOR INTENSIVO") {
-            this.banderTabla1 = true;
-            this.banderTabla2 = false;
-            this.banderTabla3 = false;
-
-            for (let i = 0; i < Object.keys(this.listadoEstudianteMatriculas).length; i++) {
-
-              this.object.push(this.obj = new Nota("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
-              this.objectCalculable.push(this.objC = new Calculable("0", "0", "0", "0", "0", "0", "0"));
-
-            }
-
-            console.log("estas es la materia a busca", busqueda[1]);
+        } else if (busqueda[2].indexOf("BÁSICO SUPERIOR INTENSIVO") != -1) {
 
 
-            var objBuscarNotas = {
-
-              materia: busqueda[1],
-              buscar: this.listadoEstudianteMatriculas
-            }
-            this.traerNotas(objBuscarNotas);
-            this.DescripcionInsumos();
-            //this.traerNotasB(objBuscarNotas);
-
-          } else {
+          this.loading = false;
+          this.banderTabla1 = false;
+          this.banderTabla2 = true;
+          this.banderTabla3 = false;
 
 
-            this.loading = false;
-            this.banderTabla1 = false;
-            this.banderTabla2 = true;
-            this.banderTabla3 = false;
+          for (let i = 0; i < Object.keys(this.listadoEstudianteMatriculas).length; i++) {
+
+            this.objectB.push(this.objB = new NotaBasica("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
+            this.objectCalculableB.push(this.objC = new Calculable("0", "0", "0", "0", "0", "0", "0"));
+
+          }
+          console.log("estas es la materia a busca", busqueda[1]);
+          var objBuscarNotas = {
+
+            materia: busqueda[1],
+            buscar: this.listadoEstudianteMatriculas
+          }
+          console.log("objeto para buscar notas", objBuscarNotas);
+          this.traerNotasB(objBuscarNotas);
+          this.DescripcionInsumosB();
 
 
-            for (let i = 0; i < Object.keys(this.listadoEstudianteMatriculas).length; i++) {
 
-              this.objectB.push(this.objB = new NotaBasica("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
-              this.objectCalculableB.push(this.objC = new Calculable("0", "0", "0", "0", "0", "0", "0"));
 
-            }
-            console.log("estas es la materia a busca", busqueda[1]);
-            var objBuscarNotas = {
 
-              materia: busqueda[1],
-              buscar: this.listadoEstudianteMatriculas
-            }
-            console.log("objeto para buscar notas", objBuscarNotas);
-            this.traerNotasB(objBuscarNotas);
-            this.DescripcionInsumosB();
+
+        } else if (busqueda[2].indexOf("(SEMIPRESENCIAL)") != -1) {
+          this.banderTabla1 = true;
+          this.banderTabla2 = false;
+          this.banderTabla3 = false;
+
+          for (let i = 0; i < Object.keys(this.listadoEstudianteMatriculas).length; i++) {
+
+            this.object.push(this.obj = new Nota("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
+            this.objectCalculable.push(this.objC = new Calculable("0", "0", "0", "0", "0", "0", "0"));
+
           }
 
+          console.log("estas es la materia a busca", busqueda[1]);
 
+
+          var objBuscarNotas = {
+
+            materia: busqueda[1],
+            buscar: this.listadoEstudianteMatriculas
+          }
+          this.traerNotas(objBuscarNotas);
+          this.DescripcionInsumos();
+          //this.traerNotasB(objBuscarNotas);
+
+
+        }
 
 
       },
@@ -2153,7 +2157,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
   registroNotasC() {
     console.log("bandera de subir notas", this.banderSubirNotas);
-    console.log("notas c antes de enviar",this.objectC)
+    console.log("notas c antes de enviar", this.objectC)
     if (this.banderSubirNotas == true) {
       this.banderaHabilitarC = true;
       this.pruebaclick();
@@ -2229,7 +2233,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
       doc.fromHTML("<h4  style='text-align: center' >" + this.Titulo1 + "</h4>", 170, 48);
       doc.autoTable({
         html: '#results3', startY: 150, columnStyles: {
-         
+
           32: { fillColor: [249, 247, 95] }, 34: { fillColor: [249, 247, 95] }, 35: { fillColor: [191, 250, 119] }
         }, styles: {
           overflow: 'linebreak',
