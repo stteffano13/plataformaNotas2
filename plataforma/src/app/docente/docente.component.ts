@@ -2237,7 +2237,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
           32: { fillColor: [249, 247, 95] }, 34: { fillColor: [249, 247, 95] }, 35: { fillColor: [191, 250, 119] }
         }, styles: {
           overflow: 'linebreak',
-          fontSize: 8,
+          fontSize: 5,
           cellWidth: 'auto',
           cellPadding: 2
         }
@@ -2268,7 +2268,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
             25: { fillColor: [207, 233, 176] }, 26: { fillColor: [191, 250, 119] }
           }, styles: {
             overflow: 'linebreak',
-            fontSize: 8,
+            fontSize: 5,
             rowHeight: 5,
             cellWidth: 'auto',
             cellPadding: 2

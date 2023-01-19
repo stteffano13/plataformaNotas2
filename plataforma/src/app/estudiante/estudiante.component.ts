@@ -148,11 +148,12 @@ export class EstudianteComponent implements OnInit, DoCheck {
       if (response.materias[0] != undefined) {
         this.vectorListadoMisMaterias = response.materias;
         console.log("las amterias", this.vectorListadoMisMaterias);
-        if (this.vectorListadoMisMaterias[0].CURSO.CURSO.indexOf("(DISTANCIA VIRTUAL)") != -1) {
 
-          this.banderTabla3 = true;
+
+        if (this.vectorListadoMisMaterias[0].CURSO.CURSO.indexOf("(DISTANCIA VIRTUAL)") != -1) { 
           this.banderTabla1 = false;
           this.banderTabla2 = false;
+          this.banderTabla3 = true;
 
           for (let i = 0; i < Object.keys(this.vectorListadoMisMaterias).length; i++) {
 
@@ -165,22 +166,9 @@ export class EstudianteComponent implements OnInit, DoCheck {
           // this.traerNotas();
           //  this.traerNotas(this.periodoLectivoActual);
         } else
-          if (this.vectorListadoMisMaterias[0].CURSO.CURSO != "BÁSICO SUPERIOR INTENSIVO") {
-
-            this.banderTabla1 = true;
-            this.banderTabla2 = false;
-            this.banderTabla3 = false;
-            for (let i = 0; i < Object.keys(this.vectorListadoMisMaterias).length; i++) {
-
-              this.object.push(this.obj = new Nota("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
-              this.objectCalculable.push(this.objC = new Calculable("0", "0", "0", "0", "0", "0", "0"));
-              console.log("estos son los seros del objeto", this.object);
-            }
+          if (this.vectorListadoMisMaterias[0].CURSO.CURSO.indexOf("BÁSICO SUPERIOR INTENSIVO") != -1) {
 
 
-            // this.traerNotas();
-            //  this.traerNotas(this.periodoLectivoActual);
-          } else {
             this.banderTabla1 = false;
             this.banderTabla2 = true;
             this.banderTabla3 = false;
@@ -191,6 +179,23 @@ export class EstudianteComponent implements OnInit, DoCheck {
               this.objectB.push(this.objB = new NotaBasica("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
               this.objectCalculableB.push(this.objC = new Calculable("0", "0", "0", "0", "0", "0", "0"));
 
+            }
+
+         
+
+
+            // this.traerNotas();
+            //  this.traerNotas(this.periodoLectivoActual);
+          } else if (this.vectorListadoMisMaterias[0].CURSO.CURSO.indexOf("(SEMIPRESENCIAL)") != -1) {
+            
+            this.banderTabla1 = true;
+            this.banderTabla2 = false;
+            this.banderTabla3 = false;
+            for (let i = 0; i < Object.keys(this.vectorListadoMisMaterias).length; i++) {
+
+              this.object.push(this.obj = new Nota("", "", "", "", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"));
+              this.objectCalculable.push(this.objC = new Calculable("0", "0", "0", "0", "0", "0", "0"));
+              console.log("estos son los seros del objeto", this.object);
             }
 
             // this.traerNotasB(this.periodoLectivoActual);
