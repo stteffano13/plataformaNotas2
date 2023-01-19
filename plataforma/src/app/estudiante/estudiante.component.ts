@@ -768,7 +768,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
       document.getElementById("openModalError").click();
 
     } else {
-      var sesentaporciento = ((parseFloat(this.objectC[i].Puforo) + parseFloat(this.objectC[i].Putarea1)
+      var ochentaporciento = ((parseFloat(this.objectC[i].Puforo) + parseFloat(this.objectC[i].Putarea1)
         + parseFloat(this.objectC[i].Putarea2) + parseFloat(this.objectC[i].Putarea3) + parseFloat(this.objectC[i].Putarea4)
         + parseFloat(this.objectC[i].Puexamen) +
 
@@ -784,17 +784,17 @@ export class EstudianteComponent implements OnInit, DoCheck {
         parseFloat(this.objectC[i].Quforo) + parseFloat(this.objectC[i].Qutarea1) + parseFloat(this.objectC[i].Qutarea2) +
         parseFloat(this.objectC[i].Qutarea3) + parseFloat(this.objectC[i].Qutarea4) + parseFloat(this.objectC[i].Quexamen)
 
-      ) / 30) * 0.6;
+      ) / 30) * 0.8;
 
 
 
-      var cuarentaporciento = (parseFloat(this.objectC[i].examenFinal) * 0.4)
-      var promediofinal = sesentaporciento + cuarentaporciento;
+      var veinteporciento = (parseFloat(this.objectC[i].examenFinal) * 0.2)
+      var promediofinal = ochentaporciento + veinteporciento;
 
 
 
-      this.objectCalculableC[i].sesentaporciento = sesentaporciento.toFixed(2);
-      this.objectCalculableC[i].cuarentaporciento = cuarentaporciento.toFixed(2);
+      this.objectCalculableC[i].ochentaporciento = ochentaporciento.toFixed(2);
+      this.objectCalculableC[i].veinteporciento = veinteporciento.toFixed(2);
       this.objectCalculableC[i].promedioFinal = promediofinal.toFixed(2);
 
 
@@ -892,7 +892,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
           12: { fillColor: [207, 233, 176] }, 21: { fillColor: [249, 247, 95] }, 23: { fillColor: [249, 247, 95] },
           24: { fillColor: [207, 233, 176] }, 25: { fillColor: [191, 250, 119] }
         },
-        styles: { overflow: 'linebreak', fontSize: 6 }
+        styles: { overflow: 'linebreak', fontSize: 4 }
       });
 
 
@@ -914,7 +914,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
           12: { fillColor: [207, 233, 176] }, 21: { fillColor: [249, 247, 95] }, 23: { fillColor: [249, 247, 95] },
           24: { fillColor: [207, 233, 176] }, 25: { fillColor: [191, 250, 119] }
         },
-        styles: { overflow: 'linebreak', fontSize: 6 }
+        styles: { overflow: 'linebreak', fontSize: 4 }
       });
 
 
@@ -935,7 +935,7 @@ export class EstudianteComponent implements OnInit, DoCheck {
         }, margin: { left: 30 }, styles: {
 
           overflow: 'linebreak',
-          fontSize: 5,
+          fontSize: 4,
           //rowHeight: 0,
           cellWidth: 'auto',
           cellPadding: 3,

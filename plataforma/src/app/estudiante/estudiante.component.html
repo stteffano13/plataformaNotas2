@@ -1285,6 +1285,7 @@
 
     <div *ngIf="banderTabla2" class="col-md-12" style="text-align: center;">
       <button class="btn btn-primary" (click)="generarPdf()">Generar reporte en PDF de las calificaciones</button>
+      <br><br>
     </div>
 
     <!--------------------------------- TTABLA DE EMERGENCIA dos------------------------------------- -->
@@ -1582,7 +1583,7 @@
 
     <!---------------------------------------------------- tabla de notas 3--->
     <table *ngIf="banderTabla3" class="table table-hover table-bordered table-responsive "
-      style="margin-top: 1%; font-size: 80%; width: 90%; margin-left: 5%">
+      style="margin-top: 1%; font-size: 75%; width: 90%; margin-left: 5%">
 
     
       <thead>
@@ -1653,9 +1654,9 @@
           <th style="color: white" scope="col" class="verticalText">Examen </th>
 
           <!-- Evaluaciones-->
-          <th style="color: white" scope="col" class="verticalText">60% </th>
+          <th style="color: white" scope="col" class="verticalText">80% </th>
           <th style="color: white" scope="col" class="verticalText">Examen Final</th>
-          <th style="color: white" scope="col" class="verticalText">40%</th>
+          <th style="color: white" scope="col" class="verticalText">20%</th>
 
 
           <!-- Promedio-->
@@ -1783,7 +1784,7 @@
 
           <td id="tdfila" style="background-color:yellow">
             <input disabled style="background-color: yellow" id="tdboton" type="text"
-              [(ngModel)]="  this.objectCalculableC[i].sesentaporciento" name="sesentaporciento{{i}}">
+              [(ngModel)]="  this.objectCalculableC[i].ochentaporciento" name="ochentaporciento{{i}}">
           </td>
           <td id="tdfila">
             <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].examenFinal" name="examenFinal{{i}}">
@@ -1791,7 +1792,7 @@
 
           <td id="tdfila" style="background-color:yellow">
             <input disabled id="tdboton" style="background-color:yellow"
-              [(ngModel)]="this.objectCalculableC[i].cuarentaporciento" name="cuarentaporciento{{i}}" type="text">
+              [(ngModel)]="this.objectCalculableC[i].veinteporciento" name="veinteporciento{{i}}" type="text">
           </td>
           <td id="tdfila" style="background-color:rgb(215, 253, 138)">
             <input disabled id="tdboton" style="background-color:rgb(215, 253, 138)"
@@ -1827,6 +1828,7 @@
 
     <div *ngIf="banderTabla3" class="col-md-12" style="text-align: center;">
       <button class="btn btn-primary" (click)="generarPdf()">Generar reporte en PDF de las calificaciones</button>
+      <br><br>
     </div>
 <!---------------------------------------------------- tabla auxiliar de notas 3--->
 <table *ngIf="banderTabla3" id="results3" class="table table-hover table-bordered table-responsive "
@@ -1900,9 +1902,9 @@ style="margin-top: -1000%; font-size: 80%; width: 100%; margin-left: 0%">
     <th style="color: white" scope="col" class="verticalText">Ex </th>
 
     <!-- Evaluaciones-->
-    <th style="color: white" scope="col" class="verticalText">60% </th>
+    <th style="color: white" scope="col" class="verticalText">80% </th>
     <th style="color: white" scope="col" class="verticalText">Ex Final</th>
-    <th style="color: white" scope="col" class="verticalText">40%</th>
+    <th style="color: white" scope="col" class="verticalText">20%</th>
 
 
     <!-- Promedio-->
@@ -2023,17 +2025,17 @@ style="margin-top: -1000%; font-size: 80%; width: 100%; margin-left: 0%">
 
 
 
-    <td id="tdfila" style="background-color:yellow">{{this.objectCalculableC[i].sesentaporciento}}
+    <td id="tdfila" style="background-color:yellow">{{this.objectCalculableC[i].ochentaporciento}}
       <input disabled style="background-color: yellow" id="tdboton" type="text"
-        [(ngModel)]="  this.objectCalculableC[i].sesentaporciento" name="sesentaporciento{{i}}">
+        [(ngModel)]="  this.objectCalculableC[i].ochentaporciento" name="ochentaporciento{{i}}">
     </td>
     <td id="tdfila">{{this.objectC[i].examenFinal}}
       <input id="tdboton" type="text" [(ngModel)]="this.objectC[i].examenFinal" name="examenFinal{{i}}">
     </td>
 
-    <td id="tdfila" style="background-color:yellow">{{this.objectCalculableC[i].cuarentaporciento}}
+    <td id="tdfila" style="background-color:yellow">{{this.objectCalculableC[i].veinteporciento}}
       <input disabled id="tdboton" style="background-color:yellow"
-        [(ngModel)]="this.objectCalculableC[i].cuarentaporciento" name="cuarentaporciento{{i}}" type="text">
+        [(ngModel)]="this.objectCalculableC[i].veinteporciento" name="veinteporciento{{i}}" type="text">
     </td>
     <td id="tdfila" style="background-color:rgb(215, 253, 138)">{{this.objectCalculableC[i].promedioFinal}}
       <input disabled id="tdboton" style="background-color:rgb(215, 253, 138)"
