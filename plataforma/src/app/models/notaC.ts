@@ -39,9 +39,9 @@ export class NotaC {
         public Qutarea4:String,
         public Quexamen:String,
         
-        public Sesenta_P:String,
+        public Ochenta_P:String,
         public examenFinal:String,
-        public Cuarenta_P:String,
+        public Veinte_P:String,
         
         public examenSupletorio:String,
         public examenRemedial:String,

@@ -1,8 +1,8 @@
 export class CalculableC {
     constructor(
 
-        public sesentaporciento:String,
-        public cuarentaporciento:String,
+        public ochentaporciento:String,
+        public veinteporciento:String,
         public promedioFinal:String,
        
 

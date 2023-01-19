@@ -1203,7 +1203,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
       if (this.banderAux) { this.btnFinalizar3 = true; } else { this.btnFinalizar3 = false; }
 
 
-      var sesentaporciento = ((parseFloat(this.objectC[i].Puforo) + parseFloat(this.objectC[i].Putarea1)
+      var ochentaporciento = ((parseFloat(this.objectC[i].Puforo) + parseFloat(this.objectC[i].Putarea1)
         + parseFloat(this.objectC[i].Putarea2) + parseFloat(this.objectC[i].Putarea3) + parseFloat(this.objectC[i].Putarea4)
         + parseFloat(this.objectC[i].Puexamen) +
 
@@ -1219,17 +1219,17 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         parseFloat(this.objectC[i].Quforo) + parseFloat(this.objectC[i].Qutarea1) + parseFloat(this.objectC[i].Qutarea2) +
         parseFloat(this.objectC[i].Qutarea3) + parseFloat(this.objectC[i].Qutarea4) + parseFloat(this.objectC[i].Quexamen)
 
-      ) / 30) * 0.6;
+      ) / 30) * 0.8;
 
 
 
-      var cuarentaporciento = (parseFloat(this.objectC[i].examenFinal) * 0.4)
-      var promediofinal = sesentaporciento + cuarentaporciento;
+      var veinteporciento = (parseFloat(this.objectC[i].examenFinal) * 0.2)
+      var promediofinal = ochentaporciento + veinteporciento;
 
 
 
-      this.objectCalculableC[i].sesentaporciento = sesentaporciento.toFixed(2);
-      this.objectCalculableC[i].cuarentaporciento = cuarentaporciento.toFixed(2);
+      this.objectCalculableC[i].ochentaporciento = ochentaporciento.toFixed(2);
+      this.objectCalculableC[i].veinteporciento = veinteporciento.toFixed(2);
       this.objectCalculableC[i].promedioFinal = promediofinal.toFixed(2);
 
 
@@ -1437,7 +1437,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
       document.getElementById("openModalError").click();
 
     } else {
-      var sesentaporciento = ((parseFloat(this.objectC[i].Puforo) + parseFloat(this.objectC[i].Putarea1)
+      var ochentaporciento = ((parseFloat(this.objectC[i].Puforo) + parseFloat(this.objectC[i].Putarea1)
         + parseFloat(this.objectC[i].Putarea2) + parseFloat(this.objectC[i].Putarea3) + parseFloat(this.objectC[i].Putarea4)
         + parseFloat(this.objectC[i].Puexamen) +
 
@@ -1453,17 +1453,17 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         parseFloat(this.objectC[i].Quforo) + parseFloat(this.objectC[i].Qutarea1) + parseFloat(this.objectC[i].Qutarea2) +
         parseFloat(this.objectC[i].Qutarea3) + parseFloat(this.objectC[i].Qutarea4) + parseFloat(this.objectC[i].Quexamen)
 
-      ) / 30) * 0.6;
+      ) / 30) * 0.8;
 
 
 
-      var cuarentaporciento = (parseFloat(this.objectC[i].examenFinal) * 0.4)
-      var promediofinal = sesentaporciento + cuarentaporciento;
+      var veinteporciento = (parseFloat(this.objectC[i].examenFinal) * 0.2)
+      var promediofinal = ochentaporciento + veinteporciento;
 
 
 
-      this.objectCalculableC[i].sesentaporciento = sesentaporciento.toFixed(2);
-      this.objectCalculableC[i].cuarentaporciento = cuarentaporciento.toFixed(2);
+      this.objectCalculableC[i].ochentaporciento = ochentaporciento.toFixed(2);
+      this.objectCalculableC[i].veinteporciento = veinteporciento.toFixed(2);
       this.objectCalculableC[i].promedioFinal = promediofinal.toFixed(2);
 
 
@@ -2328,14 +2328,15 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
   generarExel(variable) {
 
     if (variable == 3) {
+      console.log("lo que estoy probando",this.objectC )
       this.VreporteExcel = this.objectC;
       for (var i in this.VreporteExcel) {
         this.VreporteExcel[i].estudiante = this.listadoEstudianteMatriculas[i].ESTUDIANTE.APELLIDO_ESTUDIANTE + " " + this.listadoEstudianteMatriculas[i].ESTUDIANTE.NOMBRE_ESTUDIANTE;
         delete this.VreporteExcel[i]._id;
         delete this.VreporteExcel[i].materia;
         delete this.VreporteExcel[i].periodo;
-        this.objectC[i].Sesenta_P = this.objectCalculableC[i].sesentaporciento;
-        this.objectC[i].Cuarenta_P = this.objectCalculableC[i].cuarentaporciento;
+        this.objectC[i].Ochenta_P = this.objectCalculableC[i].ochentaporciento;
+        this.objectC[i].Veinte_P = this.objectCalculableC[i].veinteporciento;
         this.objectC[i].promedioFinal = this.objectCalculableC[i].promedioFinal;
       }
     } else
