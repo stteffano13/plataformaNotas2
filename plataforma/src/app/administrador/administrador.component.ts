@@ -1553,9 +1553,20 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
 
         } else
 
-          if (this.listadoEstudianteMatriculas != null && valu1 != "BÁSICO SUPERIOR INTENSIVO") {
+          if (this.listadoEstudianteMatriculas != null && valu1.indexOf("BÁSICO SUPERIOR INTENSIVO") != -1) {
 
 
+            this.loading = false;
+            var objBuscarNotas = {
+
+              materias: this.listadoMateriasCurso,
+              buscar: this.listadoEstudianteMatriculas
+            }
+           // this.traerNotasMatris();
+
+            this.traerNotasMatrisB(objBuscarNotas);
+
+          } else if (valu1.indexOf("(SEMIPRESENCIAL)") != -1){
             this.loading = false;
             var objBuscarNotas = {
 
@@ -1563,17 +1574,6 @@ export class AdministradorComponent implements OnInit, AfterViewInit {
               buscar: this.listadoEstudianteMatriculas
             }
             this.traerNotasMatris();
-
-            //this.traerNotasB(objBuscarNotas);
-
-          } else {
-            this.loading = false;
-            var objBuscarNotas = {
-
-              materias: this.listadoMateriasCurso,
-              buscar: this.listadoEstudianteMatriculas
-            }
-            this.traerNotasMatrisB(objBuscarNotas);
 
           }
 
