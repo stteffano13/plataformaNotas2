@@ -2244,14 +2244,14 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
       });
 
       var pageHeight = doc.internal.pageSize.height;
-      doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 110, pageHeight - pageHeight / 6);
-      doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 260, pageHeight - pageHeight / 6);
-      doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 400, pageHeight - pageHeight / 6);
-      doc.fromHTML(" <p style='text-align: center'>DOCENTE</p>", 150, pageHeight - pageHeight / 8);
-      doc.fromHTML(" <p style='text-align: center'>SECRETARIA</p>", 300, pageHeight - pageHeight / 8);
-      doc.fromHTML(" <p style='text-align: center'>RECTOR(A)</p>", 445, pageHeight - pageHeight / 8);
+      doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 110, pageHeight - pageHeight / 10);
+      doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 260, pageHeight - pageHeight / 10);
+      doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 400, pageHeight - pageHeight / 10);
+      doc.fromHTML(" <p style='text-align: center'>DOCENTE</p>", 150, pageHeight - (pageHeight / 13));
+      doc.fromHTML(" <p style='text-align: center'>SECRETARIA</p>", 300, pageHeight - (pageHeight / 13));
+      doc.fromHTML(" <p style='text-align: center'>RECTOR(A)</p>", 445, pageHeight - (pageHeight / 13));
       this.loading = false;
-
+      console.log("================================ " + pageHeight)
       doc.save('Reporte_Notas_Docente.pdf');
 
 
@@ -2276,12 +2276,12 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         });
 
         var pageHeight = doc.internal.pageSize.height;
-        doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 110, pageHeight - pageHeight / 6);
-        doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 260, pageHeight - pageHeight / 6);
-        doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 400, pageHeight - pageHeight / 6);
-        doc.fromHTML(" <p style='text-align: center'>DOCENTE</p>", 150, pageHeight - pageHeight / 8);
-        doc.fromHTML(" <p style='text-align: center'>SECRETARIA</p>", 300, pageHeight - pageHeight / 8);
-        doc.fromHTML(" <p style='text-align: center'>RECTOR(A)</p>", 445, pageHeight - pageHeight / 8);
+        doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 110, pageHeight - pageHeight / 10);
+        doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 260, pageHeight - pageHeight / 10);
+        doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 400, pageHeight - pageHeight / 10);
+        doc.fromHTML(" <p style='text-align: center'>DOCENTE</p>", 150, pageHeight - pageHeight / 13);
+        doc.fromHTML(" <p style='text-align: center'>SECRETARIA</p>", 300, pageHeight - pageHeight / 13);
+        doc.fromHTML(" <p style='text-align: center'>RECTOR(A)</p>", 445, pageHeight - pageHeight / 13);
         this.loading = false;
 
         doc.save('Reporte_Notas_Docente.pdf');
@@ -2312,10 +2312,10 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
         });
         var pageHeight = doc.internal.pageSize.height;
-        doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 130, pageHeight - pageHeight / 6);
-        doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 380, pageHeight - pageHeight / 6);
-        doc.fromHTML(" <h4 style='text-align: center'>DOCENTE</h4>", 170, pageHeight - pageHeight / 8);
-        doc.fromHTML(" <h4 style='text-align: center'>RECTOR</h4>", 425, pageHeight - pageHeight / 8);
+        doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 130, pageHeight - pageHeight / 10);
+        doc.fromHTML(" <h4 style='text-align: center'>------------------------------------------</h4>", 380, pageHeight - pageHeight / 10);
+        doc.fromHTML(" <h4 style='text-align: center'>DOCENTE</h4>", 170, pageHeight - pageHeight / 13);
+        doc.fromHTML(" <h4 style='text-align: center'>RECTOR</h4>", 425, pageHeight - pageHeight / 13);
         this.loading = false;
 
         doc.save('Reporte_Notas_Docente.pdf');
@@ -2328,7 +2328,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
   generarExel(variable) {
 
     if (variable == 3) {
-      console.log("lo que estoy probando",this.objectC )
+      console.log("lo que estoy probando", this.objectC)
       this.VreporteExcel = this.objectC;
       for (var i in this.VreporteExcel) {
         this.VreporteExcel[i].estudiante = this.listadoEstudianteMatriculas[i].ESTUDIANTE.APELLIDO_ESTUDIANTE + " " + this.listadoEstudianteMatriculas[i].ESTUDIANTE.NOMBRE_ESTUDIANTE;
@@ -2387,6 +2387,60 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
     // for (var i in this.listadoEstudianteMatriculas) {
     //   this.nuevo2[i].shift();
     // }
+  }
+
+
+  public VnotasExcel: any;
+  async leerExcel(variable: any, event: any) {
+debugger
+      this.VnotasExcel = await this.excelService.leerExcel(event)
+      debugger
+    if (variable == 1) {
+
+      let i = 0;
+      this.listadoEstudianteMatriculas.forEach(elementE => {
+
+        this.VnotasExcel.forEach(element => {
+ 
+          let estudiante=elementE.ESTUDIANTE.APELLIDO_ESTUDIANTE.trim() + ' '+ elementE.ESTUDIANTE.NOMBRE_ESTUDIANTE.trim();
+          let notaEstudiante=element.APELLIDO_ESTUDIANTE.trim() + ' '+ element.NOMBRE_ESTUDIANTE.trim();
+        
+       
+          if (element != null) {
+            debugger
+            if (estudiante.trim() == notaEstudiante.trim()) {
+              debugger
+              console.log("elementoE", estudiante, "elemento", notaEstudiante)
+              this.object[i].insumo1 = element.INSUMO1;
+              this.object[i].insumo2 = element.INSUMO2;
+              this.object[i].insumo3 = element.INSUMO3;
+              this.object[i].insumo4 = element.INSUMO4;
+              this.object[i].insumo5 = element.INSUMO5;
+              this.object[i].insumo6 = element.INSUMO6;
+              this.object[i].insumo7 = element.INSUMO7;
+              this.object[i].insumo8 = element.INSUMO8;
+              this.object[i].examen1 = element.EXAMEN1;
+
+              this.object[i].insumo11 = element.INSUMO11;
+              this.object[i].insumo22 = element.INSUMO22;
+              this.object[i].insumo33 = element.INSUMO33;
+              this.object[i].insumo44 = element.INSUMO44;
+              this.object[i].insumo55 = element.INSUMO55;
+              this.object[i].insumo66 = element.INSUMO66;
+              this.object[i].insumo77 = element.INSUMO77;
+              this.object[i].insumo88 = element.INSUMO88;
+
+              this.object[i].examen2 = element.EXAMEN2;
+              this.object[i].examenSupletorio = element.EXAMENSUPLETORIO;
+              this.object[i].examenRemedial = element.EXAMENREMEDIAL;
+              this.object[i].examenGracia = element.EXAMENGRACIA;
+            }
+          }
+        });
+        i++;
+      });
+    }
+
   }
 
   recargar() {

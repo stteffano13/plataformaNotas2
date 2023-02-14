@@ -374,7 +374,8 @@
               <input id="tdboton" type="text" [(ngModel)]="this.object[i].insumo4" name="insumo4{{i}}">
             </td>
             <td id="tdfila" style="background-color:rgb(247, 83, 116)">
-              <input style="background-color: rgb(247, 83, 116)" id="tdboton" type="text" [(ngModel)]="this.object[i].insumo5" name="insumo5{{i}}">
+              <input style="background-color: rgb(247, 83, 116)" id="tdboton" type="text"
+                [(ngModel)]="this.object[i].insumo5" name="insumo5{{i}}">
             </td>
             <td id="tdfila">
               <input id="tdboton" type="text" [(ngModel)]="this.object[i].insumo6" name="insumo6{{i}}">
@@ -470,10 +471,18 @@
           </tr>
         </tbody>
       </table>
+
       <div *ngIf="banderTabla1" class="col-md-12" style="text-align: center;">
         <button class="btn btn-primary" (click)="pruebaclick()" [hidden]="!btnFinalizar"> Calcular el registro de
           notas</button>
-        <br>
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+
+        <input  [hidden]="!btnFinalizar" type="file" (change)="leerExcel(1,$event)"
+          class="btn btn-primary" style="align-content: center" Exportar en Excel />&nbsp;&nbsp;&nbsp;
+
+
+
+
         <button class="btn btn-secondary" style=" padding-right: 3%; padding-left: 3%" [hidden]="btnFinalizar"
           (click)="habilitarGR()">
           Cancelar</button> &nbsp;&nbsp;&nbsp;
@@ -484,11 +493,15 @@
 
         <button style=" padding-right: 3%; padding-left: 3%" [disabled]="btnHabilitarExportacion"
           [hidden]="btnFinalizar" class="btn btn-danger" (click)="generarPdf()">Exportar pdf</button>
-        &nbsp;&nbsp;&nbsp;
+
+          &nbsp;&nbsp;&nbsp;
         <button style=" padding-right: 3%; padding-left: 3%" [disabled]="btnHabilitarExportacion"
           [hidden]="btnFinalizar" (click)="generarExel(1)" class="btn btn-success" style="align-content: center">
           Exportar en Excel
         </button>
+       
+
+
         <br><br><br>
       </div>
     </div>
@@ -1678,7 +1691,7 @@
             </button>
           </th>
           <th style="color: white" scope="col" class="verticalText">Relleno </th>
-          
+
           <th>
             <button (click)="actualizacionInsumosC('quf')" class="btn btn-light">
               <i class="fa fa-plus fa-1fx"></i>
@@ -1766,13 +1779,13 @@
           <th style="color: white" scope="col" class="verticalText">Tarea 4 </th>
           <th style="color: white" scope="col" class="verticalText">Examen </th>
 
-           <!-- Quinta unidad-->
-           <th style="color: white" scope="col" class="verticalText">Foro </th>
-           <th style="color: white" scope="col" class="verticalText">Tarea 1 </th>
-           <th style="color: white" scope="col" class="verticalText">Tarea 2 </th>
-           <th style="color: white" scope="col" class="verticalText">Tarea 3 </th>
-           <th style="color: white" scope="col" class="verticalText">Tarea 4 </th>
-           <th style="color: white" scope="col" class="verticalText">Examen </th>
+          <!-- Quinta unidad-->
+          <th style="color: white" scope="col" class="verticalText">Foro </th>
+          <th style="color: white" scope="col" class="verticalText">Tarea 1 </th>
+          <th style="color: white" scope="col" class="verticalText">Tarea 2 </th>
+          <th style="color: white" scope="col" class="verticalText">Tarea 3 </th>
+          <th style="color: white" scope="col" class="verticalText">Tarea 4 </th>
+          <th style="color: white" scope="col" class="verticalText">Examen </th>
           <!-- Evaluaciones-->
           <th style="color: white" scope="col" class="verticalText">80% </th>
           <th style="color: white" scope="col" class="verticalText">Examen Final</th>
@@ -1972,7 +1985,7 @@
     <table id="results3" *ngIf="banderTabla3" class="table table-hover table-bordered table-responsive "
       style="margin-top:  -10000000%; font-size: 70%; width: 100%; margin-left: 0%">
 
-      <div class="  form-control form-inline">
+      <div class="form-control form-inline">
         <h4>{{this.Titulo2}} </h4>
       </div>
       <thead>
@@ -2035,13 +2048,13 @@
           <th style="color: white">T4 </th>
           <th style="color: white">Ex </th>
 
-           <!-- Quinta unidad-->
-           <th style="color: white">Foro </th>
-           <th style="color: white">T1 </th>
-           <th style="color: white">T2 </th>
-           <th style="color: white">T3 </th>
-           <th style="color: white">T4 </th>
-           <th style="color: white">Ex </th>
+          <!-- Quinta unidad-->
+          <th style="color: white">Foro </th>
+          <th style="color: white">T1 </th>
+          <th style="color: white">T2 </th>
+          <th style="color: white">T3 </th>
+          <th style="color: white">T4 </th>
+          <th style="color: white">Ex </th>
 
           <!-- Evaluaciones-->
           <th style="color: white">80% </th>
@@ -2117,6 +2130,8 @@
           <td id="tdfila">{{this.objectC[i].examenRemedial}}</td>
           <td id="tdfila">{{this.objectC[i].examenGracia}}</td>
         </tr>
+
+
       </tbody>
 
 
