@@ -478,7 +478,7 @@
           &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 
         <input  [hidden]="!btnFinalizar" type="file" (change)="leerExcel(1,$event)"
-          class="btn btn-primary" style="align-content: center" Exportar en Excel />&nbsp;&nbsp;&nbsp;
+          class="btn btn-primary" style="align-content: center"  />&nbsp;&nbsp;&nbsp;
 
 
 
@@ -1011,7 +1011,7 @@
       <tbody>
         <tr
           *ngFor=" let listado of  listadoEstudianteMatriculas; let i = index; let listadoN of listadoEstudianteNotas">
-          <th scope="row">{{i}}</th>
+          <th scope="row">{{i+1}}</th>
           <td colspan="1" valign="middle">{{listado.ESTUDIANTE.APELLIDO_ESTUDIANTE}}
             {{listado.ESTUDIANTE.NOMBRE_ESTUDIANTE}} </td>
 
@@ -1202,6 +1202,13 @@
     <div *ngIf="banderTabla2" class="col-md-12" style="text-align: center;">
       <button class="btn btn-primary" (click)="pruebaclick()" [hidden]="!btnFinalizar2"> Calcular el registro de
         notas</button>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+
+       
+        <input  [hidden]="!btnFinalizar2" type="file" (change)="leerExcel(2,$event)" 
+          class="btn btn-primary" style="align-content: center"  />&nbsp;&nbsp;&nbsp;
+
+
       <button class="btn btn-secondary" style="padding-right: 3%; padding-left: 3%" [hidden]="btnFinalizar2"
         (click)="habilitarGRB()">
         Cancelar</button> &nbsp;&nbsp;&nbsp;
@@ -1958,6 +1965,11 @@
     <div *ngIf="banderTabla3" class="col-md-12" style="text-align: center;">
       <button class="btn btn-primary" (click)="pruebaclick()" [hidden]="!btnFinalizar3"> Calcular el registro de
         notas</button>
+       &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+        <input  [hidden]="!btnFinalizar3" type="file" (change)="leerExcel(3,$event)" 
+          class="btn btn-primary" style="align-content: center"  />&nbsp;&nbsp;&nbsp;
+
+
       <button class="btn btn-secondary" style="padding-right: 3%; padding-left: 3%" [hidden]="btnFinalizar3"
         (click)="habilitarGRC()">
         Cancelar</button> &nbsp;&nbsp;&nbsp;

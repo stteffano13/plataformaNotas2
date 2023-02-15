@@ -2391,25 +2391,26 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
 
   public VnotasExcel: any;
+
   async leerExcel(variable: any, event: any) {
-debugger
-      this.VnotasExcel = await this.excelService.leerExcel(event)
-      debugger
+  this.loading=true;
+    this.VnotasExcel = await this.excelService.leerExcel(event)
+
     if (variable == 1) {
 
       let i = 0;
       this.listadoEstudianteMatriculas.forEach(elementE => {
 
         this.VnotasExcel.forEach(element => {
- 
-          let estudiante=elementE.ESTUDIANTE.APELLIDO_ESTUDIANTE.trim() + ' '+ elementE.ESTUDIANTE.NOMBRE_ESTUDIANTE.trim();
-          let notaEstudiante=element.APELLIDO_ESTUDIANTE.trim() + ' '+ element.NOMBRE_ESTUDIANTE.trim();
-        
-       
+
+          let estudiante = elementE.ESTUDIANTE.APELLIDO_ESTUDIANTE.trim() + ' ' + elementE.ESTUDIANTE.NOMBRE_ESTUDIANTE.trim();
+          let notaEstudiante = element.APELLIDO_ESTUDIANTE.trim() + ' ' + element.NOMBRE_ESTUDIANTE.trim();
+
+
           if (element != null) {
-            debugger
+
             if (estudiante.trim() == notaEstudiante.trim()) {
-              debugger
+
               console.log("elementoE", estudiante, "elemento", notaEstudiante)
               this.object[i].insumo1 = element.INSUMO1;
               this.object[i].insumo2 = element.INSUMO2;
@@ -2439,7 +2440,146 @@ debugger
         });
         i++;
       });
+    } else if (variable == 2) {
+
+      let i = 0;
+
+      this.listadoEstudianteMatriculas.forEach(elementE => {
+
+        this.VnotasExcel.forEach(element => {
+
+          let estudiante = elementE.ESTUDIANTE.APELLIDO_ESTUDIANTE.trim() + ' ' + elementE.ESTUDIANTE.NOMBRE_ESTUDIANTE.trim();
+          let notaEstudiante = element.APELLIDO_ESTUDIANTE.trim() + ' ' + element.NOMBRE_ESTUDIANTE.trim();
+
+
+          if (element != null) {
+
+            if (estudiante.trim() == notaEstudiante.trim()) {
+              this.objectB[i].Q1P1insumo1 = element.Q1P1INSUMO1;
+              this.objectB[i].Q1P1insumo2 = element.Q1P1INSUMO2;
+              this.objectB[i].Q1P1insumo3 = element.Q1P1INSUMO3;
+              this.objectB[i].Q1P1insumo4 = element.Q1P1INSUMO4;
+              this.objectB[i].Q1P1insumo5 = element.Q1P1INSUMO5;
+              this.objectB[i].Q1P1insumo6 = element.Q1P1INSUMO6;
+
+              this.objectB[i].Q1P2insumo1 = element.Q1P2INSUMO1;
+              this.objectB[i].Q1P2insumo2 = element.Q1P2INSUMO2;
+              this.objectB[i].Q1P2insumo3 = element.Q1P2INSUMO3;
+              this.objectB[i].Q1P2insumo4 = element.Q1P2INSUMO4;
+              this.objectB[i].Q1P2insumo5 = element.Q1P2INSUMO5;
+              this.objectB[i].Q1P2insumo6 = element.Q1P2INSUMO6;
+
+              this.objectB[i].Q1P3insumo1 = element.Q1P3INSUMO1;
+              this.objectB[i].Q1P3insumo2 = element.Q1P3INSUMO2;
+              this.objectB[i].Q1P3insumo3 = element.Q1P3INSUMO3;
+              this.objectB[i].Q1P3insumo4 = element.Q1P3INSUMO4;
+              this.objectB[i].Q1P3insumo5 = element.Q1P3INSUMO5;
+              this.objectB[i].Q1P3insumo6 = element.Q1P3INSUMO6;
+
+
+              this.objectB[i].examen1 = element.EXAMEN1;
+
+              this.objectB[i].Q2P1insumo1 = element.Q2P1INSUMO1;
+              this.objectB[i].Q2P1insumo2 = element.Q2P1INSUMO2;
+              this.objectB[i].Q2P1insumo3 = element.Q2P1INSUMO3;
+              this.objectB[i].Q2P1insumo4 = element.Q2P1INSUMO4;
+              this.objectB[i].Q2P1insumo5 = element.Q2P1INSUMO5;
+              this.objectB[i].Q2P1insumo6 = element.Q2P1INSUMO6;
+
+              this.objectB[i].Q2P2insumo1 = element.Q2P2INSUMO1;
+              this.objectB[i].Q2P2insumo2 = element.Q2P2INSUMO2;
+              this.objectB[i].Q2P2insumo3 = element.Q2P2INSUMO3;
+              this.objectB[i].Q2P2insumo4 = element.Q2P2INSUMO4;
+              this.objectB[i].Q2P2insumo5 = element.Q2P2INSUMO5;
+              this.objectB[i].Q2P2insumo6 = element.Q2P2INSUMO6;
+
+              this.objectB[i].Q2P3insumo1 = element.Q2P3INSUMO1;
+              this.objectB[i].Q2P3insumo2 = element.Q2P3INSUMO2;
+              this.objectB[i].Q2P3insumo3 = element.Q2P3INSUMO3;
+              this.objectB[i].Q2P3insumo4 = element.Q2P3INSUMO4;
+              this.objectB[i].Q2P3insumo5 = element.Q2P3INSUMO5;
+              this.objectB[i].Q2P3insumo6 = element.Q2P3INSUMO6;
+
+              this.objectB[i].examen2 = element.EXAMEN2;
+              this.objectB[i].examenSupletorio = element.EXAMENSUPLETORIO;
+              this.objectB[i].examenRemedial = element.EXAMENREMEDIAL;
+              this.objectB[i].examenGracia = element.EXAMENGRACIA;
+
+
+
+            }
+          }
+        });
+        i++;
+      });
+
+
+
+    } else if (variable == 3) {
+      let i = 0;
+
+      this.listadoEstudianteMatriculas.forEach(elementE => {
+
+        this.VnotasExcel.forEach(element => {
+
+          let estudiante = elementE.ESTUDIANTE.APELLIDO_ESTUDIANTE.trim() + ' ' + elementE.ESTUDIANTE.NOMBRE_ESTUDIANTE.trim();
+          let notaEstudiante = element.APELLIDO_ESTUDIANTE.trim() + ' ' + element.NOMBRE_ESTUDIANTE.trim();
+
+
+          if (element != null) {
+
+            if (estudiante.trim() == notaEstudiante.trim()) {
+              this.objectC[i].Puforo = element.PUFORO;
+              this.objectC[i].Putarea1 = element.PUTAREA1;
+              this.objectC[i].Putarea2 = element.PUTAREA2;
+              this.objectC[i].Putarea3 = element.PUTAREA3;
+              this.objectC[i].Putarea4 = element.PUTAREA4;
+              this.objectC[i].Puexamen = element.PUEXAMEN;
+
+              this.objectC[i].Suforo = element.SUFORO;
+              this.objectC[i].Sutarea1 = element.SUTAREA1;
+              this.objectC[i].Sutarea2 = element.SUTAREA2;
+              this.objectC[i].Sutarea3 = element.SUTAREA3;
+              this.objectC[i].Sutarea4 = element.SUTAREA4;
+              this.objectC[i].Suexamen = element.SUEXAMEN;
+
+              this.objectC[i].Tuforo = element.TUFORO;
+              this.objectC[i].Tutarea1 = element.TUTAREA1;
+              this.objectC[i].Tutarea2 = element.TUTAREA2;
+              this.objectC[i].Tutarea3 = element.TUTAREA3;
+              this.objectC[i].Tutarea4 = element.TUTAREA4;
+              this.objectC[i].Tuexamen = element.TUEXAMEN;
+
+
+              this.objectC[i].Cuforo = element.CUFORO;
+              this.objectC[i].Cutarea1 = element.CUTAREA1;
+              this.objectC[i].Cutarea2 = element.CUTAREA2;
+              this.objectC[i].Cutarea3 = element.CUTAREA3;
+              this.objectC[i].Cutarea4 = element.CUTAREA4;
+              this.objectC[i].Cuexamen = element.CUEXAMEN;
+
+              this.objectC[i].Quforo = element.QUFORO;
+              this.objectC[i].Qutarea1 = element.QUTAREA1;
+              this.objectC[i].Qutarea2 = element.QUTAREA2;
+              this.objectC[i].Qutarea3 = element.QUTAREA3;
+              this.objectC[i].Qutarea4 = element.QUTAREA4;
+              this.objectC[i].Quexamen = element.QUEXAMEN;
+
+              this.objectC[i].examenFinal = element.EXAMENFINAL;
+              this.objectC[i].examenSupletorio = element.EXAMENSUPLETORIO;
+              this.objectC[i].examenRemedial = element.EXAMENREMEDIAL;
+              this.objectC[i].examenGracia = element.EXAMENGRACIA;
+
+
+
+
+            }
+          }
+        });
+        i++;
+      });
     }
+    this.loading=false;
 
   }
 
