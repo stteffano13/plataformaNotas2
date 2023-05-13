@@ -2393,7 +2393,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
   public VnotasExcel: any;
 
   async leerExcel(variable: any, event: any) {
-  this.loading=true;
+    this.loading = true;
     this.VnotasExcel = await this.excelService.leerExcel(event)
 
     if (variable == 1) {
@@ -2444,13 +2444,13 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
       let i = 0;
 
-      this.listadoEstudianteMatriculas.forEach(elementE => {
 
-        this.VnotasExcel.forEach(element => {
+      for (let elementE of this.listadoEstudianteMatriculas) {
+        for (let element of this.VnotasExcel) {
 
           let estudiante = elementE.ESTUDIANTE.APELLIDO_ESTUDIANTE.trim() + ' ' + elementE.ESTUDIANTE.NOMBRE_ESTUDIANTE.trim();
           let notaEstudiante = element.APELLIDO_ESTUDIANTE.trim() + ' ' + element.NOMBRE_ESTUDIANTE.trim();
-
+          debugger 
 
           if (element != null) {
 
@@ -2485,8 +2485,8 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
               this.objectB[i].Q2P1insumo4 = element.Q2P1INSUMO4;
               this.objectB[i].Q2P1insumo5 = element.Q2P1INSUMO5;
               this.objectB[i].Q2P1insumo6 = element.Q2P1INSUMO6;
-
-              this.objectB[i].Q2P2insumo1 = element.Q2P2INSUMO1;
+              
+             this.objectB[i].Q2P2insumo1 = element.Q2P2INSUMO1;
               this.objectB[i].Q2P2insumo2 = element.Q2P2INSUMO2;
               this.objectB[i].Q2P2insumo3 = element.Q2P2INSUMO3;
               this.objectB[i].Q2P2insumo4 = element.Q2P2INSUMO4;
@@ -2509,9 +2509,9 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
 
             }
           }
-        });
+        }
         i++;
-      });
+      };
 
 
 
@@ -2579,7 +2579,7 @@ export class DocenteComponent implements OnInit, DoCheck, OnDestroy {
         i++;
       });
     }
-    this.loading=false;
+    this.loading = false;
 
   }
 
